@@ -41,6 +41,7 @@ Sub Activity_Create(FirstTime As Boolean)
     	ToastMessageShow("Please install Google Play Services.", True)
     End If
 	
+	Location.Initialize(0,0)
 		
 	'prepare the map setup
 	MapSetupCompleted = False

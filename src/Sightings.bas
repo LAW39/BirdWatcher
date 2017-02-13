@@ -77,9 +77,12 @@ Sub AddNow_Click
 		Location.Latitude = Starter.L1.Latitude
 		Location.Longitude = Starter.L1.longitude
 	Else
-		StartActivity("Map")
-		Map.GetLocationFlag = 1
-		Location = Map.Location
+		Map.GetLocationFlag = True
+		
+		StartActivity(Map)
+		Location.Initialize
+		Location.Latitude = Map.Location.Latitude
+		Location.Longitude = Map.Location.Longitude
 	End If
 	Dim DateTimeTicks As Long
 	Dim Date_Time(2) As String
