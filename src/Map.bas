@@ -13,13 +13,14 @@ Sub Process_Globals
 	'These variables can be accessed from all modules.
 	Public MapTimer As Timer
 	Public SelectedID As Int
+	Public GetLocationFlag As Boolean = False
+	Public Location As LatLng
 End Sub
 
 Sub Globals
 	'These global variables will be redeclared each time the activity is created.
 	'These variables can only be accessed from this module.
 	Private gmap As GoogleMap
-	
 	
 	Private MapSetupCompleted As Boolean
 	Private MainMap As MapFragment
@@ -53,6 +54,12 @@ Sub Activity_Create(FirstTime As Boolean)
 		SpeciesCursor.Position = i
 		SpeciesList.AddSingleLine2(SpeciesCursor.GetString("Name"),SpeciesCursor.GetString("ID"))	
 	Next
+End Sub
+
+Public Sub GetLocation
+	
+	
+	Activity.LoadLayout("MainScreen")
 End Sub
 
 Sub Activity_Resume
@@ -222,4 +229,11 @@ End Sub
 Sub MoreInfo_Click
 	Sightings.MapLookupFlag = True
 	StartActivity(Sightings)
+End Sub
+
+Sub MainMap_LongClick (Point As LatLng)
+	If GetLocationFlag = 1 Then
+		Location = Point
+		Activity.Finish
+	End If
 End Sub

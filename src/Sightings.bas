@@ -26,6 +26,9 @@ Sub Globals
 	Private BirdPhotoView As ImageView
 	Private SelectedID As Int = 0
 	Private Date As Label
+	Private MapCheck As CheckBox
+	Private Location As Location
+	
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
@@ -69,7 +72,15 @@ End Sub
 
 
 Sub AddNow_Click
-	GPSReady
+	If MapCheck.Checked = False Then
+		GPSReady
+		Location.Latitude = Starter.L1.Latitude
+		Location.Longitude = Starter.L1.longitude
+	Else
+		StartActivity("Map")
+		Map.GetLocationFlag = 1
+		Location = Map.Location
+	End If
 	Dim DateTimeTicks As Long
 	Dim Date_Time(2) As String
 	Date_Time(0) = Date.text
@@ -96,8 +107,8 @@ Sub AddNow_Click
 	InsertData(2) = WeatherConditions.Text
 	InsertData(3) =	 BirdAppearance.Text
 	InsertData(4) = DateTimeTicks
-	InsertData(5) = Starter.L1.Latitude
-	InsertData(6) = Starter.L1.Longitude
+	InsertData(5) = Location.Latitude
+	InsertData(6) = Location.Longitude
 	
 	
 	SightingSQL.Append("INSERT INTO Sightings (SpeciesID,FlockSize,Weather,Appearance,Epoch,Lat,Lng) VALUES (?, ?, ?, ?, ?, ?, ?)")

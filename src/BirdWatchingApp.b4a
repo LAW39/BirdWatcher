@@ -8,20 +8,19 @@ Module5=CodeFunctions
 Build1=Default,LAW.BirdWatcher.com
 ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: http://www.b4x.com/forum/showthread.php?p=78136~\n~~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="14" android:targetSdkVersion="19"/>~\n~<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>~\n~<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>~\n~<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~'End of default text.~\n~'************ Google Play Services Base ************~\n~AddApplicationText(~\n~   <activity android:name="com.google.android.gms.common.api.GoogleApiActivity"~\n~  android:theme="@android:style/Theme.Translucent.NoTitleBar"~\n~  android:exported="false"/>~\n~    <meta-data~\n~  android:name="com.google.android.gms.version"~\n~  android:value="@integer/google_play_services_version" />~\n~  <meta-data~\n~  android:name="com.google.android.geo.API_KEY"~\n~  android:value="AIzaSyCWVan8TG2XpVNF1ry-BfJUBAP8apsvsy4"/>~\n~  <uses-feature android:name="android.hardware.location.gps"/>~\n~  ~\n~)~\n~'************ Google Play Services Base (end) ************~\n~~\n~'************ Material design code*****************~\n~CreateResource(values-v21, themes.xml,~\n~<resources>~\n~    <style name="MyAppTheme" parent="@android:style/Theme.Material.Light.DarkActionBar">~\n~        <item name="android:colorPrimary">#FF9800</item>~\n~        <item name="android:colorPrimaryDark">#F57C00</item>~\n~        <item name="android:colorAccent">#FFA726</item>~\n~    </style>~\n~</resources>~\n~)~\n~~\n~'Holo theme~\n~CreateResource(values, themes.xml,~\n~<resources>~\n~    <style name="MyAppTheme" parent="@android:style/Theme.Holo.Light.DarkActionBar">~\n~    </style>~\n~</resources>~\n~)~\n~
 IconFile=
-NumberOfFiles=13
+NumberOfFiles=12
 File1=0.jpg
 File2=1.jpg
-File3=-1.jpg
-File4=2.jpg
-File5=3.jpg
-File6=4.jpg
-File7=5.jpg
-File8=6.jpg
-File9=Database.db
-File10=LaunchScreen.bal
-File11=MainScreen.bal
-File12=SightingAdd.bal
-File13=SpeciesAdd.bal
+File3=2.jpg
+File4=3.jpg
+File5=4.jpg
+File6=5.jpg
+File7=6.jpg
+File8=Database.db
+File9=LaunchScreen.bal
+File10=MainScreen.bal
+File11=SightingAdd.bal
+File12=SpeciesAdd.bal
 NumberOfLibraries=8
 Library1=core
 Library2=gps
@@ -59,7 +58,7 @@ Sub Globals
 	'These variables can only be accessed from this module.
 	Private Reload_BTN As Button
 	Private SpeciesCursor As Cursor
-End Sub
+	End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
 '	Do not forget to load the layout file created with the visual designer. For example:
