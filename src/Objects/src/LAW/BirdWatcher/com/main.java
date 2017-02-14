@@ -463,13 +463,13 @@ public static String  _mapscreen_click() throws Exception{
 RDebugUtils.currentModule="main";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "mapscreen_click"))
 	return (String) Debug.delegate(mostCurrent.activityBA, "mapscreen_click", null);
-RDebugUtils.currentLine=327680;
- //BA.debugLineNum = 327680;BA.debugLine="Sub MapScreen_Click";
-RDebugUtils.currentLine=327681;
- //BA.debugLineNum = 327681;BA.debugLine="StartActivity(\"Map\")";
+RDebugUtils.currentLine=720896;
+ //BA.debugLineNum = 720896;BA.debugLine="Sub MapScreen_Click";
+RDebugUtils.currentLine=720897;
+ //BA.debugLineNum = 720897;BA.debugLine="StartActivity(\"Map\")";
 anywheresoftware.b4a.keywords.Common.StartActivity(mostCurrent.activityBA,(Object)("Map"));
-RDebugUtils.currentLine=327682;
- //BA.debugLineNum = 327682;BA.debugLine="End Sub";
+RDebugUtils.currentLine=720898;
+ //BA.debugLineNum = 720898;BA.debugLine="End Sub";
 return "";
 }
 public static String  _reload_btn_click() throws Exception{
@@ -477,68 +477,68 @@ RDebugUtils.currentModule="main";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "reload_btn_click"))
 	return (String) Debug.delegate(mostCurrent.activityBA, "reload_btn_click", null);
 int _i = 0;
-RDebugUtils.currentLine=524288;
- //BA.debugLineNum = 524288;BA.debugLine="Sub Reload_BTN_Click";
-RDebugUtils.currentLine=524289;
- //BA.debugLineNum = 524289;BA.debugLine="File.Copy(File.DirAssets,\"database.db\",File.DirDe";
+RDebugUtils.currentLine=917504;
+ //BA.debugLineNum = 917504;BA.debugLine="Sub Reload_BTN_Click";
+RDebugUtils.currentLine=917505;
+ //BA.debugLineNum = 917505;BA.debugLine="File.Copy(File.DirAssets,\"database.db\",File.DirDe";
 anywheresoftware.b4a.keywords.Common.File.Copy(anywheresoftware.b4a.keywords.Common.File.getDirAssets(),"database.db",anywheresoftware.b4a.keywords.Common.File.getDirDefaultExternal(),"database.db");
-RDebugUtils.currentLine=524290;
- //BA.debugLineNum = 524290;BA.debugLine="SpeciesCursor = Starter.database.ExecQuery(\"SELEC";
+RDebugUtils.currentLine=917506;
+ //BA.debugLineNum = 917506;BA.debugLine="SpeciesCursor = Starter.database.ExecQuery(\"SELEC";
 mostCurrent._speciescursor.setObject((android.database.Cursor)(mostCurrent._starter._database.ExecQuery("SELECT ID FROM Species")));
-RDebugUtils.currentLine=524291;
- //BA.debugLineNum = 524291;BA.debugLine="Starter.database.Initialize(File.DirDefaultExtern";
+RDebugUtils.currentLine=917507;
+ //BA.debugLineNum = 917507;BA.debugLine="Starter.database.Initialize(File.DirDefaultExtern";
 mostCurrent._starter._database.Initialize(anywheresoftware.b4a.keywords.Common.File.getDirDefaultExternal(),"database.db",anywheresoftware.b4a.keywords.Common.False);
-RDebugUtils.currentLine=524292;
- //BA.debugLineNum = 524292;BA.debugLine="For i = 0 To 6";
+RDebugUtils.currentLine=917508;
+ //BA.debugLineNum = 917508;BA.debugLine="For i = 0 To 6";
 {
 final int step4 = 1;
 final int limit4 = (int) (6);
 for (_i = (int) (0) ; (step4 > 0 && _i <= limit4) || (step4 < 0 && _i >= limit4); _i = ((int)(0 + _i + step4)) ) {
-RDebugUtils.currentLine=524293;
- //BA.debugLineNum = 524293;BA.debugLine="File.Copy(File.DirAssets,i & \".jpg\",BirdPhotoPat";
+RDebugUtils.currentLine=917509;
+ //BA.debugLineNum = 917509;BA.debugLine="File.Copy(File.DirAssets,i & \".jpg\",BirdPhotoPat";
 anywheresoftware.b4a.keywords.Common.File.Copy(anywheresoftware.b4a.keywords.Common.File.getDirAssets(),BA.NumberToString(_i)+".jpg",_birdphotopath,BA.NumberToString(_i)+".jpg");
-RDebugUtils.currentLine=524294;
- //BA.debugLineNum = 524294;BA.debugLine="Log(\"Bird image \" & i & \" copied over\")";
+RDebugUtils.currentLine=917510;
+ //BA.debugLineNum = 917510;BA.debugLine="Log(\"Bird image \" & i & \" copied over\")";
 anywheresoftware.b4a.keywords.Common.Log("Bird image "+BA.NumberToString(_i)+" copied over");
-RDebugUtils.currentLine=524295;
- //BA.debugLineNum = 524295;BA.debugLine="File.Delete(File.DirAssets,i & \".jpg\")";
+RDebugUtils.currentLine=917511;
+ //BA.debugLineNum = 917511;BA.debugLine="File.Delete(File.DirAssets,i & \".jpg\")";
 anywheresoftware.b4a.keywords.Common.File.Delete(anywheresoftware.b4a.keywords.Common.File.getDirAssets(),BA.NumberToString(_i)+".jpg");
  }
 };
-RDebugUtils.currentLine=524298;
- //BA.debugLineNum = 524298;BA.debugLine="Log(\"All assets copied over\")";
+RDebugUtils.currentLine=917514;
+ //BA.debugLineNum = 917514;BA.debugLine="Log(\"All assets copied over\")";
 anywheresoftware.b4a.keywords.Common.Log("All assets copied over");
-RDebugUtils.currentLine=524299;
- //BA.debugLineNum = 524299;BA.debugLine="End Sub";
+RDebugUtils.currentLine=917515;
+ //BA.debugLineNum = 917515;BA.debugLine="End Sub";
 return "";
 }
 public static String  _sightingsscreen_click() throws Exception{
 RDebugUtils.currentModule="main";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "sightingsscreen_click"))
 	return (String) Debug.delegate(mostCurrent.activityBA, "sightingsscreen_click", null);
-RDebugUtils.currentLine=393216;
- //BA.debugLineNum = 393216;BA.debugLine="Sub SightingsScreen_Click";
-RDebugUtils.currentLine=393217;
- //BA.debugLineNum = 393217;BA.debugLine="Sightings.MapLookupFlag = False";
+RDebugUtils.currentLine=786432;
+ //BA.debugLineNum = 786432;BA.debugLine="Sub SightingsScreen_Click";
+RDebugUtils.currentLine=786433;
+ //BA.debugLineNum = 786433;BA.debugLine="Sightings.MapLookupFlag = False";
 mostCurrent._sightings._maplookupflag = anywheresoftware.b4a.keywords.Common.False;
-RDebugUtils.currentLine=393218;
- //BA.debugLineNum = 393218;BA.debugLine="StartActivity(\"Sightings\")";
+RDebugUtils.currentLine=786434;
+ //BA.debugLineNum = 786434;BA.debugLine="StartActivity(\"Sightings\")";
 anywheresoftware.b4a.keywords.Common.StartActivity(mostCurrent.activityBA,(Object)("Sightings"));
-RDebugUtils.currentLine=393219;
- //BA.debugLineNum = 393219;BA.debugLine="End Sub";
+RDebugUtils.currentLine=786435;
+ //BA.debugLineNum = 786435;BA.debugLine="End Sub";
 return "";
 }
 public static String  _speciesscreen_click() throws Exception{
 RDebugUtils.currentModule="main";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "speciesscreen_click"))
 	return (String) Debug.delegate(mostCurrent.activityBA, "speciesscreen_click", null);
-RDebugUtils.currentLine=458752;
- //BA.debugLineNum = 458752;BA.debugLine="Sub SpeciesScreen_Click";
-RDebugUtils.currentLine=458753;
- //BA.debugLineNum = 458753;BA.debugLine="StartActivity(\"Species\")";
+RDebugUtils.currentLine=851968;
+ //BA.debugLineNum = 851968;BA.debugLine="Sub SpeciesScreen_Click";
+RDebugUtils.currentLine=851969;
+ //BA.debugLineNum = 851969;BA.debugLine="StartActivity(\"Species\")";
 anywheresoftware.b4a.keywords.Common.StartActivity(mostCurrent.activityBA,(Object)("Species"));
-RDebugUtils.currentLine=458754;
- //BA.debugLineNum = 458754;BA.debugLine="End Sub";
+RDebugUtils.currentLine=851970;
+ //BA.debugLineNum = 851970;BA.debugLine="End Sub";
 return "";
 }
 }

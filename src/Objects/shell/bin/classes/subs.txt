@@ -133,7 +133,7 @@ sightings,activity_resume,0,0,54,62
 starter,gps1
 
 
-sightings,addnow_click,1,1,69,116
+sightings,addnow_click,1,0,69,116
 ,mapcheck,,location,starter,l1,map,getlocationflag,map,location,,date,,time,,selectedid,,flocksize,,weatherconditions,,birdappearance,starter,database,starter,gps1
 map,getlocationflag
 ,gpsready
