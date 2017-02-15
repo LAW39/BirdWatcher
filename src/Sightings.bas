@@ -140,8 +140,7 @@ Sub GPS1_LocationChanged (gpsLocation As Location)
    ProgressDialogHide
    Starter.L1=gpsLocation
    Starter.gps1.Stop
-   StartActivity("actDisplayMap")
-End Sub
+ End Sub
 
 Sub GetLocation_Click
 	If MapCheck.Checked = False Then
