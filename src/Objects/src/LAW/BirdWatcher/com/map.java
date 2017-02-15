@@ -32,7 +32,7 @@ public class map extends Activity implements B4AActivity{
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		if (isFirst) {
-			processBA = new anywheresoftware.b4a.ShellBA(this.getApplicationContext(), null, null, "LAW.BirdWatcher.com", "LAW.BirdWatcher.com.map");
+			processBA = new BA(this.getApplicationContext(), null, null, "LAW.BirdWatcher.com", "LAW.BirdWatcher.com.map");
 			processBA.loadHtSubs(this.getClass());
 	        float deviceScale = getApplicationContext().getResources().getDisplayMetrics().density;
 	        BALayout.setDeviceScale(deviceScale);
@@ -322,15 +322,6 @@ public class map extends Activity implements B4AActivity{
             
     }
 
-
-
-public static void initializeProcessGlobals() {
-             try {
-                Class.forName(BA.applicationContext.getPackageName() + ".main").getMethod("initializeProcessGlobals").invoke(null, null);
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-}
 public anywheresoftware.b4a.keywords.Common __c = null;
 public static anywheresoftware.b4a.objects.Timer _maptimer = null;
 public static int _selectedid = 0;
@@ -349,439 +340,324 @@ public LAW.BirdWatcher.com.starter _starter = null;
 public LAW.BirdWatcher.com.species _species = null;
 public LAW.BirdWatcher.com.sightings _sightings = null;
 public LAW.BirdWatcher.com.codefunctions _codefunctions = null;
+
+public static void initializeProcessGlobals() {
+             try {
+                Class.forName(BA.applicationContext.getPackageName() + ".main").getMethod("initializeProcessGlobals").invoke(null, null);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+}
 public static String  _activity_create(boolean _firsttime) throws Exception{
-RDebugUtils.currentModule="map";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "activity_create"))
-	return (String) Debug.delegate(mostCurrent.activityBA, "activity_create", new Object[] {_firsttime});
 anywheresoftware.b4a.sql.SQL.CursorWrapper _speciescursor = null;
 int _i = 0;
-RDebugUtils.currentLine=2883584;
- //BA.debugLineNum = 2883584;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
-RDebugUtils.currentLine=2883586;
- //BA.debugLineNum = 2883586;BA.debugLine="Activity.LoadLayout(\"MainScreen\")";
+ //BA.debugLineNum = 30;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
+ //BA.debugLineNum = 32;BA.debugLine="Activity.LoadLayout(\"MainScreen\")";
 mostCurrent._activity.LoadLayout("MainScreen",mostCurrent.activityBA);
-RDebugUtils.currentLine=2883587;
- //BA.debugLineNum = 2883587;BA.debugLine="Activity.Title = \"Map\"";
+ //BA.debugLineNum = 33;BA.debugLine="Activity.Title = \"Map\"";
 mostCurrent._activity.setTitle((Object)("Map"));
-RDebugUtils.currentLine=2883589;
- //BA.debugLineNum = 2883589;BA.debugLine="If MainMap.IsGooglePlayServicesAvailable = False";
+ //BA.debugLineNum = 35;BA.debugLine="If MainMap.IsGooglePlayServicesAvailable = False";
 if (mostCurrent._mainmap.IsGooglePlayServicesAvailable(mostCurrent.activityBA)==anywheresoftware.b4a.keywords.Common.False) { 
-RDebugUtils.currentLine=2883590;
- //BA.debugLineNum = 2883590;BA.debugLine="ToastMessageShow(\"Please install Google Play";
+ //BA.debugLineNum = 36;BA.debugLine="ToastMessageShow(\"Please install Google Play";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow("Please install Google Play Services.",anywheresoftware.b4a.keywords.Common.True);
  };
-RDebugUtils.currentLine=2883593;
- //BA.debugLineNum = 2883593;BA.debugLine="Location.Initialize(0,0)";
+ //BA.debugLineNum = 39;BA.debugLine="Location.Initialize(0,0)";
 _location.Initialize(0,0);
-RDebugUtils.currentLine=2883596;
- //BA.debugLineNum = 2883596;BA.debugLine="MapSetupCompleted = False";
+ //BA.debugLineNum = 42;BA.debugLine="MapSetupCompleted = False";
 _mapsetupcompleted = anywheresoftware.b4a.keywords.Common.False;
-RDebugUtils.currentLine=2883597;
- //BA.debugLineNum = 2883597;BA.debugLine="MapTimer.Initialize(\"LootTimer\",1000)";
+ //BA.debugLineNum = 43;BA.debugLine="MapTimer.Initialize(\"LootTimer\",1000)";
 _maptimer.Initialize(processBA,"LootTimer",(long) (1000));
-RDebugUtils.currentLine=2883599;
- //BA.debugLineNum = 2883599;BA.debugLine="Dim SpeciesCursor As Cursor";
+ //BA.debugLineNum = 45;BA.debugLine="Dim SpeciesCursor As Cursor";
 _speciescursor = new anywheresoftware.b4a.sql.SQL.CursorWrapper();
-RDebugUtils.currentLine=2883600;
- //BA.debugLineNum = 2883600;BA.debugLine="SpeciesCursor = Starter.Database.ExecQuery(\"SELEC";
+ //BA.debugLineNum = 46;BA.debugLine="SpeciesCursor = Starter.Database.ExecQuery(\"SELEC";
 _speciescursor.setObject((android.database.Cursor)(mostCurrent._starter._database.ExecQuery("SELECT ID, Name FROM Species ORDER BY ID ASC")));
-RDebugUtils.currentLine=2883601;
- //BA.debugLineNum = 2883601;BA.debugLine="SpeciesList.clear";
+ //BA.debugLineNum = 47;BA.debugLine="SpeciesList.clear";
 mostCurrent._specieslist.Clear();
-RDebugUtils.currentLine=2883603;
- //BA.debugLineNum = 2883603;BA.debugLine="For i=0 To SpeciesCursor.RowCount-1";
+ //BA.debugLineNum = 49;BA.debugLine="For i=0 To SpeciesCursor.RowCount-1";
 {
 final int step12 = 1;
 final int limit12 = (int) (_speciescursor.getRowCount()-1);
 for (_i = (int) (0) ; (step12 > 0 && _i <= limit12) || (step12 < 0 && _i >= limit12); _i = ((int)(0 + _i + step12)) ) {
-RDebugUtils.currentLine=2883604;
- //BA.debugLineNum = 2883604;BA.debugLine="SpeciesCursor.Position = i";
+ //BA.debugLineNum = 50;BA.debugLine="SpeciesCursor.Position = i";
 _speciescursor.setPosition(_i);
-RDebugUtils.currentLine=2883605;
- //BA.debugLineNum = 2883605;BA.debugLine="SpeciesList.AddSingleLine2(SpeciesCursor.GetStri";
+ //BA.debugLineNum = 51;BA.debugLine="SpeciesList.AddSingleLine2(SpeciesCursor.GetStri";
 mostCurrent._specieslist.AddSingleLine2(_speciescursor.GetString("Name"),(Object)(_speciescursor.GetString("ID")));
  }
 };
-RDebugUtils.currentLine=2883607;
- //BA.debugLineNum = 2883607;BA.debugLine="End Sub";
+ //BA.debugLineNum = 53;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_pause(boolean _userclosed) throws Exception{
-RDebugUtils.currentModule="map";
-RDebugUtils.currentLine=3080192;
- //BA.debugLineNum = 3080192;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
-RDebugUtils.currentLine=3080193;
- //BA.debugLineNum = 3080193;BA.debugLine="MapTimer.Enabled = False";
+ //BA.debugLineNum = 69;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
+ //BA.debugLineNum = 70;BA.debugLine="MapTimer.Enabled = False";
 _maptimer.setEnabled(anywheresoftware.b4a.keywords.Common.False);
-RDebugUtils.currentLine=3080194;
- //BA.debugLineNum = 3080194;BA.debugLine="End Sub";
+ //BA.debugLineNum = 71;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_resume() throws Exception{
-RDebugUtils.currentModule="map";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "activity_resume"))
-	return (String) Debug.delegate(mostCurrent.activityBA, "activity_resume", null);
-RDebugUtils.currentLine=3014656;
- //BA.debugLineNum = 3014656;BA.debugLine="Sub Activity_Resume";
-RDebugUtils.currentLine=3014658;
- //BA.debugLineNum = 3014658;BA.debugLine="If (MapSetupCompleted = False) Then";
+ //BA.debugLineNum = 61;BA.debugLine="Sub Activity_Resume";
+ //BA.debugLineNum = 63;BA.debugLine="If (MapSetupCompleted = False) Then";
 if ((_mapsetupcompleted==anywheresoftware.b4a.keywords.Common.False)) { 
-RDebugUtils.currentLine=3014659;
- //BA.debugLineNum = 3014659;BA.debugLine="MapTimer.Enabled = True";
+ //BA.debugLineNum = 64;BA.debugLine="MapTimer.Enabled = True";
 _maptimer.setEnabled(anywheresoftware.b4a.keywords.Common.True);
  };
-RDebugUtils.currentLine=3014662;
- //BA.debugLineNum = 3014662;BA.debugLine="End Sub";
+ //BA.debugLineNum = 67;BA.debugLine="End Sub";
 return "";
 }
 public static String  _getlocation() throws Exception{
-RDebugUtils.currentModule="map";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "getlocation"))
-	return (String) Debug.delegate(mostCurrent.activityBA, "getlocation", null);
-RDebugUtils.currentLine=2949120;
- //BA.debugLineNum = 2949120;BA.debugLine="Public Sub GetLocation";
-RDebugUtils.currentLine=2949123;
- //BA.debugLineNum = 2949123;BA.debugLine="Activity.LoadLayout(\"MainScreen\")";
+ //BA.debugLineNum = 55;BA.debugLine="Public Sub GetLocation";
+ //BA.debugLineNum = 58;BA.debugLine="Activity.LoadLayout(\"MainScreen\")";
 mostCurrent._activity.LoadLayout("MainScreen",mostCurrent.activityBA);
-RDebugUtils.currentLine=2949124;
- //BA.debugLineNum = 2949124;BA.debugLine="End Sub";
+ //BA.debugLineNum = 59;BA.debugLine="End Sub";
+return "";
+}
+public static String  _globals() throws Exception{
+ //BA.debugLineNum = 15;BA.debugLine="Sub Globals";
+ //BA.debugLineNum = 18;BA.debugLine="Private gmap As GoogleMap";
+mostCurrent._gmap = new anywheresoftware.b4a.objects.MapFragmentWrapper.GoogleMapWrapper();
+ //BA.debugLineNum = 20;BA.debugLine="Private MapSetupCompleted As Boolean";
+_mapsetupcompleted = false;
+ //BA.debugLineNum = 21;BA.debugLine="Private MainMap As MapFragment";
+mostCurrent._mainmap = new anywheresoftware.b4a.objects.MapFragmentWrapper();
+ //BA.debugLineNum = 22;BA.debugLine="Private SpeciesList As ListView";
+mostCurrent._specieslist = new anywheresoftware.b4a.objects.ListViewWrapper();
+ //BA.debugLineNum = 23;BA.debugLine="Private BirdImage As ImageView";
+mostCurrent._birdimage = new anywheresoftware.b4a.objects.ImageViewWrapper();
+ //BA.debugLineNum = 24;BA.debugLine="Private MoreInfo As Button";
+mostCurrent._moreinfo = new anywheresoftware.b4a.objects.ButtonWrapper();
+ //BA.debugLineNum = 26;BA.debugLine="Private DateTime1 As EditText";
+mostCurrent._datetime1 = new anywheresoftware.b4a.objects.EditTextWrapper();
+ //BA.debugLineNum = 27;BA.debugLine="Private Name As EditText";
+mostCurrent._name = new anywheresoftware.b4a.objects.EditTextWrapper();
+ //BA.debugLineNum = 28;BA.debugLine="End Sub";
 return "";
 }
 public static String  _loadbird(int _id) throws Exception{
-RDebugUtils.currentModule="map";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "loadbird"))
-	return (String) Debug.delegate(mostCurrent.activityBA, "loadbird", new Object[] {_id});
 anywheresoftware.b4a.sql.SQL.CursorWrapper _speciescursor = null;
 anywheresoftware.b4a.keywords.StringBuilderWrapper _mapsql = null;
 boolean _errorflag = false;
 int _i = 0;
 anywheresoftware.b4a.objects.MapFragmentWrapper.MarkerWrapper _sightingmarker = null;
-RDebugUtils.currentLine=3604480;
- //BA.debugLineNum = 3604480;BA.debugLine="Sub LoadBird(ID As Int)";
-RDebugUtils.currentLine=3604481;
- //BA.debugLineNum = 3604481;BA.debugLine="ID = ID +1";
+ //BA.debugLineNum = 164;BA.debugLine="Sub LoadBird(ID As Int)";
+ //BA.debugLineNum = 165;BA.debugLine="ID = ID +1";
 _id = (int) (_id+1);
-RDebugUtils.currentLine=3604483;
- //BA.debugLineNum = 3604483;BA.debugLine="gmap.Clear";
+ //BA.debugLineNum = 167;BA.debugLine="gmap.Clear";
 mostCurrent._gmap.Clear();
-RDebugUtils.currentLine=3604485;
- //BA.debugLineNum = 3604485;BA.debugLine="Name.Text = \"\"";
+ //BA.debugLineNum = 169;BA.debugLine="Name.Text = \"\"";
 mostCurrent._name.setText((Object)(""));
-RDebugUtils.currentLine=3604486;
- //BA.debugLineNum = 3604486;BA.debugLine="DateTime1.Text = \"\"";
+ //BA.debugLineNum = 170;BA.debugLine="DateTime1.Text = \"\"";
 mostCurrent._datetime1.setText((Object)(""));
-RDebugUtils.currentLine=3604488;
- //BA.debugLineNum = 3604488;BA.debugLine="Dim SpeciesCursor As Cursor";
+ //BA.debugLineNum = 172;BA.debugLine="Dim SpeciesCursor As Cursor";
 _speciescursor = new anywheresoftware.b4a.sql.SQL.CursorWrapper();
-RDebugUtils.currentLine=3604489;
- //BA.debugLineNum = 3604489;BA.debugLine="Dim MapSQL As StringBuilder";
+ //BA.debugLineNum = 173;BA.debugLine="Dim MapSQL As StringBuilder";
 _mapsql = new anywheresoftware.b4a.keywords.StringBuilderWrapper();
-RDebugUtils.currentLine=3604490;
- //BA.debugLineNum = 3604490;BA.debugLine="Dim ErrorFlag As Boolean = False";
+ //BA.debugLineNum = 174;BA.debugLine="Dim ErrorFlag As Boolean = False";
 _errorflag = anywheresoftware.b4a.keywords.Common.False;
-RDebugUtils.currentLine=3604491;
- //BA.debugLineNum = 3604491;BA.debugLine="MapSQL.Initialize";
+ //BA.debugLineNum = 175;BA.debugLine="MapSQL.Initialize";
 _mapsql.Initialize();
-RDebugUtils.currentLine=3604493;
- //BA.debugLineNum = 3604493;BA.debugLine="MapSQL.Append(\"SELECT * FROM Sightings\").Append(C";
+ //BA.debugLineNum = 177;BA.debugLine="MapSQL.Append(\"SELECT * FROM Sightings\").Append(C";
 _mapsql.Append("SELECT * FROM Sightings").Append(anywheresoftware.b4a.keywords.Common.CRLF);
-RDebugUtils.currentLine=3604494;
- //BA.debugLineNum = 3604494;BA.debugLine="MapSQL.Append(\"WHERE ID = ?\").Append(CRLF)";
+ //BA.debugLineNum = 178;BA.debugLine="MapSQL.Append(\"WHERE ID = ?\").Append(CRLF)";
 _mapsql.Append("WHERE ID = ?").Append(anywheresoftware.b4a.keywords.Common.CRLF);
-RDebugUtils.currentLine=3604495;
- //BA.debugLineNum = 3604495;BA.debugLine="MapSQL.Append(\"ORDER BY ID Asc\").Append(CRLF)";
+ //BA.debugLineNum = 179;BA.debugLine="MapSQL.Append(\"ORDER BY ID Asc\").Append(CRLF)";
 _mapsql.Append("ORDER BY ID Asc").Append(anywheresoftware.b4a.keywords.Common.CRLF);
-RDebugUtils.currentLine=3604496;
- //BA.debugLineNum = 3604496;BA.debugLine="ErrorFlag= False";
+ //BA.debugLineNum = 180;BA.debugLine="ErrorFlag= False";
 _errorflag = anywheresoftware.b4a.keywords.Common.False;
-RDebugUtils.currentLine=3604497;
- //BA.debugLineNum = 3604497;BA.debugLine="SpeciesCursor = Starter.Database.ExecQuery2(MapSQ";
+ //BA.debugLineNum = 181;BA.debugLine="SpeciesCursor = Starter.Database.ExecQuery2(MapSQ";
 _speciescursor.setObject((android.database.Cursor)(mostCurrent._starter._database.ExecQuery2(BA.ObjectToString(_mapsql),new String[]{BA.NumberToString(_id)})));
-RDebugUtils.currentLine=3604500;
- //BA.debugLineNum = 3604500;BA.debugLine="For i=0 To SpeciesCursor.RowCount-1";
+ //BA.debugLineNum = 184;BA.debugLine="For i=0 To SpeciesCursor.RowCount-1";
 {
 final int step14 = 1;
 final int limit14 = (int) (_speciescursor.getRowCount()-1);
 for (_i = (int) (0) ; (step14 > 0 && _i <= limit14) || (step14 < 0 && _i >= limit14); _i = ((int)(0 + _i + step14)) ) {
-RDebugUtils.currentLine=3604502;
- //BA.debugLineNum = 3604502;BA.debugLine="SpeciesCursor.Position = i";
+ //BA.debugLineNum = 186;BA.debugLine="SpeciesCursor.Position = i";
 _speciescursor.setPosition(_i);
-RDebugUtils.currentLine=3604504;
- //BA.debugLineNum = 3604504;BA.debugLine="Dim SightingMarker As Marker";
+ //BA.debugLineNum = 188;BA.debugLine="Dim SightingMarker As Marker";
 _sightingmarker = new anywheresoftware.b4a.objects.MapFragmentWrapper.MarkerWrapper();
-RDebugUtils.currentLine=3604508;
- //BA.debugLineNum = 3604508;BA.debugLine="Log(\"LAT: \" & SpeciesCursor.GetDouble(\"Lat\"))";
+ //BA.debugLineNum = 192;BA.debugLine="Log(\"LAT: \" & SpeciesCursor.GetDouble(\"Lat\"))";
 anywheresoftware.b4a.keywords.Common.Log("LAT: "+BA.NumberToString(_speciescursor.GetDouble("Lat")));
-RDebugUtils.currentLine=3604509;
- //BA.debugLineNum = 3604509;BA.debugLine="Log(\"LNG: \" & SpeciesCursor.GetDouble(\"Lng\"))";
+ //BA.debugLineNum = 193;BA.debugLine="Log(\"LNG: \" & SpeciesCursor.GetDouble(\"Lng\"))";
 anywheresoftware.b4a.keywords.Common.Log("LNG: "+BA.NumberToString(_speciescursor.GetDouble("Lng")));
-RDebugUtils.currentLine=3604513;
- //BA.debugLineNum = 3604513;BA.debugLine="If SpeciesCursor.GetDouble(\"Lat\") = \"0\" Then";
+ //BA.debugLineNum = 197;BA.debugLine="If SpeciesCursor.GetDouble(\"Lat\") = \"0\" Then";
 if (_speciescursor.GetDouble("Lat")==(double)(Double.parseDouble("0"))) { 
-RDebugUtils.currentLine=3604514;
- //BA.debugLineNum = 3604514;BA.debugLine="If SpeciesCursor.GetDouble(\"Lng\") = \"0\" Then";
+ //BA.debugLineNum = 198;BA.debugLine="If SpeciesCursor.GetDouble(\"Lng\") = \"0\" Then";
 if (_speciescursor.GetDouble("Lng")==(double)(Double.parseDouble("0"))) { 
-RDebugUtils.currentLine=3604515;
- //BA.debugLineNum = 3604515;BA.debugLine="ErrorFlag = True";
+ //BA.debugLineNum = 199;BA.debugLine="ErrorFlag = True";
 _errorflag = anywheresoftware.b4a.keywords.Common.True;
  };
  };
-RDebugUtils.currentLine=3604520;
- //BA.debugLineNum = 3604520;BA.debugLine="If ErrorFlag = False Then";
+ //BA.debugLineNum = 204;BA.debugLine="If ErrorFlag = False Then";
 if (_errorflag==anywheresoftware.b4a.keywords.Common.False) { 
-RDebugUtils.currentLine=3604521;
- //BA.debugLineNum = 3604521;BA.debugLine="SightingMarker = gmap.AddMarker2(SpeciesCursor.";
+ //BA.debugLineNum = 205;BA.debugLine="SightingMarker = gmap.AddMarker2(SpeciesCursor.";
 _sightingmarker = mostCurrent._gmap.AddMarker2(_speciescursor.GetDouble("Lat"),_speciescursor.GetDouble("Lng"),_speciescursor.GetString("SpeciesID"),mostCurrent._gmap.HUE_RED);
-RDebugUtils.currentLine=3604523;
- //BA.debugLineNum = 3604523;BA.debugLine="SightingMarker.Draggable = False";
+ //BA.debugLineNum = 207;BA.debugLine="SightingMarker.Draggable = False";
 _sightingmarker.setDraggable(anywheresoftware.b4a.keywords.Common.False);
-RDebugUtils.currentLine=3604524;
- //BA.debugLineNum = 3604524;BA.debugLine="SightingMarker.Snippet = SpeciesCursor.GetInt(\"";
+ //BA.debugLineNum = 208;BA.debugLine="SightingMarker.Snippet = SpeciesCursor.GetInt(\"";
 _sightingmarker.setSnippet(BA.NumberToString(_speciescursor.GetInt("ID")));
-RDebugUtils.currentLine=3604525;
- //BA.debugLineNum = 3604525;BA.debugLine="SightingMarker.Visible = True";
+ //BA.debugLineNum = 209;BA.debugLine="SightingMarker.Visible = True";
 _sightingmarker.setVisible(anywheresoftware.b4a.keywords.Common.True);
  };
  }
 };
-RDebugUtils.currentLine=3604529;
- //BA.debugLineNum = 3604529;BA.debugLine="End Sub";
+ //BA.debugLineNum = 213;BA.debugLine="End Sub";
 return "";
 }
 public static String  _loadbirdpic(int _birdid) throws Exception{
-RDebugUtils.currentModule="map";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "loadbirdpic"))
-	return (String) Debug.delegate(mostCurrent.activityBA, "loadbirdpic", new Object[] {_birdid});
 anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper _newbird = null;
-RDebugUtils.currentLine=3538944;
- //BA.debugLineNum = 3538944;BA.debugLine="Sub LoadBirdPic(BirdID As Int)";
-RDebugUtils.currentLine=3538945;
- //BA.debugLineNum = 3538945;BA.debugLine="BirdID = BirdID +1";
+ //BA.debugLineNum = 155;BA.debugLine="Sub LoadBirdPic(BirdID As Int)";
+ //BA.debugLineNum = 156;BA.debugLine="BirdID = BirdID +1";
 _birdid = (int) (_birdid+1);
-RDebugUtils.currentLine=3538947;
- //BA.debugLineNum = 3538947;BA.debugLine="Dim NewBird As Bitmap";
+ //BA.debugLineNum = 158;BA.debugLine="Dim NewBird As Bitmap";
 _newbird = new anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper();
-RDebugUtils.currentLine=3538948;
- //BA.debugLineNum = 3538948;BA.debugLine="NewBird.InitializeSample(File.DirAssets,BirdID  &";
+ //BA.debugLineNum = 159;BA.debugLine="NewBird.InitializeSample(File.DirAssets,BirdID  &";
 _newbird.InitializeSample(anywheresoftware.b4a.keywords.Common.File.getDirAssets(),BA.NumberToString(_birdid)+".jpg",(int) (240),(int) (240));
-RDebugUtils.currentLine=3538949;
- //BA.debugLineNum = 3538949;BA.debugLine="BirdImage.Bitmap = NewBird";
+ //BA.debugLineNum = 160;BA.debugLine="BirdImage.Bitmap = NewBird";
 mostCurrent._birdimage.setBitmap((android.graphics.Bitmap)(_newbird.getObject()));
-RDebugUtils.currentLine=3538951;
- //BA.debugLineNum = 3538951;BA.debugLine="End Sub";
+ //BA.debugLineNum = 162;BA.debugLine="End Sub";
 return "";
 }
 public static String  _loottimer_tick() throws Exception{
-RDebugUtils.currentModule="map";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "loottimer_tick"))
-	return (String) Debug.delegate(mostCurrent.activityBA, "loottimer_tick", null);
-RDebugUtils.currentLine=3145728;
- //BA.debugLineNum = 3145728;BA.debugLine="Sub LootTimer_Tick";
-RDebugUtils.currentLine=3145732;
- //BA.debugLineNum = 3145732;BA.debugLine="If ((gmap.IsInitialized) And (gmap.MyLocation.IsI";
+ //BA.debugLineNum = 73;BA.debugLine="Sub LootTimer_Tick";
+ //BA.debugLineNum = 77;BA.debugLine="If ((gmap.IsInitialized) And (gmap.MyLocation.IsI";
 if (((mostCurrent._gmap.IsInitialized()) && (mostCurrent._gmap.getMyLocation().IsInitialized()))) { 
-RDebugUtils.currentLine=3145733;
- //BA.debugLineNum = 3145733;BA.debugLine="MapSetupCompleted = True";
+ //BA.debugLineNum = 78;BA.debugLine="MapSetupCompleted = True";
 _mapsetupcompleted = anywheresoftware.b4a.keywords.Common.True;
-RDebugUtils.currentLine=3145734;
- //BA.debugLineNum = 3145734;BA.debugLine="MapTimer.Enabled = False";
+ //BA.debugLineNum = 79;BA.debugLine="MapTimer.Enabled = False";
 _maptimer.setEnabled(anywheresoftware.b4a.keywords.Common.False);
  };
-RDebugUtils.currentLine=3145737;
- //BA.debugLineNum = 3145737;BA.debugLine="End Sub";
+ //BA.debugLineNum = 82;BA.debugLine="End Sub";
 return "";
 }
 public static String  _mainmap_longclick(anywheresoftware.b4a.objects.MapFragmentWrapper.LatLngWrapper _point) throws Exception{
-RDebugUtils.currentModule="map";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "mainmap_longclick"))
-	return (String) Debug.delegate(mostCurrent.activityBA, "mainmap_longclick", new Object[] {_point});
-RDebugUtils.currentLine=3801088;
- //BA.debugLineNum = 3801088;BA.debugLine="Sub MainMap_LongClick (Point As LatLng)";
-RDebugUtils.currentLine=3801089;
- //BA.debugLineNum = 3801089;BA.debugLine="If GetLocationFlag = 1 Then";
-if (_getlocationflag==BA.ObjectToBoolean(1)) { 
-RDebugUtils.currentLine=3801090;
- //BA.debugLineNum = 3801090;BA.debugLine="Location = Point";
+ //BA.debugLineNum = 230;BA.debugLine="Sub MainMap_LongClick (Point As LatLng)";
+ //BA.debugLineNum = 231;BA.debugLine="If GetLocationFlag = True Then";
+if (_getlocationflag==anywheresoftware.b4a.keywords.Common.True) { 
+ //BA.debugLineNum = 232;BA.debugLine="Location = Point";
 _location = _point;
-RDebugUtils.currentLine=3801091;
- //BA.debugLineNum = 3801091;BA.debugLine="Activity.Finish";
+ //BA.debugLineNum = 233;BA.debugLine="Activity.Finish";
 mostCurrent._activity.Finish();
  };
-RDebugUtils.currentLine=3801093;
- //BA.debugLineNum = 3801093;BA.debugLine="End Sub";
+ //BA.debugLineNum = 235;BA.debugLine="End Sub";
 return "";
 }
 public static boolean  _mainmap_markerclick(anywheresoftware.b4a.objects.MapFragmentWrapper.MarkerWrapper _selectedmarker) throws Exception{
-RDebugUtils.currentModule="map";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "mainmap_markerclick"))
-	return (Boolean) Debug.delegate(mostCurrent.activityBA, "mainmap_markerclick", new Object[] {_selectedmarker});
 anywheresoftware.b4a.sql.SQL.CursorWrapper _birdcursor = null;
 String _mapsql = "";
-RDebugUtils.currentLine=3473408;
- //BA.debugLineNum = 3473408;BA.debugLine="Sub MainMap_MarkerClick (SelectedMarker As Marker)";
-RDebugUtils.currentLine=3473410;
- //BA.debugLineNum = 3473410;BA.debugLine="Dim BirdCursor As Cursor";
+ //BA.debugLineNum = 128;BA.debugLine="Sub MainMap_MarkerClick (SelectedMarker As Marker)";
+ //BA.debugLineNum = 130;BA.debugLine="Dim BirdCursor As Cursor";
 _birdcursor = new anywheresoftware.b4a.sql.SQL.CursorWrapper();
-RDebugUtils.currentLine=3473411;
- //BA.debugLineNum = 3473411;BA.debugLine="Dim MapSQL As String";
+ //BA.debugLineNum = 131;BA.debugLine="Dim MapSQL As String";
 _mapsql = "";
-RDebugUtils.currentLine=3473414;
- //BA.debugLineNum = 3473414;BA.debugLine="If (SelectedMarker.Snippet = \"0\") Then";
+ //BA.debugLineNum = 134;BA.debugLine="If (SelectedMarker.Snippet = \"0\") Then";
 if (((_selectedmarker.getSnippet()).equals("0"))) { 
-RDebugUtils.currentLine=3473415;
- //BA.debugLineNum = 3473415;BA.debugLine="ToastMessageShow(\"Location new loot to be added";
+ //BA.debugLineNum = 135;BA.debugLine="ToastMessageShow(\"Location new loot to be added";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow("Location new loot to be added at",anywheresoftware.b4a.keywords.Common.False);
-RDebugUtils.currentLine=3473416;
- //BA.debugLineNum = 3473416;BA.debugLine="Return True";
+ //BA.debugLineNum = 136;BA.debugLine="Return True";
 if (true) return anywheresoftware.b4a.keywords.Common.True;
  };
-RDebugUtils.currentLine=3473421;
- //BA.debugLineNum = 3473421;BA.debugLine="MapSQL = \"SELECT * FROM Sightings WHERE ID = ?\"";
+ //BA.debugLineNum = 141;BA.debugLine="MapSQL = \"SELECT * FROM Sightings WHERE ID = ?\"";
 _mapsql = "SELECT * FROM Sightings WHERE ID = ?";
-RDebugUtils.currentLine=3473423;
- //BA.debugLineNum = 3473423;BA.debugLine="BirdCursor = Starter.Database.ExecQuery2(MapSQL,";
+ //BA.debugLineNum = 143;BA.debugLine="BirdCursor = Starter.Database.ExecQuery2(MapSQL,";
 _birdcursor.setObject((android.database.Cursor)(mostCurrent._starter._database.ExecQuery2(_mapsql,new String[]{_selectedmarker.getSnippet()})));
-RDebugUtils.currentLine=3473424;
- //BA.debugLineNum = 3473424;BA.debugLine="BirdCursor.Position = 0";
+ //BA.debugLineNum = 144;BA.debugLine="BirdCursor.Position = 0";
 _birdcursor.setPosition((int) (0));
-RDebugUtils.currentLine=3473427;
- //BA.debugLineNum = 3473427;BA.debugLine="Name.Text = BirdCursor.GetString(\"Weather\")";
+ //BA.debugLineNum = 147;BA.debugLine="Name.Text = BirdCursor.GetString(\"Weather\")";
 mostCurrent._name.setText((Object)(_birdcursor.GetString("Weather")));
-RDebugUtils.currentLine=3473428;
- //BA.debugLineNum = 3473428;BA.debugLine="DateTime1.Text = DateTime.Date(BirdCursor.GetStri";
+ //BA.debugLineNum = 148;BA.debugLine="DateTime1.Text = DateTime.Date(BirdCursor.GetStri";
 mostCurrent._datetime1.setText((Object)(anywheresoftware.b4a.keywords.Common.DateTime.Date((long)(Double.parseDouble(_birdcursor.GetString("Epoch"))))+" "+anywheresoftware.b4a.keywords.Common.DateTime.Time((long)(Double.parseDouble(_birdcursor.GetString("Epoch"))))));
-RDebugUtils.currentLine=3473432;
- //BA.debugLineNum = 3473432;BA.debugLine="Return True 'stop the little pop up text box from";
+ //BA.debugLineNum = 152;BA.debugLine="Return True 'stop the little pop up text box from";
 if (true) return anywheresoftware.b4a.keywords.Common.True;
-RDebugUtils.currentLine=3473433;
- //BA.debugLineNum = 3473433;BA.debugLine="End Sub";
+ //BA.debugLineNum = 153;BA.debugLine="End Sub";
 return false;
 }
 public static String  _mainmap_ready() throws Exception{
-RDebugUtils.currentModule="map";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "mainmap_ready"))
-	return (String) Debug.delegate(mostCurrent.activityBA, "mainmap_ready", null);
-RDebugUtils.currentLine=3276800;
- //BA.debugLineNum = 3276800;BA.debugLine="Sub MainMap_Ready";
-RDebugUtils.currentLine=3276801;
- //BA.debugLineNum = 3276801;BA.debugLine="gmap = MainMap.GetMap";
+ //BA.debugLineNum = 90;BA.debugLine="Sub MainMap_Ready";
+ //BA.debugLineNum = 91;BA.debugLine="gmap = MainMap.GetMap";
 mostCurrent._gmap = mostCurrent._mainmap.GetMap();
-RDebugUtils.currentLine=3276803;
- //BA.debugLineNum = 3276803;BA.debugLine="Log(\"Mylocation:\" & gmap.MyLocationEnabled)";
+ //BA.debugLineNum = 93;BA.debugLine="Log(\"Mylocation:\" & gmap.MyLocationEnabled)";
 anywheresoftware.b4a.keywords.Common.Log("Mylocation:"+BA.ObjectToString(mostCurrent._gmap.getMyLocationEnabled()));
-RDebugUtils.currentLine=3276805;
- //BA.debugLineNum = 3276805;BA.debugLine="End Sub";
+ //BA.debugLineNum = 95;BA.debugLine="End Sub";
 return "";
 }
 public static String  _mainscreen_click() throws Exception{
-RDebugUtils.currentModule="map";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "mainscreen_click"))
-	return (String) Debug.delegate(mostCurrent.activityBA, "mainscreen_click", null);
-RDebugUtils.currentLine=3211264;
- //BA.debugLineNum = 3211264;BA.debugLine="Sub MainScreen_Click";
-RDebugUtils.currentLine=3211265;
- //BA.debugLineNum = 3211265;BA.debugLine="StartActivity(Main)";
+ //BA.debugLineNum = 86;BA.debugLine="Sub MainScreen_Click";
+ //BA.debugLineNum = 87;BA.debugLine="StartActivity(Main)";
 anywheresoftware.b4a.keywords.Common.StartActivity(mostCurrent.activityBA,(Object)(mostCurrent._main.getObject()));
-RDebugUtils.currentLine=3211266;
- //BA.debugLineNum = 3211266;BA.debugLine="End Sub";
+ //BA.debugLineNum = 88;BA.debugLine="End Sub";
 return "";
 }
 public static String  _maptestbutton_click() throws Exception{
-RDebugUtils.currentModule="map";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "maptestbutton_click"))
-	return (String) Debug.delegate(mostCurrent.activityBA, "maptestbutton_click", null);
-RDebugUtils.currentLine=3407872;
- //BA.debugLineNum = 3407872;BA.debugLine="Sub MapTestButton_Click";
-RDebugUtils.currentLine=3407874;
- //BA.debugLineNum = 3407874;BA.debugLine="SetupMapLocation";
+ //BA.debugLineNum = 122;BA.debugLine="Sub MapTestButton_Click";
+ //BA.debugLineNum = 124;BA.debugLine="SetupMapLocation";
 _setupmaplocation();
-RDebugUtils.currentLine=3407876;
- //BA.debugLineNum = 3407876;BA.debugLine="End Sub";
-return "";
-}
-public static String  _setupmaplocation() throws Exception{
-RDebugUtils.currentModule="map";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "setupmaplocation"))
-	return (String) Debug.delegate(mostCurrent.activityBA, "setupmaplocation", null);
-anywheresoftware.b4a.phone.Phone _p = null;
-anywheresoftware.b4a.objects.MapFragmentWrapper.CameraPositionWrapper _newmapposition = null;
-RDebugUtils.currentLine=3342336;
- //BA.debugLineNum = 3342336;BA.debugLine="Sub SetupMapLocation";
-RDebugUtils.currentLine=3342338;
- //BA.debugLineNum = 3342338;BA.debugLine="Dim p As Phone";
-_p = new anywheresoftware.b4a.phone.Phone();
-RDebugUtils.currentLine=3342342;
- //BA.debugLineNum = 3342342;BA.debugLine="If ((Starter.GPS1.GPSEnabled) And (p.IsAirplaneMo";
-if (((mostCurrent._starter._gps1.getGPSEnabled()) && (_p.IsAirplaneModeOn()==anywheresoftware.b4a.keywords.Common.False))) { 
-RDebugUtils.currentLine=3342344;
- //BA.debugLineNum = 3342344;BA.debugLine="Dim NewMapPosition As CameraPosition";
-_newmapposition = new anywheresoftware.b4a.objects.MapFragmentWrapper.CameraPositionWrapper();
-RDebugUtils.currentLine=3342345;
- //BA.debugLineNum = 3342345;BA.debugLine="NewMapPosition.Initialize(gmap.MyLocation.Latitu";
-_newmapposition.Initialize(mostCurrent._gmap.getMyLocation().getLatitude(),mostCurrent._gmap.getMyLocation().getLongitude(),(float) (12));
-RDebugUtils.currentLine=3342346;
- //BA.debugLineNum = 3342346;BA.debugLine="gmap.MoveCamera(NewMapPosition)";
-mostCurrent._gmap.MoveCamera((com.google.android.gms.maps.model.CameraPosition)(_newmapposition.getObject()));
- }else {
-RDebugUtils.currentLine=3342348;
- //BA.debugLineNum = 3342348;BA.debugLine="If (p.IsAirplaneModeOn) Then";
-if ((_p.IsAirplaneModeOn())) { 
-RDebugUtils.currentLine=3342349;
- //BA.debugLineNum = 3342349;BA.debugLine="ToastMessageShow(\"Airplane mode is enabled. Int";
-anywheresoftware.b4a.keywords.Common.ToastMessageShow("Airplane mode is enabled. Internet connection needed for maps",anywheresoftware.b4a.keywords.Common.True);
- }else {
-RDebugUtils.currentLine=3342353;
- //BA.debugLineNum = 3342353;BA.debugLine="ToastMessageShow(\"Device GPS is disabled. Pleas";
-anywheresoftware.b4a.keywords.Common.ToastMessageShow("Device GPS is disabled. Please enable now",anywheresoftware.b4a.keywords.Common.True);
-RDebugUtils.currentLine=3342354;
- //BA.debugLineNum = 3342354;BA.debugLine="StartActivity(Starter.GPS1.LocationSettingsInte";
-anywheresoftware.b4a.keywords.Common.StartActivity(mostCurrent.activityBA,(Object)(mostCurrent._starter._gps1.getLocationSettingsIntent()));
- };
- };
-RDebugUtils.currentLine=3342359;
- //BA.debugLineNum = 3342359;BA.debugLine="End Sub";
+ //BA.debugLineNum = 126;BA.debugLine="End Sub";
 return "";
 }
 public static String  _moreinfo_click() throws Exception{
-RDebugUtils.currentModule="map";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "moreinfo_click"))
-	return (String) Debug.delegate(mostCurrent.activityBA, "moreinfo_click", null);
-RDebugUtils.currentLine=3735552;
- //BA.debugLineNum = 3735552;BA.debugLine="Sub MoreInfo_Click";
-RDebugUtils.currentLine=3735553;
- //BA.debugLineNum = 3735553;BA.debugLine="Sightings.MapLookupFlag = True";
+ //BA.debugLineNum = 225;BA.debugLine="Sub MoreInfo_Click";
+ //BA.debugLineNum = 226;BA.debugLine="Sightings.MapLookupFlag = True";
 mostCurrent._sightings._maplookupflag = anywheresoftware.b4a.keywords.Common.True;
-RDebugUtils.currentLine=3735554;
- //BA.debugLineNum = 3735554;BA.debugLine="StartActivity(Sightings)";
+ //BA.debugLineNum = 227;BA.debugLine="StartActivity(Sightings)";
 anywheresoftware.b4a.keywords.Common.StartActivity(mostCurrent.activityBA,(Object)(mostCurrent._sightings.getObject()));
-RDebugUtils.currentLine=3735555;
- //BA.debugLineNum = 3735555;BA.debugLine="End Sub";
+ //BA.debugLineNum = 228;BA.debugLine="End Sub";
+return "";
+}
+public static String  _process_globals() throws Exception{
+ //BA.debugLineNum = 6;BA.debugLine="Sub Process_Globals";
+ //BA.debugLineNum = 9;BA.debugLine="Public MapTimer As Timer";
+_maptimer = new anywheresoftware.b4a.objects.Timer();
+ //BA.debugLineNum = 10;BA.debugLine="Public SelectedID As Int";
+_selectedid = 0;
+ //BA.debugLineNum = 11;BA.debugLine="Public GetLocationFlag As Boolean = False";
+_getlocationflag = anywheresoftware.b4a.keywords.Common.False;
+ //BA.debugLineNum = 12;BA.debugLine="Public Location As LatLng";
+_location = new anywheresoftware.b4a.objects.MapFragmentWrapper.LatLngWrapper();
+ //BA.debugLineNum = 13;BA.debugLine="End Sub";
+return "";
+}
+public static String  _setupmaplocation() throws Exception{
+anywheresoftware.b4a.phone.Phone _p = null;
+anywheresoftware.b4a.objects.MapFragmentWrapper.CameraPositionWrapper _newmapposition = null;
+ //BA.debugLineNum = 97;BA.debugLine="Sub SetupMapLocation";
+ //BA.debugLineNum = 99;BA.debugLine="Dim p As Phone";
+_p = new anywheresoftware.b4a.phone.Phone();
+ //BA.debugLineNum = 103;BA.debugLine="If ((Starter.GPS1.GPSEnabled) And (p.IsAirplaneMo";
+if (((mostCurrent._starter._gps1.getGPSEnabled()) && (_p.IsAirplaneModeOn()==anywheresoftware.b4a.keywords.Common.False))) { 
+ //BA.debugLineNum = 105;BA.debugLine="Dim NewMapPosition As CameraPosition";
+_newmapposition = new anywheresoftware.b4a.objects.MapFragmentWrapper.CameraPositionWrapper();
+ //BA.debugLineNum = 106;BA.debugLine="NewMapPosition.Initialize(gmap.MyLocation.Latitu";
+_newmapposition.Initialize(mostCurrent._gmap.getMyLocation().getLatitude(),mostCurrent._gmap.getMyLocation().getLongitude(),(float) (12));
+ //BA.debugLineNum = 107;BA.debugLine="gmap.MoveCamera(NewMapPosition)";
+mostCurrent._gmap.MoveCamera((com.google.android.gms.maps.model.CameraPosition)(_newmapposition.getObject()));
+ }else {
+ //BA.debugLineNum = 109;BA.debugLine="If (p.IsAirplaneModeOn) Then";
+if ((_p.IsAirplaneModeOn())) { 
+ //BA.debugLineNum = 110;BA.debugLine="ToastMessageShow(\"Airplane mode is enabled. Int";
+anywheresoftware.b4a.keywords.Common.ToastMessageShow("Airplane mode is enabled. Internet connection needed for maps",anywheresoftware.b4a.keywords.Common.True);
+ }else {
+ //BA.debugLineNum = 114;BA.debugLine="ToastMessageShow(\"Device GPS is disabled. Pleas";
+anywheresoftware.b4a.keywords.Common.ToastMessageShow("Device GPS is disabled. Please enable now",anywheresoftware.b4a.keywords.Common.True);
+ //BA.debugLineNum = 115;BA.debugLine="StartActivity(Starter.GPS1.LocationSettingsInte";
+anywheresoftware.b4a.keywords.Common.StartActivity(mostCurrent.activityBA,(Object)(mostCurrent._starter._gps1.getLocationSettingsIntent()));
+ };
+ };
+ //BA.debugLineNum = 120;BA.debugLine="End Sub";
 return "";
 }
 public static String  _specieslist_itemclick(int _position,Object _value) throws Exception{
-RDebugUtils.currentModule="map";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "specieslist_itemclick"))
-	return (String) Debug.delegate(mostCurrent.activityBA, "specieslist_itemclick", new Object[] {_position,_value});
-RDebugUtils.currentLine=3670016;
- //BA.debugLineNum = 3670016;BA.debugLine="Sub SpeciesList_ItemClick (Position As Int, Value";
-RDebugUtils.currentLine=3670017;
- //BA.debugLineNum = 3670017;BA.debugLine="SelectedID = Value -1";
+ //BA.debugLineNum = 215;BA.debugLine="Sub SpeciesList_ItemClick (Position As Int, Value";
+ //BA.debugLineNum = 216;BA.debugLine="SelectedID = Value -1";
 _selectedid = (int) ((double)(BA.ObjectToNumber(_value))-1);
-RDebugUtils.currentLine=3670018;
- //BA.debugLineNum = 3670018;BA.debugLine="If Position = -1 Then";
+ //BA.debugLineNum = 217;BA.debugLine="If Position = -1 Then";
 if (_position==-1) { 
-RDebugUtils.currentLine=3670019;
- //BA.debugLineNum = 3670019;BA.debugLine="Return";
+ //BA.debugLineNum = 218;BA.debugLine="Return";
 if (true) return "";
  };
-RDebugUtils.currentLine=3670021;
- //BA.debugLineNum = 3670021;BA.debugLine="LoadBirdPic(SelectedID)";
+ //BA.debugLineNum = 220;BA.debugLine="LoadBirdPic(SelectedID)";
 _loadbirdpic(_selectedid);
-RDebugUtils.currentLine=3670022;
- //BA.debugLineNum = 3670022;BA.debugLine="LoadBird(SelectedID)";
+ //BA.debugLineNum = 221;BA.debugLine="LoadBird(SelectedID)";
 _loadbird(_selectedid);
-RDebugUtils.currentLine=3670023;
- //BA.debugLineNum = 3670023;BA.debugLine="End Sub";
+ //BA.debugLineNum = 222;BA.debugLine="End Sub";
 return "";
 }
 }

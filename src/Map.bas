@@ -233,7 +233,7 @@ Sub MoreInfo_Click
 End Sub
 
 Sub MainMap_LongClick (Point As LatLng)
-	If GetLocationFlag = 1 Then
+	If GetLocationFlag = True Then
 		Location = Point
 		Activity.Finish
 	End If

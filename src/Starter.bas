@@ -33,7 +33,7 @@ Sub Service_Create
 	If Not (File.Exists(Main.BirdPhotoPath,"0.jpg")) Then 	'Code to check bird assets and copy over missing items
 		File.MakeDir(File.DirDefaultExternal,"BirdPhotos") 								'Code to copy over bird photo assets
 		File.Copy(File.DirAssets, "0.jpg", Main.BirdPhotoPath,"0.jpg")
-		For i = 1 To SpeciesCursor.RowCount
+		For i = 1 To SpeciesCursor.RowCount + 1
 			File.Copy(File.DirAssets,i & ".jpg",Main.BirdPhotoPath, i & ".jpg")
 			Log("Bird image " & i & " copied over")	
 			File.Delete(File.DirAssets,i & ".jpg")

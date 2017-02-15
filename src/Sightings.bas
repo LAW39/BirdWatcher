@@ -28,7 +28,8 @@ Sub Globals
 	Private Date As Label
 	Private MapCheck As CheckBox
 	Private Location As Location
-	
+	Private DateTimeTicks As Long
+	Private GetLocation As Button
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
@@ -41,7 +42,7 @@ Sub Activity_Create(FirstTime As Boolean)
 	DateTime.Dateformat = "dd/MM/yyyy"
 	DateTime.TimeFormat= "HH:mm"
 	Dim SpeciesCursor As Cursor
-	SpeciesCursor = Starter.Database.ExecQuery("SELECT ID, Name FROM Species ORDER BY ID ASC")
+	SpeciesCursor = Starter.Database.ExecQuery("SELECT ID, Name FROM Species ORDER BY Name ASC")
 	SpeciesList.clear
 	If MapLookupFlag Then
 		OpenSightingInfo(Map.SelectedID)
@@ -53,7 +54,7 @@ Sub Activity_Create(FirstTime As Boolean)
 		Next
 	
 	End If
-	
+	Location.Initialize
 End Sub
 
 Sub Activity_Resume
@@ -72,19 +73,16 @@ End Sub
 
 
 Sub AddNow_Click
+	
 	If MapCheck.Checked = False Then
-		GPSReady
 		Location.Latitude = Starter.L1.Latitude
 		Location.Longitude = Starter.L1.longitude
 	Else
 		Map.GetLocationFlag = True
-		
-		StartActivity(Map)
-		Location.Initialize
 		Location.Latitude = Map.Location.Latitude
 		Location.Longitude = Map.Location.Longitude
 	End If
-	Dim DateTimeTicks As Long
+
 	Dim Date_Time(2) As String
 	Date_Time(0) = Date.text
 	Date_Time(1) = Time.Text
@@ -100,7 +98,15 @@ Sub AddNow_Click
 	Log(Starter.L1)
 	DateTimeTicks = DateTime.DateTimeParse(Date_Time(0), Date_Time(1))
 	Log(DateTimeTicks)
- 
+	
+	ExportData
+
+End Sub
+
+Sub ExportData
+	
+
+	 
 	Dim SightingSQL As StringBuilder
 	Dim InsertData(7) As String
 
@@ -138,7 +144,12 @@ Sub GPS1_LocationChanged (gpsLocation As Location)
 End Sub
 
 Sub GetLocation_Click
-	
+	If MapCheck.Checked = False Then
+		GPSReady
+	Else
+		Map.GetLocationFlag = True
+		StartActivity("Map")
+	End If
 End Sub
 
 Sub SpeciesList_ItemClick (Position As Int, Value As Object)

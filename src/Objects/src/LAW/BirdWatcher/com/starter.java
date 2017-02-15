@@ -27,7 +27,7 @@ public class starter extends android.app.Service {
 	public void onCreate() {
         mostCurrent = this;
         if (processBA == null) {
-		    processBA = new anywheresoftware.b4a.ShellBA(this, null, null, "LAW.BirdWatcher.com", "LAW.BirdWatcher.com.starter");
+		    processBA = new BA(this, null, null, "LAW.BirdWatcher.com", "LAW.BirdWatcher.com.starter");
             if (BA.isShellModeRuntimeCheck(processBA)) {
                 processBA.raiseEvent2(null, true, "SHELL", false);
 		    }
@@ -118,7 +118,6 @@ public class starter extends android.app.Service {
 		processBA.setActivityPaused(true);
         processBA.runHook("ondestroy", this, null);
 	}
-
 public anywheresoftware.b4a.keywords.Common __c = null;
 public static anywheresoftware.b4a.sql.SQL _database = null;
 public static anywheresoftware.b4a.gps.GPS _gps1 = null;
@@ -130,116 +129,86 @@ public LAW.BirdWatcher.com.sightings _sightings = null;
 public LAW.BirdWatcher.com.map _map = null;
 public LAW.BirdWatcher.com.codefunctions _codefunctions = null;
 public static boolean  _application_error(anywheresoftware.b4a.objects.B4AException _error,String _stacktrace) throws Exception{
-RDebugUtils.currentModule="starter";
-if (Debug.shouldDelegate(processBA, "application_error"))
-	return (Boolean) Debug.delegate(processBA, "application_error", new Object[] {_error,_stacktrace});
-RDebugUtils.currentLine=589824;
- //BA.debugLineNum = 589824;BA.debugLine="Sub Application_Error (Error As Exception, StackTr";
-RDebugUtils.currentLine=589825;
- //BA.debugLineNum = 589825;BA.debugLine="Return True";
+ //BA.debugLineNum = 58;BA.debugLine="Sub Application_Error (Error As Exception, StackTr";
+ //BA.debugLineNum = 59;BA.debugLine="Return True";
 if (true) return anywheresoftware.b4a.keywords.Common.True;
-RDebugUtils.currentLine=589826;
- //BA.debugLineNum = 589826;BA.debugLine="End Sub";
+ //BA.debugLineNum = 60;BA.debugLine="End Sub";
 return false;
 }
+public static String  _process_globals() throws Exception{
+ //BA.debugLineNum = 6;BA.debugLine="Sub Process_Globals";
+ //BA.debugLineNum = 9;BA.debugLine="Dim database As SQL";
+_database = new anywheresoftware.b4a.sql.SQL();
+ //BA.debugLineNum = 10;BA.debugLine="Dim GPS1 As GPS";
+_gps1 = new anywheresoftware.b4a.gps.GPS();
+ //BA.debugLineNum = 11;BA.debugLine="Public CC As ContentChooser";
+_cc = new anywheresoftware.b4a.phone.Phone.ContentChooser();
+ //BA.debugLineNum = 12;BA.debugLine="Dim L1 As Location";
+_l1 = new anywheresoftware.b4a.gps.LocationWrapper();
+ //BA.debugLineNum = 13;BA.debugLine="End Sub";
+return "";
+}
 public static String  _service_create() throws Exception{
-RDebugUtils.currentModule="starter";
-if (Debug.shouldDelegate(processBA, "service_create"))
-	return (String) Debug.delegate(processBA, "service_create", null);
 anywheresoftware.b4a.sql.SQL.CursorWrapper _speciescursor = null;
 int _i = 0;
-RDebugUtils.currentLine=393216;
- //BA.debugLineNum = 393216;BA.debugLine="Sub Service_Create";
-RDebugUtils.currentLine=393219;
- //BA.debugLineNum = 393219;BA.debugLine="Dim SpeciesCursor As Cursor";
+ //BA.debugLineNum = 15;BA.debugLine="Sub Service_Create";
+ //BA.debugLineNum = 18;BA.debugLine="Dim SpeciesCursor As Cursor";
 _speciescursor = new anywheresoftware.b4a.sql.SQL.CursorWrapper();
-RDebugUtils.currentLine=393220;
- //BA.debugLineNum = 393220;BA.debugLine="If Not (File.Exists(File.DirDefaultExternal,\"data";
+ //BA.debugLineNum = 19;BA.debugLine="If Not (File.Exists(File.DirDefaultExternal,\"data";
 if (anywheresoftware.b4a.keywords.Common.Not(anywheresoftware.b4a.keywords.Common.File.Exists(anywheresoftware.b4a.keywords.Common.File.getDirDefaultExternal(),"database.db"))) { 
-RDebugUtils.currentLine=393221;
- //BA.debugLineNum = 393221;BA.debugLine="File.Copy(File.DirAssets,\"database.db\",File.DirD";
+ //BA.debugLineNum = 20;BA.debugLine="File.Copy(File.DirAssets,\"database.db\",File.DirD";
 anywheresoftware.b4a.keywords.Common.File.Copy(anywheresoftware.b4a.keywords.Common.File.getDirAssets(),"database.db",anywheresoftware.b4a.keywords.Common.File.getDirDefaultExternal(),"database.db");
  };
-RDebugUtils.currentLine=393225;
- //BA.debugLineNum = 393225;BA.debugLine="database.Initialize(File.DirDefaultExternal,\"data";
+ //BA.debugLineNum = 24;BA.debugLine="database.Initialize(File.DirDefaultExternal,\"data";
 _database.Initialize(anywheresoftware.b4a.keywords.Common.File.getDirDefaultExternal(),"database.db",anywheresoftware.b4a.keywords.Common.False);
-RDebugUtils.currentLine=393226;
- //BA.debugLineNum = 393226;BA.debugLine="SpeciesCursor = database.ExecQuery(\"SELECT ID FR";
+ //BA.debugLineNum = 25;BA.debugLine="SpeciesCursor = database.ExecQuery(\"SELECT ID FR";
 _speciescursor.setObject((android.database.Cursor)(_database.ExecQuery("SELECT ID FROM Species")));
-RDebugUtils.currentLine=393229;
- //BA.debugLineNum = 393229;BA.debugLine="If Not (File.Exists(Main.BirdPhotoPath,\"0.jpg\"))";
+ //BA.debugLineNum = 28;BA.debugLine="If Not (File.Exists(Main.BirdPhotoPath,\"0.jpg\"))";
 if (anywheresoftware.b4a.keywords.Common.Not(anywheresoftware.b4a.keywords.Common.File.Exists(mostCurrent._main._birdphotopath,"0.jpg"))) { 
-RDebugUtils.currentLine=393230;
- //BA.debugLineNum = 393230;BA.debugLine="File.MakeDir(File.DirDefaultExternal,\"BirdPhotos";
+ //BA.debugLineNum = 29;BA.debugLine="File.MakeDir(File.DirDefaultExternal,\"BirdPhotos";
 anywheresoftware.b4a.keywords.Common.File.MakeDir(anywheresoftware.b4a.keywords.Common.File.getDirDefaultExternal(),"BirdPhotos");
-RDebugUtils.currentLine=393231;
- //BA.debugLineNum = 393231;BA.debugLine="File.Copy(File.DirAssets, \"0.jpg\", Main.BirdPhot";
+ //BA.debugLineNum = 30;BA.debugLine="File.Copy(File.DirAssets, \"0.jpg\", Main.BirdPhot";
 anywheresoftware.b4a.keywords.Common.File.Copy(anywheresoftware.b4a.keywords.Common.File.getDirAssets(),"0.jpg",mostCurrent._main._birdphotopath,"0.jpg");
-RDebugUtils.currentLine=393232;
- //BA.debugLineNum = 393232;BA.debugLine="For i = 1 To SpeciesCursor.RowCount";
+ //BA.debugLineNum = 31;BA.debugLine="For i = 1 To SpeciesCursor.RowCount + 1";
 {
 final int step10 = 1;
-final int limit10 = _speciescursor.getRowCount();
+final int limit10 = (int) (_speciescursor.getRowCount()+1);
 for (_i = (int) (1) ; (step10 > 0 && _i <= limit10) || (step10 < 0 && _i >= limit10); _i = ((int)(0 + _i + step10)) ) {
-RDebugUtils.currentLine=393233;
- //BA.debugLineNum = 393233;BA.debugLine="File.Copy(File.DirAssets,i & \".jpg\",Main.BirdPh";
+ //BA.debugLineNum = 32;BA.debugLine="File.Copy(File.DirAssets,i & \".jpg\",Main.BirdPh";
 anywheresoftware.b4a.keywords.Common.File.Copy(anywheresoftware.b4a.keywords.Common.File.getDirAssets(),BA.NumberToString(_i)+".jpg",mostCurrent._main._birdphotopath,BA.NumberToString(_i)+".jpg");
-RDebugUtils.currentLine=393234;
- //BA.debugLineNum = 393234;BA.debugLine="Log(\"Bird image \" & i & \" copied over\")";
+ //BA.debugLineNum = 33;BA.debugLine="Log(\"Bird image \" & i & \" copied over\")";
 anywheresoftware.b4a.keywords.Common.Log("Bird image "+BA.NumberToString(_i)+" copied over");
-RDebugUtils.currentLine=393235;
- //BA.debugLineNum = 393235;BA.debugLine="File.Delete(File.DirAssets,i & \".jpg\")";
+ //BA.debugLineNum = 34;BA.debugLine="File.Delete(File.DirAssets,i & \".jpg\")";
 anywheresoftware.b4a.keywords.Common.File.Delete(anywheresoftware.b4a.keywords.Common.File.getDirAssets(),BA.NumberToString(_i)+".jpg");
  }
 };
-RDebugUtils.currentLine=393238;
- //BA.debugLineNum = 393238;BA.debugLine="Log(\"All assets copied over\")";
+ //BA.debugLineNum = 37;BA.debugLine="Log(\"All assets copied over\")";
 anywheresoftware.b4a.keywords.Common.Log("All assets copied over");
  };
-RDebugUtils.currentLine=393244;
- //BA.debugLineNum = 393244;BA.debugLine="GPS1.Initialize(\"GPS1\")";
+ //BA.debugLineNum = 43;BA.debugLine="GPS1.Initialize(\"GPS1\")";
 _gps1.Initialize("GPS1");
-RDebugUtils.currentLine=393245;
- //BA.debugLineNum = 393245;BA.debugLine="L1.Initialize";
+ //BA.debugLineNum = 44;BA.debugLine="L1.Initialize";
 _l1.Initialize();
-RDebugUtils.currentLine=393246;
- //BA.debugLineNum = 393246;BA.debugLine="CC.Initialize(\"CC\")";
+ //BA.debugLineNum = 45;BA.debugLine="CC.Initialize(\"CC\")";
 _cc.Initialize("CC");
-RDebugUtils.currentLine=393247;
- //BA.debugLineNum = 393247;BA.debugLine="GPS1.Start(0,0)";
+ //BA.debugLineNum = 46;BA.debugLine="GPS1.Start(0,0)";
 _gps1.Start(processBA,(long) (0),(float) (0));
-RDebugUtils.currentLine=393248;
- //BA.debugLineNum = 393248;BA.debugLine="End Sub";
+ //BA.debugLineNum = 47;BA.debugLine="End Sub";
 return "";
 }
 public static String  _service_destroy() throws Exception{
-RDebugUtils.currentModule="starter";
-if (Debug.shouldDelegate(processBA, "service_destroy"))
-	return (String) Debug.delegate(processBA, "service_destroy", null);
-RDebugUtils.currentLine=655360;
- //BA.debugLineNum = 655360;BA.debugLine="Sub Service_Destroy";
-RDebugUtils.currentLine=655362;
- //BA.debugLineNum = 655362;BA.debugLine="End Sub";
+ //BA.debugLineNum = 62;BA.debugLine="Sub Service_Destroy";
+ //BA.debugLineNum = 64;BA.debugLine="End Sub";
 return "";
 }
 public static String  _service_start(anywheresoftware.b4a.objects.IntentWrapper _startingintent) throws Exception{
-RDebugUtils.currentModule="starter";
-if (Debug.shouldDelegate(processBA, "service_start"))
-	return (String) Debug.delegate(processBA, "service_start", new Object[] {_startingintent});
-RDebugUtils.currentLine=458752;
- //BA.debugLineNum = 458752;BA.debugLine="Sub Service_Start (StartingIntent As Intent)";
-RDebugUtils.currentLine=458754;
- //BA.debugLineNum = 458754;BA.debugLine="End Sub";
+ //BA.debugLineNum = 49;BA.debugLine="Sub Service_Start (StartingIntent As Intent)";
+ //BA.debugLineNum = 51;BA.debugLine="End Sub";
 return "";
 }
 public static String  _service_taskremoved() throws Exception{
-RDebugUtils.currentModule="starter";
-if (Debug.shouldDelegate(processBA, "service_taskremoved"))
-	return (String) Debug.delegate(processBA, "service_taskremoved", null);
-RDebugUtils.currentLine=524288;
- //BA.debugLineNum = 524288;BA.debugLine="Sub Service_TaskRemoved";
-RDebugUtils.currentLine=524290;
- //BA.debugLineNum = 524290;BA.debugLine="End Sub";
+ //BA.debugLineNum = 53;BA.debugLine="Sub Service_TaskRemoved";
+ //BA.debugLineNum = 55;BA.debugLine="End Sub";
 return "";
 }
 }
