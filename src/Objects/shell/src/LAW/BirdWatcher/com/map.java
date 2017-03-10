@@ -59,6 +59,7 @@ public static RemoteObject _maptimer = RemoteObject.declareNull("anywheresoftwar
 public static RemoteObject _selectedid = RemoteObject.createImmutable(0);
 public static RemoteObject _getlocationflag = RemoteObject.createImmutable(false);
 public static RemoteObject _location = RemoteObject.declareNull("anywheresoftware.b4a.objects.MapFragmentWrapper.LatLngWrapper");
+public static RemoteObject _selectedbird = RemoteObject.createImmutable(false);
 public static RemoteObject _gmap = RemoteObject.declareNull("anywheresoftware.b4a.objects.MapFragmentWrapper.GoogleMapWrapper");
 public static RemoteObject _mapsetupcompleted = RemoteObject.createImmutable(false);
 public static RemoteObject _mainmap = RemoteObject.declareNull("anywheresoftware.b4a.objects.MapFragmentWrapper");
@@ -73,6 +74,6 @@ public static LAW.BirdWatcher.com.species _species = null;
 public static LAW.BirdWatcher.com.sightings _sightings = null;
 public static LAW.BirdWatcher.com.codefunctions _codefunctions = null;
   public Object[] GetGlobals() {
-		return new Object[] {"Activity",map.mostCurrent._activity,"BirdImage",map.mostCurrent._birdimage,"CodeFunctions",Debug.moduleToString(LAW.BirdWatcher.com.codefunctions.class),"DateTime1",map.mostCurrent._datetime1,"GetLocationFlag",map._getlocationflag,"gmap",map.mostCurrent._gmap,"Location",map._location,"Main",Debug.moduleToString(LAW.BirdWatcher.com.main.class),"MainMap",map.mostCurrent._mainmap,"MapSetupCompleted",map._mapsetupcompleted,"MapTimer",map._maptimer,"MoreInfo",map.mostCurrent._moreinfo,"Name",map.mostCurrent._name,"SelectedID",map._selectedid,"Sightings",Debug.moduleToString(LAW.BirdWatcher.com.sightings.class),"Species",Debug.moduleToString(LAW.BirdWatcher.com.species.class),"SpeciesList",map.mostCurrent._specieslist,"Starter",Debug.moduleToString(LAW.BirdWatcher.com.starter.class)};
+		return new Object[] {"Activity",map.mostCurrent._activity,"BirdImage",map.mostCurrent._birdimage,"CodeFunctions",Debug.moduleToString(LAW.BirdWatcher.com.codefunctions.class),"DateTime1",map.mostCurrent._datetime1,"GetLocationFlag",map._getlocationflag,"gmap",map.mostCurrent._gmap,"Location",map._location,"Main",Debug.moduleToString(LAW.BirdWatcher.com.main.class),"MainMap",map.mostCurrent._mainmap,"MapSetupCompleted",map._mapsetupcompleted,"MapTimer",map._maptimer,"MoreInfo",map.mostCurrent._moreinfo,"Name",map.mostCurrent._name,"SelectedBird",map._selectedbird,"SelectedID",map._selectedid,"Sightings",Debug.moduleToString(LAW.BirdWatcher.com.sightings.class),"Species",Debug.moduleToString(LAW.BirdWatcher.com.species.class),"SpeciesList",map.mostCurrent._specieslist,"Starter",Debug.moduleToString(LAW.BirdWatcher.com.starter.class)};
 }
 }

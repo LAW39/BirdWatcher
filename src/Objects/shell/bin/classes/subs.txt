@@ -1,15 +1,15 @@
 LAW.BirdWatcher.com
 0
 0
-main,activity_create,1,0,30,41
+main,activity_create,1,0,30,42
+,birdphotopath,,reload_btn
 ,reload_btn
-,reload_btn
 
-main,activity_pause,0,0,47,49
-
+main,activity_pause,0,0,48,50
 
 
-main,activity_resume,0,0,43,45
+
+main,activity_resume,0,0,44,46
 
 
 
@@ -17,7 +17,7 @@ main,globals,0,1,23,28
 
 
 
-main,mapscreen_click,0,0,52,54
+main,mapscreen_click,0,0,53,55
 
 
 
@@ -25,15 +25,15 @@ main,process_globals,0,1,16,21
 ,birdphotopath
 ,birdphotopath
 
-main,reload_btn_click,0,0,65,76
+main,reload_btn_click,0,0,66,77
 ,speciescursor,starter,database,,birdphotopath
 ,speciescursor
 
-main,sightingsscreen_click,0,0,56,59
+main,sightingsscreen_click,0,0,57,60
 sightings,maplookupflag
 sightings,maplookupflag
 
-main,speciesscreen_click,0,0,61,63
+main,speciesscreen_click,0,0,62,64
 
 
 
@@ -45,7 +45,7 @@ starter,process_globals,0,1,6,13
 
 
 
-starter,service_create,1,1,15,47
+starter,service_create,1,0,15,47
 ,database,main,birdphotopath,,gps1,,l1,,cc
 
 
@@ -117,39 +117,39 @@ codefunctions,process_globals,0,1,3,7
 
 
 
-sightings,activity_create,1,0,30,53
-starter,gps1,starter,l1,,addnow,,birdappearance,,birdphotoview,,date,,flocksize,,getlocation,,mapcheck,,specieslist,,time,,weatherconditions,starter,database,,maplookupflag,map,selectedid,,location,,selectedid
-,addnow,,birdappearance,,birdphotoview,,date,,flocksize,,getlocation,,mapcheck,,specieslist,,time,,weatherconditions,,maplookupflag,,selectedid
+sightings,activity_create,1,1,30,60
+starter,gps1,starter,l1,,addnow,,birdappearance,,birdphotoview,,date,,flocksize,,getlocation,,mapcheck,,specieslist,,time,,weatherconditions,starter,database,,maplookupflag,map,selectedid,,location,map,selectedbird,,selectedid
+,addnow,,birdappearance,,birdphotoview,,date,,flocksize,,getlocation,,mapcheck,,specieslist,,time,,weatherconditions,,maplookupflag,map,selectedbird,,selectedid
 ,opensightinginfo,,specieslist_itemclick,,loadattributes,,loadbirdpic
-sightings,opensightinginfo,1,0,167,173
+sightings,opensightinginfo,1,0,174,180
 ,selectedid,,birdphotoview,starter,database,,flocksize,,birdappearance,,weatherconditions,,date,,time
 ,selectedid
 ,specieslist_itemclick,,loadattributes,,loadbirdpic
-sightings,activity_pause,0,0,65,67
+sightings,activity_pause,0,0,72,74
 
 
 
-sightings,activity_resume,0,0,55,63
+sightings,activity_resume,0,0,62,70
 starter,gps1
 
 
-sightings,addnow_click,0,0,70,99
+sightings,addnow_click,0,0,77,106
 ,mapcheck,,location,starter,l1,map,getlocationflag,map,location,,date,,time,,datetimeticks,,selectedid,,flocksize,,weatherconditions,,birdappearance,starter,database
 map,getlocationflag,,datetimeticks
 ,exportdata
-sightings,exportdata,0,0,101,122
+sightings,exportdata,0,0,108,129
 ,selectedid,,flocksize,,weatherconditions,,birdappearance,,datetimeticks,,location,starter,database
 
 
-sightings,date_click,1,0,187,198
+sightings,date_click,1,0,194,205
 ,date
 
 
-sightings,getlocation_click,1,0,140,147
+sightings,getlocation_click,1,0,147,154
 ,mapcheck,map,getlocationflag,starter,gps1
 map,getlocationflag
 ,gpsready
-sightings,gpsready,1,0,124,132
+sightings,gpsready,1,0,131,139
 starter,gps1
 
 
@@ -157,19 +157,19 @@ sightings,globals,0,1,12,28
 ,selectedid
 ,selectedid
 
-sightings,gps1_locationchanged,0,1,134,138
+sightings,gps1_locationchanged,0,0,141,145
 starter,l1,starter,gps1
 starter,l1
 
-sightings,loadattributes,1,0,175,184
+sightings,loadattributes,1,0,182,191
 starter,database,,flocksize,,birdappearance,,weatherconditions,,date,,time
 
 
-sightings,loadbirdpic,0,0,158,165
+sightings,loadbirdpic,0,0,165,172
 ,birdphotoview
 
 
-sightings,specieslist_itemclick,0,0,149,156
+sightings,specieslist_itemclick,0,0,156,163
 ,selectedid,,birdphotoview
 ,selectedid
 ,loadbirdpic
@@ -177,75 +177,75 @@ sightings,process_globals,0,1,6,10
 ,maplookupflag
 ,maplookupflag
 
-sightings,time_click,1,0,200,211
+sightings,time_click,1,0,207,218
 ,time
 
 
-map,activity_create,1,1,30,53
+map,activity_create,1,1,32,56
 ,birdimage,,datetime1,,mainmap,,moreinfo,,name,,specieslist,,location,,mapsetupcompleted,,maptimer,starter,database
 ,birdimage,,datetime1,,mainmap,,moreinfo,,name,,specieslist,,mapsetupcompleted
 
-map,activity_pause,0,0,69,71
+map,activity_pause,0,0,72,74
 ,maptimer
 
 
-map,activity_resume,0,0,61,67
+map,activity_resume,0,0,64,70
 ,mapsetupcompleted,,maptimer
 
 
-map,getlocation,1,1,55,59
+map,getlocation,1,1,58,62
 ,birdimage,,datetime1,,mainmap,,moreinfo,,name,,specieslist
 ,birdimage,,datetime1,,mainmap,,moreinfo,,name,,specieslist
 
-map,globals,0,1,15,28
+map,globals,0,1,16,30
 
 
 
-map,loadbird,1,0,164,213
+map,loadbird,1,0,167,216
 ,gmap,,name,,datetime1,starter,database
 
 
-map,loadbirdpic,0,0,155,162
+map,loadbirdpic,0,0,158,165
 ,birdimage
 
 
-map,loottimer_tick,0,0,73,82
+map,loottimer_tick,0,0,76,85
 ,gmap,,mapsetupcompleted,,maptimer
 ,mapsetupcompleted
 
-map,mainmap_longclick,0,0,230,235
+map,mainmap_longclick,0,0,237,242
 ,getlocationflag,,location
 ,location
 
-map,mainmap_markerclick,1,0,128,153
-starter,database,,name,,datetime1
+map,mainmap_markerclick,1,0,131,156
+starter,database,,name,,datetime1,,selectedbird
+,selectedbird
 
-
-map,mainmap_ready,0,0,90,95
+map,mainmap_ready,0,0,93,98
 ,gmap,,mainmap
 ,gmap
 
-map,mainscreen_click,0,0,86,88
+map,mainscreen_click,0,0,89,91
 
 
 
-map,maptestbutton_click,0,0,122,126
+map,maptestbutton_click,0,0,125,129
 starter,gps1,,gmap
 
 ,setupmaplocation
-map,setupmaplocation,0,0,97,120
+map,setupmaplocation,0,0,100,123
 starter,gps1,,gmap
 
 
-map,moreinfo_click,0,0,225,228
-sightings,maplookupflag
+map,moreinfo_click,1,0,228,235
+,selectedbird,sightings,maplookupflag
 sightings,maplookupflag
 
-map,process_globals,0,1,6,13
+map,process_globals,0,1,6,14
 ,getlocationflag
 ,getlocationflag
 
-map,specieslist_itemclick,1,0,215,222
+map,specieslist_itemclick,1,0,218,225
 ,selectedid,,birdimage,,gmap,,name,,datetime1,starter,database
 ,selectedid
 ,loadbirdpic,,loadbird

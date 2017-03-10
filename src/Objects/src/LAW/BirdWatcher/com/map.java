@@ -336,6 +336,7 @@ public static anywheresoftware.b4a.objects.Timer _maptimer = null;
 public static int _selectedid = 0;
 public static boolean _getlocationflag = false;
 public static anywheresoftware.b4a.objects.MapFragmentWrapper.LatLngWrapper _location = null;
+public static boolean _selectedbird = false;
 public anywheresoftware.b4a.objects.MapFragmentWrapper.GoogleMapWrapper _gmap = null;
 public static boolean _mapsetupcompleted = false;
 public anywheresoftware.b4a.objects.MapFragmentWrapper _mainmap = null;
@@ -370,40 +371,40 @@ RDebugUtils.currentLine=2949126;
  //BA.debugLineNum = 2949126;BA.debugLine="ToastMessageShow(\"Please install Google Play";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow("Please install Google Play Services.",anywheresoftware.b4a.keywords.Common.True);
  };
-RDebugUtils.currentLine=2949129;
- //BA.debugLineNum = 2949129;BA.debugLine="Location.Initialize(0,0)";
+RDebugUtils.currentLine=2949130;
+ //BA.debugLineNum = 2949130;BA.debugLine="Location.Initialize(0,0)";
 _location.Initialize(0,0);
-RDebugUtils.currentLine=2949132;
- //BA.debugLineNum = 2949132;BA.debugLine="MapSetupCompleted = False";
-_mapsetupcompleted = anywheresoftware.b4a.keywords.Common.False;
 RDebugUtils.currentLine=2949133;
- //BA.debugLineNum = 2949133;BA.debugLine="MapTimer.Initialize(\"LootTimer\",1000)";
+ //BA.debugLineNum = 2949133;BA.debugLine="MapSetupCompleted = False";
+_mapsetupcompleted = anywheresoftware.b4a.keywords.Common.False;
+RDebugUtils.currentLine=2949134;
+ //BA.debugLineNum = 2949134;BA.debugLine="MapTimer.Initialize(\"LootTimer\",1000)";
 _maptimer.Initialize(processBA,"LootTimer",(long) (1000));
-RDebugUtils.currentLine=2949135;
- //BA.debugLineNum = 2949135;BA.debugLine="Dim SpeciesCursor As Cursor";
-_speciescursor = new anywheresoftware.b4a.sql.SQL.CursorWrapper();
 RDebugUtils.currentLine=2949136;
- //BA.debugLineNum = 2949136;BA.debugLine="SpeciesCursor = Starter.Database.ExecQuery(\"SELEC";
-_speciescursor.setObject((android.database.Cursor)(mostCurrent._starter._database.ExecQuery("SELECT ID, Name FROM Species ORDER BY ID ASC")));
+ //BA.debugLineNum = 2949136;BA.debugLine="Dim SpeciesCursor As Cursor";
+_speciescursor = new anywheresoftware.b4a.sql.SQL.CursorWrapper();
 RDebugUtils.currentLine=2949137;
- //BA.debugLineNum = 2949137;BA.debugLine="SpeciesList.clear";
+ //BA.debugLineNum = 2949137;BA.debugLine="SpeciesCursor = Starter.Database.ExecQuery(\"SELEC";
+_speciescursor.setObject((android.database.Cursor)(mostCurrent._starter._database.ExecQuery("SELECT ID, Name FROM Species ORDER BY ID ASC")));
+RDebugUtils.currentLine=2949138;
+ //BA.debugLineNum = 2949138;BA.debugLine="SpeciesList.clear";
 mostCurrent._specieslist.Clear();
-RDebugUtils.currentLine=2949139;
- //BA.debugLineNum = 2949139;BA.debugLine="For i=0 To SpeciesCursor.RowCount-1";
+RDebugUtils.currentLine=2949140;
+ //BA.debugLineNum = 2949140;BA.debugLine="For i=0 To SpeciesCursor.RowCount-1";
 {
 final int step12 = 1;
 final int limit12 = (int) (_speciescursor.getRowCount()-1);
 for (_i = (int) (0) ; (step12 > 0 && _i <= limit12) || (step12 < 0 && _i >= limit12); _i = ((int)(0 + _i + step12)) ) {
-RDebugUtils.currentLine=2949140;
- //BA.debugLineNum = 2949140;BA.debugLine="SpeciesCursor.Position = i";
-_speciescursor.setPosition(_i);
 RDebugUtils.currentLine=2949141;
- //BA.debugLineNum = 2949141;BA.debugLine="SpeciesList.AddSingleLine2(SpeciesCursor.GetStri";
+ //BA.debugLineNum = 2949141;BA.debugLine="SpeciesCursor.Position = i";
+_speciescursor.setPosition(_i);
+RDebugUtils.currentLine=2949142;
+ //BA.debugLineNum = 2949142;BA.debugLine="SpeciesList.AddSingleLine2(SpeciesCursor.GetStri";
 mostCurrent._specieslist.AddSingleLine2(_speciescursor.GetString("Name"),(Object)(_speciescursor.GetString("ID")));
  }
 };
-RDebugUtils.currentLine=2949143;
- //BA.debugLineNum = 2949143;BA.debugLine="End Sub";
+RDebugUtils.currentLine=2949144;
+ //BA.debugLineNum = 2949144;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_pause(boolean _userclosed) throws Exception{
@@ -650,8 +651,11 @@ mostCurrent._name.setText((Object)(_birdcursor.GetString("Weather")));
 RDebugUtils.currentLine=3538964;
  //BA.debugLineNum = 3538964;BA.debugLine="DateTime1.Text = DateTime.Date(BirdCursor.GetStri";
 mostCurrent._datetime1.setText((Object)(anywheresoftware.b4a.keywords.Common.DateTime.Date((long)(Double.parseDouble(_birdcursor.GetString("Epoch"))))+" "+anywheresoftware.b4a.keywords.Common.DateTime.Time((long)(Double.parseDouble(_birdcursor.GetString("Epoch"))))));
+RDebugUtils.currentLine=3538966;
+ //BA.debugLineNum = 3538966;BA.debugLine="SelectedBird = True";
+_selectedbird = anywheresoftware.b4a.keywords.Common.True;
 RDebugUtils.currentLine=3538968;
- //BA.debugLineNum = 3538968;BA.debugLine="Return True 'stop the little pop up text box from";
+ //BA.debugLineNum = 3538968;BA.debugLine="Return True 'stop the pop up text box from being";
 if (true) return anywheresoftware.b4a.keywords.Common.True;
 RDebugUtils.currentLine=3538969;
  //BA.debugLineNum = 3538969;BA.debugLine="End Sub";
@@ -749,13 +753,21 @@ if (Debug.shouldDelegate(mostCurrent.activityBA, "moreinfo_click"))
 RDebugUtils.currentLine=3801088;
  //BA.debugLineNum = 3801088;BA.debugLine="Sub MoreInfo_Click";
 RDebugUtils.currentLine=3801089;
- //BA.debugLineNum = 3801089;BA.debugLine="Sightings.MapLookupFlag = True";
-mostCurrent._sightings._maplookupflag = anywheresoftware.b4a.keywords.Common.True;
+ //BA.debugLineNum = 3801089;BA.debugLine="If SelectedBird = True Then";
+if (_selectedbird==anywheresoftware.b4a.keywords.Common.True) { 
 RDebugUtils.currentLine=3801090;
- //BA.debugLineNum = 3801090;BA.debugLine="StartActivity(Sightings)";
-anywheresoftware.b4a.keywords.Common.StartActivity(mostCurrent.activityBA,(Object)(mostCurrent._sightings.getObject()));
+ //BA.debugLineNum = 3801090;BA.debugLine="Sightings.MapLookupFlag = True";
+mostCurrent._sightings._maplookupflag = anywheresoftware.b4a.keywords.Common.True;
 RDebugUtils.currentLine=3801091;
- //BA.debugLineNum = 3801091;BA.debugLine="End Sub";
+ //BA.debugLineNum = 3801091;BA.debugLine="StartActivity(Sightings)";
+anywheresoftware.b4a.keywords.Common.StartActivity(mostCurrent.activityBA,(Object)(mostCurrent._sightings.getObject()));
+ }else {
+RDebugUtils.currentLine=3801093;
+ //BA.debugLineNum = 3801093;BA.debugLine="Msgbox(\"Please select a sighting using the map a";
+anywheresoftware.b4a.keywords.Common.Msgbox("Please select a sighting using the map above first","Error",mostCurrent.activityBA);
+ };
+RDebugUtils.currentLine=3801095;
+ //BA.debugLineNum = 3801095;BA.debugLine="End Sub";
 return "";
 }
 public static String  _specieslist_itemclick(int _position,Object _value) throws Exception{

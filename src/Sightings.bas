@@ -43,10 +43,16 @@ Sub Activity_Create(FirstTime As Boolean)
 	DateTime.TimeFormat= "HH:mm"
 	Dim SpeciesCursor As Cursor
 	SpeciesCursor = Starter.Database.ExecQuery("SELECT ID, Name FROM Species ORDER BY Name ASC")
+	MapCheck.Visible = True
+	GetLocation.Visible = True
+	AddNow.Visible = True
 	SpeciesList.clear
 	If MapLookupFlag Then
 		OpenSightingInfo(Map.SelectedID)
 		MapLookupFlag = False
+		GetLocation.Visible = False
+		MapCheck.Visible = False
+		AddNow.Visible = False
 	Else
 		For i=0 To SpeciesCursor.RowCount-1
 			SpeciesCursor.Position = i
@@ -55,6 +61,7 @@ Sub Activity_Create(FirstTime As Boolean)
 	
 	End If
 	Location.Initialize
+	Map.SelectedBird=False
 End Sub
 
 Sub Activity_Resume

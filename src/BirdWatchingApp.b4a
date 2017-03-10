@@ -63,7 +63,8 @@ Sub Globals
 Sub Activity_Create(FirstTime As Boolean)
 '	Do not forget to load the layout file created with the visual designer. For example:
 	If (File.Exists(File.DirDefaultExternal,"database.db")) Then
-		Log("Database already exists on device, no need to copy over")	
+		Log("Database already exists on device, no need to copy over")
+		Log(BirdPhotoPath)	
 	Else
 		File.Copy(File.DirAssets,"database.db",File.DirDefaultExternal,"database.db")
 		Log("Copied database file to device")

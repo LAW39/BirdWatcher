@@ -133,13 +133,13 @@ public static boolean  _application_error(anywheresoftware.b4a.objects.B4AExcept
 RDebugUtils.currentModule="starter";
 if (Debug.shouldDelegate(processBA, "application_error"))
 	return (Boolean) Debug.delegate(processBA, "application_error", new Object[] {_error,_stacktrace});
-RDebugUtils.currentLine=851968;
- //BA.debugLineNum = 851968;BA.debugLine="Sub Application_Error (Error As Exception, StackTr";
-RDebugUtils.currentLine=851969;
- //BA.debugLineNum = 851969;BA.debugLine="Return True";
+RDebugUtils.currentLine=589824;
+ //BA.debugLineNum = 589824;BA.debugLine="Sub Application_Error (Error As Exception, StackTr";
+RDebugUtils.currentLine=589825;
+ //BA.debugLineNum = 589825;BA.debugLine="Return True";
 if (true) return anywheresoftware.b4a.keywords.Common.True;
-RDebugUtils.currentLine=851970;
- //BA.debugLineNum = 851970;BA.debugLine="End Sub";
+RDebugUtils.currentLine=589826;
+ //BA.debugLineNum = 589826;BA.debugLine="End Sub";
 return false;
 }
 public static String  _service_create() throws Exception{
@@ -148,98 +148,98 @@ if (Debug.shouldDelegate(processBA, "service_create"))
 	return (String) Debug.delegate(processBA, "service_create", null);
 anywheresoftware.b4a.sql.SQL.CursorWrapper _speciescursor = null;
 int _i = 0;
-RDebugUtils.currentLine=655360;
- //BA.debugLineNum = 655360;BA.debugLine="Sub Service_Create";
-RDebugUtils.currentLine=655363;
- //BA.debugLineNum = 655363;BA.debugLine="Dim SpeciesCursor As Cursor";
+RDebugUtils.currentLine=393216;
+ //BA.debugLineNum = 393216;BA.debugLine="Sub Service_Create";
+RDebugUtils.currentLine=393219;
+ //BA.debugLineNum = 393219;BA.debugLine="Dim SpeciesCursor As Cursor";
 _speciescursor = new anywheresoftware.b4a.sql.SQL.CursorWrapper();
-RDebugUtils.currentLine=655364;
- //BA.debugLineNum = 655364;BA.debugLine="If Not (File.Exists(File.DirDefaultExternal,\"data";
+RDebugUtils.currentLine=393220;
+ //BA.debugLineNum = 393220;BA.debugLine="If Not (File.Exists(File.DirDefaultExternal,\"data";
 if (anywheresoftware.b4a.keywords.Common.Not(anywheresoftware.b4a.keywords.Common.File.Exists(anywheresoftware.b4a.keywords.Common.File.getDirDefaultExternal(),"database.db"))) { 
-RDebugUtils.currentLine=655365;
- //BA.debugLineNum = 655365;BA.debugLine="File.Copy(File.DirAssets,\"database.db\",File.DirD";
+RDebugUtils.currentLine=393221;
+ //BA.debugLineNum = 393221;BA.debugLine="File.Copy(File.DirAssets,\"database.db\",File.DirD";
 anywheresoftware.b4a.keywords.Common.File.Copy(anywheresoftware.b4a.keywords.Common.File.getDirAssets(),"database.db",anywheresoftware.b4a.keywords.Common.File.getDirDefaultExternal(),"database.db");
  };
-RDebugUtils.currentLine=655369;
- //BA.debugLineNum = 655369;BA.debugLine="database.Initialize(File.DirDefaultExternal,\"data";
+RDebugUtils.currentLine=393225;
+ //BA.debugLineNum = 393225;BA.debugLine="database.Initialize(File.DirDefaultExternal,\"data";
 _database.Initialize(anywheresoftware.b4a.keywords.Common.File.getDirDefaultExternal(),"database.db",anywheresoftware.b4a.keywords.Common.False);
-RDebugUtils.currentLine=655370;
- //BA.debugLineNum = 655370;BA.debugLine="SpeciesCursor = database.ExecQuery(\"SELECT ID FR";
+RDebugUtils.currentLine=393226;
+ //BA.debugLineNum = 393226;BA.debugLine="SpeciesCursor = database.ExecQuery(\"SELECT ID FR";
 _speciescursor.setObject((android.database.Cursor)(_database.ExecQuery("SELECT ID FROM Species")));
-RDebugUtils.currentLine=655373;
- //BA.debugLineNum = 655373;BA.debugLine="If Not (File.Exists(Main.BirdPhotoPath,\"0.jpg\"))";
+RDebugUtils.currentLine=393229;
+ //BA.debugLineNum = 393229;BA.debugLine="If Not (File.Exists(Main.BirdPhotoPath,\"0.jpg\"))";
 if (anywheresoftware.b4a.keywords.Common.Not(anywheresoftware.b4a.keywords.Common.File.Exists(mostCurrent._main._birdphotopath,"0.jpg"))) { 
-RDebugUtils.currentLine=655374;
- //BA.debugLineNum = 655374;BA.debugLine="File.MakeDir(File.DirDefaultExternal,\"BirdPhotos";
+RDebugUtils.currentLine=393230;
+ //BA.debugLineNum = 393230;BA.debugLine="File.MakeDir(File.DirDefaultExternal,\"BirdPhotos";
 anywheresoftware.b4a.keywords.Common.File.MakeDir(anywheresoftware.b4a.keywords.Common.File.getDirDefaultExternal(),"BirdPhotos");
-RDebugUtils.currentLine=655375;
- //BA.debugLineNum = 655375;BA.debugLine="File.Copy(File.DirAssets, \"0.jpg\", Main.BirdPhot";
+RDebugUtils.currentLine=393231;
+ //BA.debugLineNum = 393231;BA.debugLine="File.Copy(File.DirAssets, \"0.jpg\", Main.BirdPhot";
 anywheresoftware.b4a.keywords.Common.File.Copy(anywheresoftware.b4a.keywords.Common.File.getDirAssets(),"0.jpg",mostCurrent._main._birdphotopath,"0.jpg");
-RDebugUtils.currentLine=655376;
- //BA.debugLineNum = 655376;BA.debugLine="For i = 1 To SpeciesCursor.RowCount";
+RDebugUtils.currentLine=393232;
+ //BA.debugLineNum = 393232;BA.debugLine="For i = 1 To SpeciesCursor.RowCount";
 {
 final int step10 = 1;
 final int limit10 = _speciescursor.getRowCount();
 for (_i = (int) (1) ; (step10 > 0 && _i <= limit10) || (step10 < 0 && _i >= limit10); _i = ((int)(0 + _i + step10)) ) {
-RDebugUtils.currentLine=655377;
- //BA.debugLineNum = 655377;BA.debugLine="File.Copy(File.DirAssets,i & \".jpg\",Main.BirdPh";
+RDebugUtils.currentLine=393233;
+ //BA.debugLineNum = 393233;BA.debugLine="File.Copy(File.DirAssets,i & \".jpg\",Main.BirdPh";
 anywheresoftware.b4a.keywords.Common.File.Copy(anywheresoftware.b4a.keywords.Common.File.getDirAssets(),BA.NumberToString(_i)+".jpg",mostCurrent._main._birdphotopath,BA.NumberToString(_i)+".jpg");
-RDebugUtils.currentLine=655378;
- //BA.debugLineNum = 655378;BA.debugLine="Log(\"Bird image \" & i & \" copied over\")";
+RDebugUtils.currentLine=393234;
+ //BA.debugLineNum = 393234;BA.debugLine="Log(\"Bird image \" & i & \" copied over\")";
 anywheresoftware.b4a.keywords.Common.Log("Bird image "+BA.NumberToString(_i)+" copied over");
-RDebugUtils.currentLine=655379;
- //BA.debugLineNum = 655379;BA.debugLine="File.Delete(File.DirAssets,i & \".jpg\")";
+RDebugUtils.currentLine=393235;
+ //BA.debugLineNum = 393235;BA.debugLine="File.Delete(File.DirAssets,i & \".jpg\")";
 anywheresoftware.b4a.keywords.Common.File.Delete(anywheresoftware.b4a.keywords.Common.File.getDirAssets(),BA.NumberToString(_i)+".jpg");
  }
 };
-RDebugUtils.currentLine=655382;
- //BA.debugLineNum = 655382;BA.debugLine="Log(\"All assets copied over\")";
+RDebugUtils.currentLine=393238;
+ //BA.debugLineNum = 393238;BA.debugLine="Log(\"All assets copied over\")";
 anywheresoftware.b4a.keywords.Common.Log("All assets copied over");
  };
-RDebugUtils.currentLine=655388;
- //BA.debugLineNum = 655388;BA.debugLine="GPS1.Initialize(\"GPS1\")";
+RDebugUtils.currentLine=393244;
+ //BA.debugLineNum = 393244;BA.debugLine="GPS1.Initialize(\"GPS1\")";
 _gps1.Initialize("GPS1");
-RDebugUtils.currentLine=655389;
- //BA.debugLineNum = 655389;BA.debugLine="L1.Initialize";
+RDebugUtils.currentLine=393245;
+ //BA.debugLineNum = 393245;BA.debugLine="L1.Initialize";
 _l1.Initialize();
-RDebugUtils.currentLine=655390;
- //BA.debugLineNum = 655390;BA.debugLine="CC.Initialize(\"CC\")";
+RDebugUtils.currentLine=393246;
+ //BA.debugLineNum = 393246;BA.debugLine="CC.Initialize(\"CC\")";
 _cc.Initialize("CC");
-RDebugUtils.currentLine=655391;
- //BA.debugLineNum = 655391;BA.debugLine="GPS1.Start(0,0)";
+RDebugUtils.currentLine=393247;
+ //BA.debugLineNum = 393247;BA.debugLine="GPS1.Start(0,0)";
 _gps1.Start(processBA,(long) (0),(float) (0));
-RDebugUtils.currentLine=655392;
- //BA.debugLineNum = 655392;BA.debugLine="End Sub";
+RDebugUtils.currentLine=393248;
+ //BA.debugLineNum = 393248;BA.debugLine="End Sub";
 return "";
 }
 public static String  _service_destroy() throws Exception{
 RDebugUtils.currentModule="starter";
 if (Debug.shouldDelegate(processBA, "service_destroy"))
 	return (String) Debug.delegate(processBA, "service_destroy", null);
-RDebugUtils.currentLine=917504;
- //BA.debugLineNum = 917504;BA.debugLine="Sub Service_Destroy";
-RDebugUtils.currentLine=917506;
- //BA.debugLineNum = 917506;BA.debugLine="End Sub";
+RDebugUtils.currentLine=655360;
+ //BA.debugLineNum = 655360;BA.debugLine="Sub Service_Destroy";
+RDebugUtils.currentLine=655362;
+ //BA.debugLineNum = 655362;BA.debugLine="End Sub";
 return "";
 }
 public static String  _service_start(anywheresoftware.b4a.objects.IntentWrapper _startingintent) throws Exception{
 RDebugUtils.currentModule="starter";
 if (Debug.shouldDelegate(processBA, "service_start"))
 	return (String) Debug.delegate(processBA, "service_start", new Object[] {_startingintent});
-RDebugUtils.currentLine=720896;
- //BA.debugLineNum = 720896;BA.debugLine="Sub Service_Start (StartingIntent As Intent)";
-RDebugUtils.currentLine=720898;
- //BA.debugLineNum = 720898;BA.debugLine="End Sub";
+RDebugUtils.currentLine=458752;
+ //BA.debugLineNum = 458752;BA.debugLine="Sub Service_Start (StartingIntent As Intent)";
+RDebugUtils.currentLine=458754;
+ //BA.debugLineNum = 458754;BA.debugLine="End Sub";
 return "";
 }
 public static String  _service_taskremoved() throws Exception{
 RDebugUtils.currentModule="starter";
 if (Debug.shouldDelegate(processBA, "service_taskremoved"))
 	return (String) Debug.delegate(processBA, "service_taskremoved", null);
-RDebugUtils.currentLine=786432;
- //BA.debugLineNum = 786432;BA.debugLine="Sub Service_TaskRemoved";
-RDebugUtils.currentLine=786434;
- //BA.debugLineNum = 786434;BA.debugLine="End Sub";
+RDebugUtils.currentLine=524288;
+ //BA.debugLineNum = 524288;BA.debugLine="Sub Service_TaskRemoved";
+RDebugUtils.currentLine=524290;
+ //BA.debugLineNum = 524290;BA.debugLine="End Sub";
 return "";
 }
 }

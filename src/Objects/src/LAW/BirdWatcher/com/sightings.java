@@ -415,7 +415,10 @@ RDebugUtils.currentLine=1900566;
  //BA.debugLineNum = 1900566;BA.debugLine="Location.Initialize";
 mostCurrent._location.Initialize();
 RDebugUtils.currentLine=1900567;
- //BA.debugLineNum = 1900567;BA.debugLine="End Sub";
+ //BA.debugLineNum = 1900567;BA.debugLine="Map.SelectedBird=False";
+mostCurrent._map._selectedbird = anywheresoftware.b4a.keywords.Common.False;
+RDebugUtils.currentLine=1900568;
+ //BA.debugLineNum = 1900568;BA.debugLine="End Sub";
 return "";
 }
 public static String  _opensightinginfo(int _id) throws Exception{

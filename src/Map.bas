@@ -15,6 +15,7 @@ Sub Process_Globals
 	Public SelectedID As Int
 	Public GetLocationFlag As Boolean = False
 	Public Location As LatLng
+	Public SelectedBird As Boolean
 End Sub
 
 Sub Globals
@@ -30,6 +31,7 @@ Sub Globals
 
 	Private DateTime1 As EditText
 	Private Name As EditText
+
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
@@ -40,6 +42,7 @@ Sub Activity_Create(FirstTime As Boolean)
 	If MainMap.IsGooglePlayServicesAvailable = False Then
     	ToastMessageShow("Please install Google Play Services.", True)
     End If
+	
 	
 	Location.Initialize(0,0)
 		
@@ -152,9 +155,9 @@ Sub MainMap_MarkerClick (SelectedMarker As Marker) As Boolean 'Return True to co
 	Name.Text = BirdCursor.GetString("Weather")
 	DateTime1.Text = DateTime.Date(BirdCursor.GetString("Epoch")) & " " & DateTime.Time(BirdCursor.GetString("Epoch"))
 
-		
+	SelectedBird = True
 	
-	Return True 'stop the little pop up text box from being shown
+	Return True 'stop the pop up text box from being shown
 End Sub
 
 Sub LoadBirdPic(BirdID As Int)
@@ -228,8 +231,12 @@ End Sub
 
 
 Sub MoreInfo_Click
-	Sightings.MapLookupFlag = True
-	StartActivity(Sightings)
+	If SelectedBird = True Then
+		Sightings.MapLookupFlag = True
+		StartActivity(Sightings)
+	Else
+		Msgbox("Please select a sighting using the map above first", "Error")
+	End If
 End Sub
 
 Sub MainMap_LongClick (Point As LatLng)
