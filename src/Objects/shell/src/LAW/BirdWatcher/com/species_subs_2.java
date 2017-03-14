@@ -3,7 +3,7 @@ package LAW.BirdWatcher.com;
 import anywheresoftware.b4a.BA;
 import anywheresoftware.b4a.pc.*;
 
-public class species_subs_0 {
+public class species_subs_2 {
 
 
 public static RemoteObject  _activity_create(RemoteObject _firsttime) throws Exception{
@@ -19,9 +19,9 @@ species.mostCurrent._activity.runMethodAndSync(false,"LoadLayout",(Object)(Remot
  BA.debugLineNum = 34;BA.debugLine="Activity.Title = \"Species\"";
 Debug.ShouldStop(2);
 species.mostCurrent._activity.runMethod(false,"setTitle",RemoteObject.createImmutable(("Species")));
- BA.debugLineNum = 36;BA.debugLine="SpeciesListView.Color = 0";
+ BA.debugLineNum = 36;BA.debugLine="SpeciesListView.SingleLineLayout.Label.TextColor";
 Debug.ShouldStop(8);
-species.mostCurrent._specieslistview.runVoidMethod ("setColor",BA.numberCast(int.class, 0));
+species.mostCurrent._specieslistview.runMethod(false,"getSingleLineLayout").getField(false,"Label").runMethod(true,"setTextColor",species.mostCurrent.__c.getField(false,"Colors").getField(true,"Black"));
  BA.debugLineNum = 37;BA.debugLine="PopulateList ' Subroutine to populate list from D";
 Debug.ShouldStop(16);
 _populatelist();

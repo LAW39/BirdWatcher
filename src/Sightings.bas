@@ -39,6 +39,7 @@ Sub Activity_Create(FirstTime As Boolean)
 	'Activity.LoadLayout("Layout1")
 	Activity.LoadLayout("sightingadd")
 	Activity.Title = "Sightings"
+	SpeciesList.SingleLineLayout.Label.TextColor = Colors.black
 	DateTime.Dateformat = "dd/MM/yyyy"
 	DateTime.TimeFormat= "HH:mm"
 	Dim SpeciesCursor As Cursor

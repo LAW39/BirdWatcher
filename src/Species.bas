@@ -38,7 +38,7 @@ Sub Activity_Create(FirstTime As Boolean)
 	Activity.LoadLayout("speciesadd")
  	Activity.Title = "Species"
 
-	
+	SpeciesListView.SingleLineLayout.Label.TextColor = Colors.black
 	PopulateList ' Subroutine to populate list from DB
 End Sub
 

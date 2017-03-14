@@ -6,7 +6,7 @@
 	android:versionName=""
 	android:installLocation="internalOnly">
 	
-	<uses-sdk android:minSdkVersion="14" android:targetSdkVersion="19"/>
+	<uses-sdk android:minSdkVersion="14" android:targetSdkVersion="25"/>
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
@@ -23,7 +23,8 @@
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 	<application
 		android:icon="@drawable/icon"
-		android:label="Bird Watcher">
+		android:label="Bird Watcher"
+		android:theme="@style/MyAppTheme">
 		
 		<activity android:name="com.google.android.gms.common.api.GoogleApiActivity"
 		  android:theme="@android:style/Theme.Translucent.NoTitleBar"

@@ -438,10 +438,13 @@ RDebugUtils.currentLine=131081;
  //BA.debugLineNum = 131081;BA.debugLine="Activity.LoadLayout(\"LaunchScreen\")";
 mostCurrent._activity.LoadLayout("LaunchScreen",mostCurrent.activityBA);
 RDebugUtils.currentLine=131082;
- //BA.debugLineNum = 131082;BA.debugLine="StartService(Starter)";
+ //BA.debugLineNum = 131082;BA.debugLine="Activity.Title = \"Launch Screen\"";
+mostCurrent._activity.setTitle((Object)("Launch Screen"));
+RDebugUtils.currentLine=131083;
+ //BA.debugLineNum = 131083;BA.debugLine="StartService(Starter)";
 anywheresoftware.b4a.keywords.Common.StartService(mostCurrent.activityBA,(Object)(mostCurrent._starter.getObject()));
-RDebugUtils.currentLine=131084;
- //BA.debugLineNum = 131084;BA.debugLine="End Sub";
+RDebugUtils.currentLine=131085;
+ //BA.debugLineNum = 131085;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_pause(boolean _userclosed) throws Exception{

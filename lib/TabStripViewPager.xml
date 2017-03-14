@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <doclet-version-NOT-library-version>1.05</doclet-version-NOT-library-version>
+    <class>
+        <name>anywheresoftware.b4a.objects.TabStripViewPager</name>
+        <shortname>TabStrip</shortname>
+        <owner>process</owner>
+        <event>PageSelected (Position As Int)</event>
+        <method>
+            <name>DesignerCreateView</name>
+            <comment></comment>
+            <returntype>void</returntype>
+            <parameter>
+                <name>base</name>
+                <type>anywheresoftware.b4a.objects.PanelWrapper</type>
+            </parameter>
+            <parameter>
+                <name>lw</name>
+                <type>anywheresoftware.b4a.objects.LabelWrapper</type>
+            </parameter>
+            <parameter>
+                <name>props</name>
+                <type>anywheresoftware.b4a.objects.collections.Map</type>
+            </parameter>
+        </method>
+        <method>
+            <name>ScrollTo</name>
+            <comment>Scrolls to the specified page.</comment>
+            <returntype>void</returntype>
+            <parameter>
+                <name>PagePosition</name>
+                <type>int</type>
+            </parameter>
+            <parameter>
+                <name>SmoothScroll</name>
+                <type>boolean</type>
+            </parameter>
+        </method>
+        <method>
+            <name RaisesSynchronousEvents="true">LoadLayout</name>
+            <comment></comment>
+            <returntype>void</returntype>
+            <parameter>
+                <name>LayoutFile</name>
+                <type>java.lang.String</type>
+            </parameter>
+            <parameter>
+                <name>TabText</name>
+                <type>java.lang.CharSequence</type>
+            </parameter>
+        </method>
+        <property>
+            <name>CurrentPage</name>
+            <returntype>int</returntype>
+            <comment>Gets the current page index.</comment>
+        </property>
+        <designerProperty>key:TabHeight, displayname:Tab Height, fieldtype:Int, defaultvalue:50</designerProperty>
+        <designerProperty>key:IndicatorHeight, displayname:Indicator Height, fieldtype:Int, defaultvalue:8</designerProperty>
+        <designerProperty>key:UnderlineHeight, displayname:Underline Height, fieldtype:Int, defaultvalue:2</designerProperty>
+        <designerProperty>key:TabTextSize, displayname:Tab Text Size, fieldtype:Int, defaultvalue:12</designerProperty>
+        <designerProperty>key:TabTextColor, displayname:Tab Text Color, fieldtype:Color, defaultvalue:0xFF666666</designerProperty>
+        <designerProperty>key:IndicatorColor, displayname:Indicator Color, fieldtype:Color, defaultvalue:0xFF666666</designerProperty>
+        <designerProperty>key:DividerColor, displayname:Divider Color, fieldtype:Color, defaultvalue:0x1A000000</designerProperty>
+        <designerProperty>key:UnderlineColor, displayname:Underline Color, fieldtype:Color, defaultvalue:0x1A000000</designerProperty>
+    </class>
+    <version>1.0</version>
+    <dependsOn>android-support-v4</dependsOn>
+</root>

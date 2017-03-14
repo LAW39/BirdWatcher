@@ -384,41 +384,59 @@ RDebugUtils.currentLine=1900554;
  //BA.debugLineNum = 1900554;BA.debugLine="SpeciesCursor = Starter.Database.ExecQuery(\"SELEC";
 _speciescursor.setObject((android.database.Cursor)(mostCurrent._starter._database.ExecQuery("SELECT ID, Name FROM Species ORDER BY Name ASC")));
 RDebugUtils.currentLine=1900555;
- //BA.debugLineNum = 1900555;BA.debugLine="SpeciesList.clear";
-mostCurrent._specieslist.Clear();
+ //BA.debugLineNum = 1900555;BA.debugLine="MapCheck.Visible = True";
+mostCurrent._mapcheck.setVisible(anywheresoftware.b4a.keywords.Common.True);
 RDebugUtils.currentLine=1900556;
- //BA.debugLineNum = 1900556;BA.debugLine="If MapLookupFlag Then";
-if (_maplookupflag) { 
+ //BA.debugLineNum = 1900556;BA.debugLine="GetLocation.Visible = True";
+mostCurrent._getlocation.setVisible(anywheresoftware.b4a.keywords.Common.True);
 RDebugUtils.currentLine=1900557;
- //BA.debugLineNum = 1900557;BA.debugLine="OpenSightingInfo(Map.SelectedID)";
-_opensightinginfo(mostCurrent._map._selectedid);
+ //BA.debugLineNum = 1900557;BA.debugLine="AddNow.Visible = True";
+mostCurrent._addnow.setVisible(anywheresoftware.b4a.keywords.Common.True);
 RDebugUtils.currentLine=1900558;
- //BA.debugLineNum = 1900558;BA.debugLine="MapLookupFlag = False";
-_maplookupflag = anywheresoftware.b4a.keywords.Common.False;
- }else {
+ //BA.debugLineNum = 1900558;BA.debugLine="SpeciesList.clear";
+mostCurrent._specieslist.Clear();
+RDebugUtils.currentLine=1900559;
+ //BA.debugLineNum = 1900559;BA.debugLine="If MapLookupFlag Then";
+if (_maplookupflag) { 
 RDebugUtils.currentLine=1900560;
- //BA.debugLineNum = 1900560;BA.debugLine="For i=0 To SpeciesCursor.RowCount-1";
-{
-final int step14 = 1;
-final int limit14 = (int) (_speciescursor.getRowCount()-1);
-for (_i = (int) (0) ; (step14 > 0 && _i <= limit14) || (step14 < 0 && _i >= limit14); _i = ((int)(0 + _i + step14)) ) {
+ //BA.debugLineNum = 1900560;BA.debugLine="OpenSightingInfo(Map.SelectedID)";
+_opensightinginfo(mostCurrent._map._selectedid);
 RDebugUtils.currentLine=1900561;
- //BA.debugLineNum = 1900561;BA.debugLine="SpeciesCursor.Position = i";
-_speciescursor.setPosition(_i);
+ //BA.debugLineNum = 1900561;BA.debugLine="MapLookupFlag = False";
+_maplookupflag = anywheresoftware.b4a.keywords.Common.False;
 RDebugUtils.currentLine=1900562;
- //BA.debugLineNum = 1900562;BA.debugLine="SpeciesList.AddSingleLine2(SpeciesCursor.GetStr";
+ //BA.debugLineNum = 1900562;BA.debugLine="GetLocation.Visible = False";
+mostCurrent._getlocation.setVisible(anywheresoftware.b4a.keywords.Common.False);
+RDebugUtils.currentLine=1900563;
+ //BA.debugLineNum = 1900563;BA.debugLine="MapCheck.Visible = False";
+mostCurrent._mapcheck.setVisible(anywheresoftware.b4a.keywords.Common.False);
+RDebugUtils.currentLine=1900564;
+ //BA.debugLineNum = 1900564;BA.debugLine="AddNow.Visible = False";
+mostCurrent._addnow.setVisible(anywheresoftware.b4a.keywords.Common.False);
+ }else {
+RDebugUtils.currentLine=1900566;
+ //BA.debugLineNum = 1900566;BA.debugLine="For i=0 To SpeciesCursor.RowCount-1";
+{
+final int step20 = 1;
+final int limit20 = (int) (_speciescursor.getRowCount()-1);
+for (_i = (int) (0) ; (step20 > 0 && _i <= limit20) || (step20 < 0 && _i >= limit20); _i = ((int)(0 + _i + step20)) ) {
+RDebugUtils.currentLine=1900567;
+ //BA.debugLineNum = 1900567;BA.debugLine="SpeciesCursor.Position = i";
+_speciescursor.setPosition(_i);
+RDebugUtils.currentLine=1900568;
+ //BA.debugLineNum = 1900568;BA.debugLine="SpeciesList.AddSingleLine2(SpeciesCursor.GetStr";
 mostCurrent._specieslist.AddSingleLine2(_speciescursor.GetString("Name"),(Object)(_speciescursor.GetString("ID")));
  }
 };
  };
-RDebugUtils.currentLine=1900566;
- //BA.debugLineNum = 1900566;BA.debugLine="Location.Initialize";
+RDebugUtils.currentLine=1900572;
+ //BA.debugLineNum = 1900572;BA.debugLine="Location.Initialize";
 mostCurrent._location.Initialize();
-RDebugUtils.currentLine=1900567;
- //BA.debugLineNum = 1900567;BA.debugLine="Map.SelectedBird=False";
+RDebugUtils.currentLine=1900573;
+ //BA.debugLineNum = 1900573;BA.debugLine="Map.SelectedBird=False";
 mostCurrent._map._selectedbird = anywheresoftware.b4a.keywords.Common.False;
-RDebugUtils.currentLine=1900568;
- //BA.debugLineNum = 1900568;BA.debugLine="End Sub";
+RDebugUtils.currentLine=1900574;
+ //BA.debugLineNum = 1900574;BA.debugLine="End Sub";
 return "";
 }
 public static String  _opensightinginfo(int _id) throws Exception{
