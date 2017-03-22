@@ -69,6 +69,13 @@
 		<activity
 			android:windowSoftInputMode="stateHidden"
 			android:launchMode="singleTop"
+			android:name=".sightingphotos"
+			android:label="Bird Watcher"
+			android:screenOrientation="portrait">
+		</activity>
+		<activity
+			android:windowSoftInputMode="stateHidden"
+			android:launchMode="singleTop"
 			android:name=".map"
 			android:label="Bird Watcher"
 			android:screenOrientation="portrait">

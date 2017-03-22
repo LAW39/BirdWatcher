@@ -11,13 +11,13 @@ import anywheresoftware.b4a.pc.Debug;
 import anywheresoftware.b4a.pc.B4XTypes.B4XClass;
 import anywheresoftware.b4a.pc.B4XTypes.DeviceClass;
 
-public class main implements IRemote{
-	public static main mostCurrent;
+public class sightingphotos implements IRemote{
+	public static sightingphotos mostCurrent;
 	public static RemoteObject processBA;
     public static boolean processGlobalsRun;
     public static RemoteObject myClass;
     public static RemoteObject remoteMe;
-	public main() {
+	public sightingphotos() {
 		mostCurrent = this;
 	}
     public RemoteObject getRemoteMe() {
@@ -30,7 +30,7 @@ public class main implements IRemote{
 
 	}
     static {
-        anywheresoftware.b4a.pc.RapidSub.moduleToObject.put(new B4XClass("main"), "LAW.BirdWatcher.com.main");
+        anywheresoftware.b4a.pc.RapidSub.moduleToObject.put(new B4XClass("sightingphotos"), "LAW.BirdWatcher.com.sightingphotos");
 	}
 
 public boolean isSingleton() {
@@ -50,22 +50,23 @@ public boolean isSingleton() {
 		_activity = (RemoteObject) args[3];
         anywheresoftware.b4a.keywords.Common.Density = (Float)args[4];
         remoteMe = (RemoteObject) args[5];
-		pcBA = new PCBA(this, main.class);
+		pcBA = new PCBA(this, sightingphotos.class);
         main_subs_0.initializeProcessGlobals();
 		return pcBA;
 	}
 public static RemoteObject __c = RemoteObject.declareNull("anywheresoftware.b4a.keywords.Common");
-public static RemoteObject _birdphotopath = RemoteObject.createImmutable("");
-public static RemoteObject _reload_btn = RemoteObject.declareNull("anywheresoftware.b4a.objects.ButtonWrapper");
-public static RemoteObject _speciescursor = RemoteObject.declareNull("anywheresoftware.b4a.sql.SQL.CursorWrapper");
+public static RemoteObject _sightingphotolist = RemoteObject.declareNull("anywheresoftware.b4a.objects.collections.List");
+public static RemoteObject _sightid = RemoteObject.createImmutable(0);
 public static RemoteObject _phototab = RemoteObject.declareNull("anywheresoftware.b4a.objects.TabStripViewPager");
+public static RemoteObject _sightingphoto = RemoteObject.declareNull("anywheresoftware.b4a.objects.ImageViewWrapper");
+public static RemoteObject _removebtn = RemoteObject.declareNull("anywheresoftware.b4a.objects.ButtonWrapper");
+public static LAW.BirdWatcher.com.main _main = null;
 public static LAW.BirdWatcher.com.starter _starter = null;
 public static LAW.BirdWatcher.com.species _species = null;
 public static LAW.BirdWatcher.com.sightings _sightings = null;
 public static LAW.BirdWatcher.com.codefunctions _codefunctions = null;
-public static LAW.BirdWatcher.com.sightingphotos _sightingphotos = null;
 public static LAW.BirdWatcher.com.map _map = null;
   public Object[] GetGlobals() {
-		return new Object[] {"Activity",main.mostCurrent._activity,"BirdPhotoPath",main._birdphotopath,"CodeFunctions",Debug.moduleToString(LAW.BirdWatcher.com.codefunctions.class),"Map",Debug.moduleToString(LAW.BirdWatcher.com.map.class),"Phototab",main.mostCurrent._phototab,"Reload_BTN",main.mostCurrent._reload_btn,"SightingPhotos",Debug.moduleToString(LAW.BirdWatcher.com.sightingphotos.class),"Sightings",Debug.moduleToString(LAW.BirdWatcher.com.sightings.class),"Species",Debug.moduleToString(LAW.BirdWatcher.com.species.class),"SpeciesCursor",main.mostCurrent._speciescursor,"Starter",Debug.moduleToString(LAW.BirdWatcher.com.starter.class)};
+		return new Object[] {"Activity",sightingphotos.mostCurrent._activity,"CodeFunctions",Debug.moduleToString(LAW.BirdWatcher.com.codefunctions.class),"Main",Debug.moduleToString(LAW.BirdWatcher.com.main.class),"Map",Debug.moduleToString(LAW.BirdWatcher.com.map.class),"Phototab",sightingphotos.mostCurrent._phototab,"RemoveBtn",sightingphotos.mostCurrent._removebtn,"SightID",sightingphotos._sightid,"SightingPhoto",sightingphotos.mostCurrent._sightingphoto,"SightingPhotoList",sightingphotos._sightingphotolist,"Sightings",Debug.moduleToString(LAW.BirdWatcher.com.sightings.class),"Species",Debug.moduleToString(LAW.BirdWatcher.com.species.class),"Starter",Debug.moduleToString(LAW.BirdWatcher.com.starter.class)};
 }
 }

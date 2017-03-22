@@ -50,12 +50,14 @@ public static RemoteObject _database = RemoteObject.declareNull("anywheresoftwar
 public static RemoteObject _gps1 = RemoteObject.declareNull("anywheresoftware.b4a.gps.GPS");
 public static RemoteObject _cc = RemoteObject.declareNull("anywheresoftware.b4a.phone.Phone.ContentChooser");
 public static RemoteObject _l1 = RemoteObject.declareNull("anywheresoftware.b4a.gps.LocationWrapper");
+public static RemoteObject _list = RemoteObject.declareNull("anywheresoftware.b4a.objects.collections.List");
 public static LAW.BirdWatcher.com.main _main = null;
 public static LAW.BirdWatcher.com.species _species = null;
 public static LAW.BirdWatcher.com.sightings _sightings = null;
-public static LAW.BirdWatcher.com.map _map = null;
 public static LAW.BirdWatcher.com.codefunctions _codefunctions = null;
+public static LAW.BirdWatcher.com.sightingphotos _sightingphotos = null;
+public static LAW.BirdWatcher.com.map _map = null;
   public Object[] GetGlobals() {
-		return new Object[] {"CC",starter._cc,"CodeFunctions",Debug.moduleToString(LAW.BirdWatcher.com.codefunctions.class),"database",starter._database,"GPS1",starter._gps1,"L1",starter._l1,"Main",Debug.moduleToString(LAW.BirdWatcher.com.main.class),"Map",Debug.moduleToString(LAW.BirdWatcher.com.map.class),"Service",starter.mostCurrent._service,"Sightings",Debug.moduleToString(LAW.BirdWatcher.com.sightings.class),"Species",Debug.moduleToString(LAW.BirdWatcher.com.species.class)};
+		return new Object[] {"CC",starter._cc,"CodeFunctions",Debug.moduleToString(LAW.BirdWatcher.com.codefunctions.class),"database",starter._database,"GPS1",starter._gps1,"L1",starter._l1,"list",starter._list,"Main",Debug.moduleToString(LAW.BirdWatcher.com.main.class),"Map",Debug.moduleToString(LAW.BirdWatcher.com.map.class),"Service",starter.mostCurrent._service,"SightingPhotos",Debug.moduleToString(LAW.BirdWatcher.com.sightingphotos.class),"Sightings",Debug.moduleToString(LAW.BirdWatcher.com.sightings.class),"Species",Debug.moduleToString(LAW.BirdWatcher.com.species.class)};
 }
 }

@@ -43,6 +43,7 @@ Sub Activity_Create(FirstTime As Boolean)
     	ToastMessageShow("Please install Google Play Services.", True)
     End If
 	
+	SpeciesList.SingleLineLayout.Label.TextColor = Colors.black
 	
 	Location.Initialize(0,0)
 		
@@ -51,7 +52,7 @@ Sub Activity_Create(FirstTime As Boolean)
 	MapTimer.Initialize("LootTimer",1000)
 	
 	Dim SpeciesCursor As Cursor
-	SpeciesCursor = Starter.Database.ExecQuery("SELECT ID, Name FROM Species ORDER BY ID ASC")
+	SpeciesCursor = Starter.Database.ExecQuery("SELECT ID, Name FROM Species ORDER BY Name ASC")
 	SpeciesList.clear
 		
 	For i=0 To SpeciesCursor.RowCount-1

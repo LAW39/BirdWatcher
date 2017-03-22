@@ -346,8 +346,9 @@ public static long _imagetime = 0L;
 public LAW.BirdWatcher.com.main _main = null;
 public LAW.BirdWatcher.com.starter _starter = null;
 public LAW.BirdWatcher.com.sightings _sightings = null;
-public LAW.BirdWatcher.com.map _map = null;
 public LAW.BirdWatcher.com.codefunctions _codefunctions = null;
+public LAW.BirdWatcher.com.sightingphotos _sightingphotos = null;
+public LAW.BirdWatcher.com.map _map = null;
 public static String  _activity_create(boolean _firsttime) throws Exception{
 RDebugUtils.currentModule="species";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "activity_create"))
@@ -361,8 +362,8 @@ RDebugUtils.currentLine=1114115;
  //BA.debugLineNum = 1114115;BA.debugLine="Activity.Title = \"Species\"";
 mostCurrent._activity.setTitle((Object)("Species"));
 RDebugUtils.currentLine=1114117;
- //BA.debugLineNum = 1114117;BA.debugLine="SpeciesListView.Color = 0";
-mostCurrent._specieslistview.setColor((int) (0));
+ //BA.debugLineNum = 1114117;BA.debugLine="SpeciesListView.SingleLineLayout.Label.TextColor";
+mostCurrent._specieslistview.getSingleLineLayout().Label.setTextColor(anywheresoftware.b4a.keywords.Common.Colors.Black);
 RDebugUtils.currentLine=1114118;
  //BA.debugLineNum = 1114118;BA.debugLine="PopulateList ' Subroutine to populate list from D";
 _populatelist();

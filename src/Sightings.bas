@@ -12,6 +12,7 @@ Sub Process_Globals
 	'These global variables will be declared once when the application starts.
 	'These variables can be accessed from all modules.
 	Dim MapLookupFlag As Boolean = False
+	Dim SightingPhotoList As List
 End Sub
 
 Sub Globals
@@ -23,13 +24,14 @@ Sub Globals
 	Private BirdAppearance As EditText
 	Private WeatherConditions As EditText
 	Private Time As Label
-	Private BirdPhotoView As ImageView
 	Private SelectedID As Int = 0
 	Private Date As Label
 	Private MapCheck As CheckBox
 	Private Location As Location
 	Private DateTimeTicks As Long
 	Private GetLocation As Button
+	Private ViewPhotos As Button
+	Private SightingList As ListView
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
@@ -40,27 +42,10 @@ Sub Activity_Create(FirstTime As Boolean)
 	Activity.LoadLayout("sightingadd")
 	Activity.Title = "Sightings"
 	SpeciesList.SingleLineLayout.Label.TextColor = Colors.black
+	SightingList.SingleLineLayout.Label.TextColor = Colors.black
 	DateTime.Dateformat = "dd/MM/yyyy"
 	DateTime.TimeFormat= "HH:mm"
-	Dim SpeciesCursor As Cursor
-	SpeciesCursor = Starter.Database.ExecQuery("SELECT ID, Name FROM Species ORDER BY Name ASC")
-	MapCheck.Visible = True
-	GetLocation.Visible = True
-	AddNow.Visible = True
-	SpeciesList.clear
-	If MapLookupFlag Then
-		OpenSightingInfo(Map.SelectedID)
-		MapLookupFlag = False
-		GetLocation.Visible = False
-		MapCheck.Visible = False
-		AddNow.Visible = False
-	Else
-		For i=0 To SpeciesCursor.RowCount-1
-			SpeciesCursor.Position = i
-			SpeciesList.AddSingleLine2(SpeciesCursor.GetString("Name"),SpeciesCursor.GetString("ID"))	
-		Next
-	
-	End If
+	Populate_List
 	Location.Initialize
 	Map.SelectedBird=False
 End Sub
@@ -74,6 +59,35 @@ If Starter.GPS1.GPSEnabled = False Then
 	StartActivity(Starter.GPS1.LocationSettingsIntent) 'Will open the relevant settings screen.
 End If
 End Sub
+
+Sub Populate_List
+	
+	Dim SpeciesCursor As Cursor
+	SpeciesCursor = Starter.Database.ExecQuery("SELECT ID, Name FROM Species ORDER BY Name ASC")
+	MapCheck.Visible = True
+	GetLocation.Visible = True
+	AddNow.Visible = False
+	SpeciesList.clear
+	If MapLookupFlag Then
+		OpenSightingInfo(Map.SelectedID)
+		MapLookupFlag = False
+		GetLocation.Visible = False
+		MapCheck.Visible = False
+		AddNow.Visible = False
+	Else
+		SpeciesList.AddSingleLine2("Add Sighting","-1")
+		For i=0 To SpeciesCursor.RowCount-1
+			SpeciesCursor.Position = i
+			SpeciesList.AddSingleLine2(SpeciesCursor.GetString("Name"),SpeciesCursor.GetString("ID"))	
+		Next
+	
+	End If
+	
+	
+	
+	
+End Sub
+
 
 Sub Activity_Pause (UserClosed As Boolean)
 
@@ -164,18 +178,42 @@ Sub SpeciesList_ItemClick (Position As Int, Value As Object)
 	If Position = -1 Then
 		Return
 	End If
-	LoadBirdPic(SelectedID)
+	If Value = -2 Then
+		AddNow.Width = 100dip
+		AddNow.Visible = True
+	Else
+		AddNow.Width = 200dip
+		AddNow.Visible = True			
+	End If
+	Load_Photos(Value)
+	'Display_Photos
+	Dim SightingCursor As Cursor
+	Dim SQLQuery As StringBuilder
+	SQLQuery.Initialize
 	
+	SQLQuery.Append("SELECT * FROM Sightings").append(CRLF)
+	Log(SelectedID)
+	SQLQuery.Append("WHERE SpeciesID = ?").append(CRLF)
+	SightingCursor = Starter.Database.ExecQuery2(SQLQuery, Array As String(Value)) ' Selects fields from DB
+	SightingList.clear 'Clears list
+	
+	SightingList.AddSingleLine2("<Add Sighting>", 0) 'Adds placeholder to add new Sighting
+	
+	For i=0 To SightingCursor.RowCount-1 ' Loop to populate list from DB
+	
+		SightingCursor.Position = i
+		SightingList.AddSingleLine2(i+1,SightingCursor.GetString("ID"))	
+	Next
 End Sub
 
-Sub LoadBirdPic(ID As Int)
-	ID = ID +1
-	
-	Dim NewBird As Bitmap
-	NewBird.InitializeSample(File.DirAssets, ID & ".jpg", 240, 240)
-	BirdPhotoView.Bitmap = NewBird
-
-End Sub
+'Sub Display_Photos()
+'	For i = 0 To SightingPhotoList.Size-1
+'		
+'		Dim PhotoInt As String = i+1
+'		PhotoTab.LoadLayout("PhotoTab",PhotoInt)
+'		
+'	Next
+'End Sub
 
 Public Sub OpenSightingInfo(ID As Int)
 	ID = ID + 1
@@ -183,6 +221,37 @@ Public Sub OpenSightingInfo(ID As Int)
 	LoadAttributes(ID)
 
 	Return 
+End Sub
+
+Sub Load_Photos(SightingID As Int)
+	SightingPhotoList.Initialize
+	Log(SightingID)
+	Dim SpeciesCursor As Cursor
+	Dim SQLQuery As StringBuilder
+	Dim SightingPicture As Bitmap
+	Dim BirdPhotoFile As Double
+	SQLQuery.Initialize
+	SQLQuery.Append("SELECT PhotoDir").Append(CRLF)
+	SQLQuery.append("FROM SightingPhoto").Append(CRLF)
+	SQLQuery.Append("LEFT JOIN Sightings ON Sightings.ID = SightingPhoto.SightingID").Append(CRLF)
+	SQLQuery.Append("WHERE Sightings.ID = ?").Append(CRLF)
+	
+	SpeciesCursor = Starter.Database.ExecQuery2(SQLQuery,Array As String(SightingID))
+	SpeciesCursor.Position = 0
+	Log(SpeciesCursor.RowCount & "Test")
+	Try 
+		
+		For counter = 0 To SpeciesCursor.RowCount
+			BirdPhotoFile = SpeciesCursor.GetDouble("PhotoDir")
+			SightingPicture.Initialize(Main.BirdPhotoPath,BirdPhotoFile & ".jpg")
+			SightingPhotoList.Add(SightingPicture)
+		Next
+	Catch
+		ToastMessageShow("No sighting images",True)
+	End Try
+	SightingPhotos.SightingPhotoList.Initialize
+	SightingPhotos.SightingPhotoList.Clear
+	SightingPhotos.SightingPhotoList = SightingPhotoList
 End Sub
 
 Sub LoadAttributes(ID As Int)
@@ -221,4 +290,31 @@ Sub Time_Click
 	 If DialogRet = DialogResponse.POSITIVE Then
 	 	Time.Text = DateTime.Time(TimeDialog.TimeTicks)	
 	End If
+End Sub
+
+
+Sub ViewPhotos_Click
+	StartActivity(SightingPhotos)
+	Starter.list.Initialize
+	Starter.list.Clear
+	Starter.list = SightingPhotoList
+End Sub
+
+Sub SightingList_ItemClick (Position As Int, Value As Object)
+	PopulateSightings(Value)
+End Sub
+
+Sub PopulateSightings(sightingID As Int) 
+	Dim Cursor As Cursor
+		Cursor = Starter.database.ExecQuery("SELECT * FROM Sightings WHERE ID = " & sightingID)
+		Cursor.Position = 0
+		FlockSize.Text = Cursor.GetString("Flock")
+		BirdAppearance.Text = Cursor.GetString("Appearance")
+		WeatherConditions.Text = Cursor.GetString("Weather")
+		Date.Text = DateTime.Date(Cursor.GetLong("Epoch"))
+		Time.Text = DateTime.Time(Cursor.GetLong("Epoch"))
+		
+		'SpeciesAppearance.Text = Cursor.GetString("Appearance")
+	
+	
 End Sub

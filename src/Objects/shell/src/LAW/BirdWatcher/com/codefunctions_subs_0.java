@@ -8,7 +8,7 @@ public class codefunctions_subs_0 {
 
 public static RemoteObject  _getpathfromcontentresult(RemoteObject _ba,RemoteObject _uristring) throws Exception{
 try {
-		Debug.PushSubsStack("GetPathFromContentResult (codefunctions) ","codefunctions",5,_ba,codefunctions.mostCurrent,10);
+		Debug.PushSubsStack("GetPathFromContentResult (codefunctions) ","codefunctions",4,_ba,codefunctions.mostCurrent,10);
 if (RapidSub.canDelegate("getpathfromcontentresult")) return codefunctions.remoteMe.runUserSub(false, "codefunctions","getpathfromcontentresult", _ba, _uristring);
 RemoteObject _proj = null;
 RemoteObject _cursor = RemoteObject.declareNull("anywheresoftware.b4a.sql.SQL.CursorWrapper");

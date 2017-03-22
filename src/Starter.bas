@@ -15,6 +15,7 @@ Sub Process_Globals
 	Dim GPS1 As GPS
 	Public CC As ContentChooser
 	Dim L1 As Location
+	Dim list As List
 End Sub
 
 Sub Service_Create
@@ -25,6 +26,7 @@ Sub Service_Create
 		File.Copy(File.DirAssets,"database.db",File.DirDefaultExternal,"database.db")		
 	End If
 
+	list.Initialize
 	
 	database.Initialize(File.DirDefaultExternal,"database.db",False) ' Code to initilise Database and other controls
  	SpeciesCursor = database.ExecQuery("SELECT ID FROM Species")

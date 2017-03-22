@@ -49,8 +49,9 @@ public static LAW.BirdWatcher.com.main _main = null;
 public static LAW.BirdWatcher.com.starter _starter = null;
 public static LAW.BirdWatcher.com.species _species = null;
 public static LAW.BirdWatcher.com.sightings _sightings = null;
+public static LAW.BirdWatcher.com.sightingphotos _sightingphotos = null;
 public static LAW.BirdWatcher.com.map _map = null;
   public Object[] GetGlobals() {
-		return new Object[] {"Main",Debug.moduleToString(LAW.BirdWatcher.com.main.class),"Map",Debug.moduleToString(LAW.BirdWatcher.com.map.class),"Sightings",Debug.moduleToString(LAW.BirdWatcher.com.sightings.class),"Species",Debug.moduleToString(LAW.BirdWatcher.com.species.class),"Starter",Debug.moduleToString(LAW.BirdWatcher.com.starter.class)};
+		return new Object[] {"Main",Debug.moduleToString(LAW.BirdWatcher.com.main.class),"Map",Debug.moduleToString(LAW.BirdWatcher.com.map.class),"SightingPhotos",Debug.moduleToString(LAW.BirdWatcher.com.sightingphotos.class),"Sightings",Debug.moduleToString(LAW.BirdWatcher.com.sightings.class),"Species",Debug.moduleToString(LAW.BirdWatcher.com.species.class),"Starter",Debug.moduleToString(LAW.BirdWatcher.com.starter.class)};
 }
 }

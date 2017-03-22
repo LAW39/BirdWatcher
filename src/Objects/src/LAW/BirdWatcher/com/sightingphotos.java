@@ -14,8 +14,8 @@ import anywheresoftware.b4a.B4AUncaughtException;
 import anywheresoftware.b4a.debug.*;
 import java.lang.ref.WeakReference;
 
-public class main extends Activity implements B4AActivity{
-	public static main mostCurrent;
+public class sightingphotos extends Activity implements B4AActivity{
+	public static sightingphotos mostCurrent;
 	static boolean afterFirstLayout;
 	static boolean isFirst = true;
     private static boolean processGlobalsRun = false;
@@ -32,7 +32,7 @@ public class main extends Activity implements B4AActivity{
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		if (isFirst) {
-			processBA = new anywheresoftware.b4a.ShellBA(this.getApplicationContext(), null, null, "LAW.BirdWatcher.com", "LAW.BirdWatcher.com.main");
+			processBA = new anywheresoftware.b4a.ShellBA(this.getApplicationContext(), null, null, "LAW.BirdWatcher.com", "LAW.BirdWatcher.com.sightingphotos");
 			processBA.loadHtSubs(this.getClass());
 	        float deviceScale = getApplicationContext().getResources().getDisplayMetrics().density;
 	        BALayout.setDeviceScale(deviceScale);
@@ -41,7 +41,7 @@ public class main extends Activity implements B4AActivity{
 		else if (previousOne != null) {
 			Activity p = previousOne.get();
 			if (p != null && p != this) {
-                BA.LogInfo("Killing previous instance (main).");
+                BA.LogInfo("Killing previous instance (sightingphotos).");
 				p.finish();
 			}
 		}
@@ -83,7 +83,7 @@ public class main extends Activity implements B4AActivity{
 	private void afterFirstLayout() {
         if (this != mostCurrent)
 			return;
-		activityBA = new BA(this, layout, processBA, "LAW.BirdWatcher.com", "LAW.BirdWatcher.com.main");
+		activityBA = new BA(this, layout, processBA, "LAW.BirdWatcher.com", "LAW.BirdWatcher.com.sightingphotos");
         
         processBA.sharedProcessBA.activityBA = new java.lang.ref.WeakReference<BA>(activityBA);
         anywheresoftware.b4a.objects.ViewWrapper.lastId = 0;
@@ -92,19 +92,19 @@ public class main extends Activity implements B4AActivity{
         if (BA.isShellModeRuntimeCheck(processBA)) {
 			if (isFirst)
 				processBA.raiseEvent2(null, true, "SHELL", false);
-			processBA.raiseEvent2(null, true, "CREATE", true, "LAW.BirdWatcher.com.main", processBA, activityBA, _activity, anywheresoftware.b4a.keywords.Common.Density, mostCurrent);
+			processBA.raiseEvent2(null, true, "CREATE", true, "LAW.BirdWatcher.com.sightingphotos", processBA, activityBA, _activity, anywheresoftware.b4a.keywords.Common.Density, mostCurrent);
 			_activity.reinitializeForShell(activityBA, "activity");
 		}
         initializeProcessGlobals();		
         initializeGlobals();
         
-        BA.LogInfo("** Activity (main) Create, isFirst = " + isFirst + " **");
+        BA.LogInfo("** Activity (sightingphotos) Create, isFirst = " + isFirst + " **");
         processBA.raiseEvent2(null, true, "activity_create", false, isFirst);
 		isFirst = false;
 		if (this != mostCurrent)
 			return;
         processBA.setActivityPaused(false);
-        BA.LogInfo("** Activity (main) Resume **");
+        BA.LogInfo("** Activity (sightingphotos) Resume **");
         processBA.raiseEvent(null, "activity_resume");
         if (android.os.Build.VERSION.SDK_INT >= 11) {
 			try {
@@ -193,7 +193,7 @@ public class main extends Activity implements B4AActivity{
 		}
 	}
     public static Class<?> getObject() {
-		return main.class;
+		return sightingphotos.class;
 	}
     private Boolean onKeySubExist = null;
     private Boolean onKeyUpSubExist = null;
@@ -262,7 +262,7 @@ public class main extends Activity implements B4AActivity{
         if (_activity == null) //workaround for emulator bug (Issue 2423)
             return;
 		anywheresoftware.b4a.Msgbox.dismiss(true);
-        BA.LogInfo("** Activity (main) Pause, UserClosed = " + activityBA.activity.isFinishing() + " **");
+        BA.LogInfo("** Activity (sightingphotos) Pause, UserClosed = " + activityBA.activity.isFinishing() + " **");
         processBA.raiseEvent2(_activity, true, "activity_pause", false, activityBA.activity.isFinishing());		
         processBA.setActivityPaused(true);
         mostCurrent = null;
@@ -298,7 +298,7 @@ public class main extends Activity implements B4AActivity{
 			if (mostCurrent == null || mostCurrent != activity.get())
 				return;
 			processBA.setActivityPaused(false);
-            BA.LogInfo("** Activity (main) Resume **");
+            BA.LogInfo("** Activity (sightingphotos) Resume **");
 		    processBA.raiseEvent(mostCurrent._activity, "activity_resume", (Object[])null);
 		}
     }
@@ -325,241 +325,206 @@ public class main extends Activity implements B4AActivity{
 
 
 public static void initializeProcessGlobals() {
-    
-    if (main.processGlobalsRun == false) {
-	    main.processGlobalsRun = true;
-		try {
-		        		
-        } catch (Exception e) {
-			throw new RuntimeException(e);
-		}
-    }
-}
-public static boolean isAnyActivityVisible() {
-    boolean vis = false;
-vis = vis | (main.mostCurrent != null);
-vis = vis | (species.mostCurrent != null);
-vis = vis | (sightings.mostCurrent != null);
-vis = vis | (sightingphotos.mostCurrent != null);
-vis = vis | (map.mostCurrent != null);
-return vis;}
-
-private static BA killProgramHelper(BA ba) {
-    if (ba == null)
-        return null;
-    anywheresoftware.b4a.BA.SharedProcessBA sharedProcessBA = ba.sharedProcessBA;
-    if (sharedProcessBA == null || sharedProcessBA.activityBA == null)
-        return null;
-    return sharedProcessBA.activityBA.get();
-}
-public static void killProgram() {
-     {
-            Activity __a = null;
-            if (main.previousOne != null) {
-				__a = main.previousOne.get();
-			}
-            else {
-                BA ba = killProgramHelper(main.mostCurrent == null ? null : main.mostCurrent.processBA);
-                if (ba != null) __a = ba.activity;
+             try {
+                Class.forName(BA.applicationContext.getPackageName() + ".main").getMethod("initializeProcessGlobals").invoke(null, null);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
             }
-            if (__a != null)
-				__a.finish();}
-
-BA.applicationContext.stopService(new android.content.Intent(BA.applicationContext, starter.class));
- {
-            Activity __a = null;
-            if (species.previousOne != null) {
-				__a = species.previousOne.get();
-			}
-            else {
-                BA ba = killProgramHelper(species.mostCurrent == null ? null : species.mostCurrent.processBA);
-                if (ba != null) __a = ba.activity;
-            }
-            if (__a != null)
-				__a.finish();}
-
- {
-            Activity __a = null;
-            if (sightings.previousOne != null) {
-				__a = sightings.previousOne.get();
-			}
-            else {
-                BA ba = killProgramHelper(sightings.mostCurrent == null ? null : sightings.mostCurrent.processBA);
-                if (ba != null) __a = ba.activity;
-            }
-            if (__a != null)
-				__a.finish();}
-
- {
-            Activity __a = null;
-            if (sightingphotos.previousOne != null) {
-				__a = sightingphotos.previousOne.get();
-			}
-            else {
-                BA ba = killProgramHelper(sightingphotos.mostCurrent == null ? null : sightingphotos.mostCurrent.processBA);
-                if (ba != null) __a = ba.activity;
-            }
-            if (__a != null)
-				__a.finish();}
-
- {
-            Activity __a = null;
-            if (map.previousOne != null) {
-				__a = map.previousOne.get();
-			}
-            else {
-                BA ba = killProgramHelper(map.mostCurrent == null ? null : map.mostCurrent.processBA);
-                if (ba != null) __a = ba.activity;
-            }
-            if (__a != null)
-				__a.finish();}
-
 }
 public anywheresoftware.b4a.keywords.Common __c = null;
-public static String _birdphotopath = "";
-public anywheresoftware.b4a.objects.ButtonWrapper _reload_btn = null;
-public anywheresoftware.b4a.sql.SQL.CursorWrapper _speciescursor = null;
+public static anywheresoftware.b4a.objects.collections.List _sightingphotolist = null;
+public static int _sightid = 0;
 public anywheresoftware.b4a.objects.TabStripViewPager _phototab = null;
+public anywheresoftware.b4a.objects.ImageViewWrapper _sightingphoto = null;
+public anywheresoftware.b4a.objects.ButtonWrapper _removebtn = null;
+public LAW.BirdWatcher.com.main _main = null;
 public LAW.BirdWatcher.com.starter _starter = null;
 public LAW.BirdWatcher.com.species _species = null;
 public LAW.BirdWatcher.com.sightings _sightings = null;
 public LAW.BirdWatcher.com.codefunctions _codefunctions = null;
-public LAW.BirdWatcher.com.sightingphotos _sightingphotos = null;
 public LAW.BirdWatcher.com.map _map = null;
 public static String  _activity_create(boolean _firsttime) throws Exception{
-RDebugUtils.currentModule="main";
+RDebugUtils.currentModule="sightingphotos";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "activity_create"))
 	return (String) Debug.delegate(mostCurrent.activityBA, "activity_create", new Object[] {_firsttime});
-RDebugUtils.currentLine=131072;
- //BA.debugLineNum = 131072;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
-RDebugUtils.currentLine=131074;
- //BA.debugLineNum = 131074;BA.debugLine="If (File.Exists(File.DirDefaultExternal,\"database";
-if ((anywheresoftware.b4a.keywords.Common.File.Exists(anywheresoftware.b4a.keywords.Common.File.getDirDefaultExternal(),"database.db"))) { 
-RDebugUtils.currentLine=131075;
- //BA.debugLineNum = 131075;BA.debugLine="Log(\"Database already exists on device, no need";
-anywheresoftware.b4a.keywords.Common.Log("Database already exists on device, no need to copy over");
-RDebugUtils.currentLine=131076;
- //BA.debugLineNum = 131076;BA.debugLine="Log(BirdPhotoPath)";
-anywheresoftware.b4a.keywords.Common.Log(_birdphotopath);
- }else {
-RDebugUtils.currentLine=131078;
- //BA.debugLineNum = 131078;BA.debugLine="File.Copy(File.DirAssets,\"database.db\",File.DirD";
-anywheresoftware.b4a.keywords.Common.File.Copy(anywheresoftware.b4a.keywords.Common.File.getDirAssets(),"database.db",anywheresoftware.b4a.keywords.Common.File.getDirDefaultExternal(),"database.db");
-RDebugUtils.currentLine=131079;
- //BA.debugLineNum = 131079;BA.debugLine="Log(\"Copied database file to device\")";
-anywheresoftware.b4a.keywords.Common.Log("Copied database file to device");
- };
-RDebugUtils.currentLine=131081;
- //BA.debugLineNum = 131081;BA.debugLine="Activity.LoadLayout(\"LaunchScreen\")";
-mostCurrent._activity.LoadLayout("LaunchScreen",mostCurrent.activityBA);
-RDebugUtils.currentLine=131082;
- //BA.debugLineNum = 131082;BA.debugLine="Activity.Title = \"Launch Screen\"";
-mostCurrent._activity.setTitle((Object)("Launch Screen"));
-RDebugUtils.currentLine=131083;
- //BA.debugLineNum = 131083;BA.debugLine="StartService(Starter)";
-anywheresoftware.b4a.keywords.Common.StartService(mostCurrent.activityBA,(Object)(mostCurrent._starter.getObject()));
-RDebugUtils.currentLine=131085;
- //BA.debugLineNum = 131085;BA.debugLine="End Sub";
+int _i = 0;
+String _photoint = "";
+RDebugUtils.currentLine=3276800;
+ //BA.debugLineNum = 3276800;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
+RDebugUtils.currentLine=3276803;
+ //BA.debugLineNum = 3276803;BA.debugLine="Activity.LoadLayout(\"SightingPhotos\")";
+mostCurrent._activity.LoadLayout("SightingPhotos",mostCurrent.activityBA);
+RDebugUtils.currentLine=3276804;
+ //BA.debugLineNum = 3276804;BA.debugLine="Phototab.LoadLayout(\"PhotoTab\",\"Species Picture\")";
+mostCurrent._phototab.LoadLayout("PhotoTab",(java.lang.CharSequence)("Species Picture"));
+RDebugUtils.currentLine=3276805;
+ //BA.debugLineNum = 3276805;BA.debugLine="SightingPhotoList.Initialize";
+_sightingphotolist.Initialize();
+RDebugUtils.currentLine=3276806;
+ //BA.debugLineNum = 3276806;BA.debugLine="SightingPhotoList = Starter.list";
+_sightingphotolist = mostCurrent._starter._list;
+RDebugUtils.currentLine=3276807;
+ //BA.debugLineNum = 3276807;BA.debugLine="Log(SightingPhotoList.Size)";
+anywheresoftware.b4a.keywords.Common.Log(BA.NumberToString(_sightingphotolist.getSize()));
+RDebugUtils.currentLine=3276808;
+ //BA.debugLineNum = 3276808;BA.debugLine="For i = 0 To SightingPhotoList.Size-1";
+{
+final int step6 = 1;
+final int limit6 = (int) (_sightingphotolist.getSize()-1);
+for (_i = (int) (0) ; (step6 > 0 && _i <= limit6) || (step6 < 0 && _i >= limit6); _i = ((int)(0 + _i + step6)) ) {
+RDebugUtils.currentLine=3276810;
+ //BA.debugLineNum = 3276810;BA.debugLine="Dim PhotoInt As String = i+1";
+_photoint = BA.NumberToString(_i+1);
+RDebugUtils.currentLine=3276811;
+ //BA.debugLineNum = 3276811;BA.debugLine="Phototab.LoadLayout(\"PhotoTab\",PhotoInt)";
+mostCurrent._phototab.LoadLayout("PhotoTab",(java.lang.CharSequence)(_photoint));
+ }
+};
+RDebugUtils.currentLine=3276814;
+ //BA.debugLineNum = 3276814;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_pause(boolean _userclosed) throws Exception{
-RDebugUtils.currentModule="main";
-RDebugUtils.currentLine=262144;
- //BA.debugLineNum = 262144;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
-RDebugUtils.currentLine=262146;
- //BA.debugLineNum = 262146;BA.debugLine="End Sub";
+RDebugUtils.currentModule="sightingphotos";
+RDebugUtils.currentLine=3407872;
+ //BA.debugLineNum = 3407872;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
+RDebugUtils.currentLine=3407874;
+ //BA.debugLineNum = 3407874;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_resume() throws Exception{
-RDebugUtils.currentModule="main";
+RDebugUtils.currentModule="sightingphotos";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "activity_resume"))
 	return (String) Debug.delegate(mostCurrent.activityBA, "activity_resume", null);
-RDebugUtils.currentLine=196608;
- //BA.debugLineNum = 196608;BA.debugLine="Sub Activity_Resume";
-RDebugUtils.currentLine=196610;
- //BA.debugLineNum = 196610;BA.debugLine="End Sub";
+RDebugUtils.currentLine=3342336;
+ //BA.debugLineNum = 3342336;BA.debugLine="Sub Activity_Resume";
+RDebugUtils.currentLine=3342338;
+ //BA.debugLineNum = 3342338;BA.debugLine="End Sub";
 return "";
 }
-public static String  _mapscreen_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "mapscreen_click"))
-	return (String) Debug.delegate(mostCurrent.activityBA, "mapscreen_click", null);
-RDebugUtils.currentLine=720896;
- //BA.debugLineNum = 720896;BA.debugLine="Sub MapScreen_Click";
-RDebugUtils.currentLine=720897;
- //BA.debugLineNum = 720897;BA.debugLine="StartActivity(\"Map\")";
-anywheresoftware.b4a.keywords.Common.StartActivity(mostCurrent.activityBA,(Object)("Map"));
-RDebugUtils.currentLine=720898;
- //BA.debugLineNum = 720898;BA.debugLine="End Sub";
-return "";
+public static Object  _loadbirdpic(int _sightingid) throws Exception{
+RDebugUtils.currentModule="sightingphotos";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "loadbirdpic"))
+	return (Object) Debug.delegate(mostCurrent.activityBA, "loadbirdpic", new Object[] {_sightingid});
+anywheresoftware.b4a.sql.SQL.CursorWrapper _speciescursor = null;
+anywheresoftware.b4a.keywords.StringBuilderWrapper _sqlquery = null;
+anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper _newbird = null;
+RDebugUtils.currentLine=3473408;
+ //BA.debugLineNum = 3473408;BA.debugLine="Sub LoadBirdPic(SightingID As Int) As Object";
+RDebugUtils.currentLine=3473410;
+ //BA.debugLineNum = 3473410;BA.debugLine="Log(SightingID)";
+anywheresoftware.b4a.keywords.Common.Log(BA.NumberToString(_sightingid));
+RDebugUtils.currentLine=3473411;
+ //BA.debugLineNum = 3473411;BA.debugLine="Dim SpeciesCursor As Cursor";
+_speciescursor = new anywheresoftware.b4a.sql.SQL.CursorWrapper();
+RDebugUtils.currentLine=3473412;
+ //BA.debugLineNum = 3473412;BA.debugLine="Dim SQLQuery As StringBuilder";
+_sqlquery = new anywheresoftware.b4a.keywords.StringBuilderWrapper();
+RDebugUtils.currentLine=3473413;
+ //BA.debugLineNum = 3473413;BA.debugLine="Dim NewBird As Bitmap";
+_newbird = new anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper();
+RDebugUtils.currentLine=3473414;
+ //BA.debugLineNum = 3473414;BA.debugLine="SQLQuery.Initialize";
+_sqlquery.Initialize();
+RDebugUtils.currentLine=3473415;
+ //BA.debugLineNum = 3473415;BA.debugLine="ToastMessageShow(SightingID,True)";
+anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.NumberToString(_sightingid),anywheresoftware.b4a.keywords.Common.True);
+RDebugUtils.currentLine=3473416;
+ //BA.debugLineNum = 3473416;BA.debugLine="SQLQuery.Append(\"SELECT ImagePath\").Append(CRLF)";
+_sqlquery.Append("SELECT ImagePath").Append(anywheresoftware.b4a.keywords.Common.CRLF);
+RDebugUtils.currentLine=3473417;
+ //BA.debugLineNum = 3473417;BA.debugLine="SQLQuery.append(\"FROM Species\").Append(CRLF)";
+_sqlquery.Append("FROM Species").Append(anywheresoftware.b4a.keywords.Common.CRLF);
+RDebugUtils.currentLine=3473418;
+ //BA.debugLineNum = 3473418;BA.debugLine="SQLQuery.Append(\"LEFT JOIN Sightings ON Sightings";
+_sqlquery.Append("LEFT JOIN Sightings ON Sightings.SpeciesID = Species.ID").Append(anywheresoftware.b4a.keywords.Common.CRLF);
+RDebugUtils.currentLine=3473419;
+ //BA.debugLineNum = 3473419;BA.debugLine="SQLQuery.Append(\"WHERE Sightings.ID = ?\").Append(";
+_sqlquery.Append("WHERE Sightings.ID = ?").Append(anywheresoftware.b4a.keywords.Common.CRLF);
+RDebugUtils.currentLine=3473420;
+ //BA.debugLineNum = 3473420;BA.debugLine="SpeciesCursor = Starter.Database.ExecQuery2(SQLQu";
+_speciescursor.setObject((android.database.Cursor)(mostCurrent._starter._database.ExecQuery2(BA.ObjectToString(_sqlquery),new String[]{BA.NumberToString(_sightingid)})));
+RDebugUtils.currentLine=3473421;
+ //BA.debugLineNum = 3473421;BA.debugLine="SpeciesCursor.Position = 0";
+_speciescursor.setPosition((int) (0));
+RDebugUtils.currentLine=3473422;
+ //BA.debugLineNum = 3473422;BA.debugLine="Try";
+try {RDebugUtils.currentLine=3473423;
+ //BA.debugLineNum = 3473423;BA.debugLine="NewBird.InitializeSample(Main.BirdPhotoPath,Spec";
+_newbird.InitializeSample(mostCurrent._main._birdphotopath,BA.NumberToString(_speciescursor.GetLong("ImagePath"))+".jpg",(int) (240),(int) (240));
+ } 
+       catch (Exception e16) {
+			processBA.setLastException(e16);RDebugUtils.currentLine=3473425;
+ //BA.debugLineNum = 3473425;BA.debugLine="NewBird.InitializeSample(Main.BirdPhotoPath,\"0.j";
+_newbird.InitializeSample(mostCurrent._main._birdphotopath,"0.jpg",(int) (240),(int) (240));
+RDebugUtils.currentLine=3473426;
+ //BA.debugLineNum = 3473426;BA.debugLine="Log(\"Image not Found \" & SightingID)";
+anywheresoftware.b4a.keywords.Common.Log("Image not Found "+BA.NumberToString(_sightingid));
+RDebugUtils.currentLine=3473427;
+ //BA.debugLineNum = 3473427;BA.debugLine="ToastMessageShow(\"Image not found\", True)";
+anywheresoftware.b4a.keywords.Common.ToastMessageShow("Image not found",anywheresoftware.b4a.keywords.Common.True);
+ };
+RDebugUtils.currentLine=3473430;
+ //BA.debugLineNum = 3473430;BA.debugLine="Return(NewBird)";
+if (true) return (Object)((_newbird).getObject());
+RDebugUtils.currentLine=3473431;
+ //BA.debugLineNum = 3473431;BA.debugLine="End Sub";
+return null;
 }
-public static String  _reload_btn_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "reload_btn_click"))
-	return (String) Debug.delegate(mostCurrent.activityBA, "reload_btn_click", null);
-int _i = 0;
-RDebugUtils.currentLine=917504;
- //BA.debugLineNum = 917504;BA.debugLine="Sub Reload_BTN_Click";
-RDebugUtils.currentLine=917505;
- //BA.debugLineNum = 917505;BA.debugLine="File.Copy(File.DirAssets,\"database.db\",File.DirDe";
-anywheresoftware.b4a.keywords.Common.File.Copy(anywheresoftware.b4a.keywords.Common.File.getDirAssets(),"database.db",anywheresoftware.b4a.keywords.Common.File.getDirDefaultExternal(),"database.db");
-RDebugUtils.currentLine=917506;
- //BA.debugLineNum = 917506;BA.debugLine="SpeciesCursor = Starter.database.ExecQuery(\"SELEC";
-mostCurrent._speciescursor.setObject((android.database.Cursor)(mostCurrent._starter._database.ExecQuery("SELECT ID FROM Species")));
-RDebugUtils.currentLine=917507;
- //BA.debugLineNum = 917507;BA.debugLine="Starter.database.Initialize(File.DirDefaultExtern";
-mostCurrent._starter._database.Initialize(anywheresoftware.b4a.keywords.Common.File.getDirDefaultExternal(),"database.db",anywheresoftware.b4a.keywords.Common.False);
-RDebugUtils.currentLine=917508;
- //BA.debugLineNum = 917508;BA.debugLine="For i = 0 To 6";
-{
-final int step4 = 1;
-final int limit4 = (int) (6);
-for (_i = (int) (0) ; (step4 > 0 && _i <= limit4) || (step4 < 0 && _i >= limit4); _i = ((int)(0 + _i + step4)) ) {
-RDebugUtils.currentLine=917509;
- //BA.debugLineNum = 917509;BA.debugLine="File.Copy(File.DirAssets,i & \".jpg\",BirdPhotoPat";
-anywheresoftware.b4a.keywords.Common.File.Copy(anywheresoftware.b4a.keywords.Common.File.getDirAssets(),BA.NumberToString(_i)+".jpg",_birdphotopath,BA.NumberToString(_i)+".jpg");
-RDebugUtils.currentLine=917510;
- //BA.debugLineNum = 917510;BA.debugLine="Log(\"Bird image \" & i & \" copied over\")";
-anywheresoftware.b4a.keywords.Common.Log("Bird image "+BA.NumberToString(_i)+" copied over");
-RDebugUtils.currentLine=917511;
- //BA.debugLineNum = 917511;BA.debugLine="File.Delete(File.DirAssets,i & \".jpg\")";
-anywheresoftware.b4a.keywords.Common.File.Delete(anywheresoftware.b4a.keywords.Common.File.getDirAssets(),BA.NumberToString(_i)+".jpg");
- }
-};
-RDebugUtils.currentLine=917514;
- //BA.debugLineNum = 917514;BA.debugLine="Log(\"All assets copied over\")";
-anywheresoftware.b4a.keywords.Common.Log("All assets copied over");
-RDebugUtils.currentLine=917515;
- //BA.debugLineNum = 917515;BA.debugLine="End Sub";
-return "";
-}
-public static String  _sightingsscreen_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "sightingsscreen_click"))
-	return (String) Debug.delegate(mostCurrent.activityBA, "sightingsscreen_click", null);
-RDebugUtils.currentLine=786432;
- //BA.debugLineNum = 786432;BA.debugLine="Sub SightingsScreen_Click";
-RDebugUtils.currentLine=786433;
- //BA.debugLineNum = 786433;BA.debugLine="Sightings.MapLookupFlag = False";
-mostCurrent._sightings._maplookupflag = anywheresoftware.b4a.keywords.Common.False;
-RDebugUtils.currentLine=786434;
- //BA.debugLineNum = 786434;BA.debugLine="StartActivity(\"Sightings\")";
-anywheresoftware.b4a.keywords.Common.StartActivity(mostCurrent.activityBA,(Object)("Sightings"));
-RDebugUtils.currentLine=786435;
- //BA.debugLineNum = 786435;BA.debugLine="End Sub";
-return "";
-}
-public static String  _speciesscreen_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "speciesscreen_click"))
-	return (String) Debug.delegate(mostCurrent.activityBA, "speciesscreen_click", null);
-RDebugUtils.currentLine=851968;
- //BA.debugLineNum = 851968;BA.debugLine="Sub SpeciesScreen_Click";
-RDebugUtils.currentLine=851969;
- //BA.debugLineNum = 851969;BA.debugLine="StartActivity(\"Species\")";
-anywheresoftware.b4a.keywords.Common.StartActivity(mostCurrent.activityBA,(Object)("Species"));
-RDebugUtils.currentLine=851970;
- //BA.debugLineNum = 851970;BA.debugLine="End Sub";
+public static String  _phototab_pageselected(int _position) throws Exception{
+RDebugUtils.currentModule="sightingphotos";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "phototab_pageselected"))
+	return (String) Debug.delegate(mostCurrent.activityBA, "phototab_pageselected", new Object[] {_position});
+anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper _photo = null;
+RDebugUtils.currentLine=3538944;
+ //BA.debugLineNum = 3538944;BA.debugLine="Sub Phototab_PageSelected (Position As Int)";
+RDebugUtils.currentLine=3538945;
+ //BA.debugLineNum = 3538945;BA.debugLine="Log(Position)";
+anywheresoftware.b4a.keywords.Common.Log(BA.NumberToString(_position));
+RDebugUtils.currentLine=3538947;
+ //BA.debugLineNum = 3538947;BA.debugLine="If Position = 1 Then";
+if (_position==1) { 
+RDebugUtils.currentLine=3538948;
+ //BA.debugLineNum = 3538948;BA.debugLine="SightingPhoto.bitmap = LoadBirdPic(Position)";
+mostCurrent._sightingphoto.setBitmap((android.graphics.Bitmap)(_loadbirdpic(_position)));
+RDebugUtils.currentLine=3538949;
+ //BA.debugLineNum = 3538949;BA.debugLine="RemoveBtn.Visible = False";
+mostCurrent._removebtn.setVisible(anywheresoftware.b4a.keywords.Common.False);
+RDebugUtils.currentLine=3538950;
+ //BA.debugLineNum = 3538950;BA.debugLine="Return";
+if (true) return "";
+ };
+RDebugUtils.currentLine=3538953;
+ //BA.debugLineNum = 3538953;BA.debugLine="Position = Position - 1";
+_position = (int) (_position-1);
+RDebugUtils.currentLine=3538954;
+ //BA.debugLineNum = 3538954;BA.debugLine="RemoveBtn.Visible = True";
+mostCurrent._removebtn.setVisible(anywheresoftware.b4a.keywords.Common.True);
+RDebugUtils.currentLine=3538955;
+ //BA.debugLineNum = 3538955;BA.debugLine="Try";
+try {RDebugUtils.currentLine=3538956;
+ //BA.debugLineNum = 3538956;BA.debugLine="SightingPhoto.bitmap =  SightingPhotoList.Get(Po";
+mostCurrent._sightingphoto.setBitmap((android.graphics.Bitmap)(_sightingphotolist.Get(_position)));
+ } 
+       catch (Exception e12) {
+			processBA.setLastException(e12);RDebugUtils.currentLine=3538958;
+ //BA.debugLineNum = 3538958;BA.debugLine="Dim Photo As Bitmap";
+_photo = new anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper();
+RDebugUtils.currentLine=3538959;
+ //BA.debugLineNum = 3538959;BA.debugLine="Photo.InitializeSample(Main.BirdPhotoPath,\"0.jpg";
+_photo.InitializeSample(mostCurrent._main._birdphotopath,"0.jpg",(int) (240),(int) (240));
+RDebugUtils.currentLine=3538960;
+ //BA.debugLineNum = 3538960;BA.debugLine="SightingPhoto.bitmap = Photo";
+mostCurrent._sightingphoto.setBitmap((android.graphics.Bitmap)(_photo.getObject()));
+RDebugUtils.currentLine=3538961;
+ //BA.debugLineNum = 3538961;BA.debugLine="Log(\"Image not Found \" & Position)";
+anywheresoftware.b4a.keywords.Common.Log("Image not Found "+BA.NumberToString(_position));
+RDebugUtils.currentLine=3538962;
+ //BA.debugLineNum = 3538962;BA.debugLine="ToastMessageShow(\"Image not found\", True)";
+anywheresoftware.b4a.keywords.Common.ToastMessageShow("Image not found",anywheresoftware.b4a.keywords.Common.True);
+ };
+RDebugUtils.currentLine=3538965;
+ //BA.debugLineNum = 3538965;BA.debugLine="End Sub";
 return "";
 }
 }
