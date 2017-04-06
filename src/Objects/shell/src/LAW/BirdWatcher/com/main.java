@@ -58,14 +58,13 @@ public static RemoteObject __c = RemoteObject.declareNull("anywheresoftware.b4a.
 public static RemoteObject _birdphotopath = RemoteObject.createImmutable("");
 public static RemoteObject _reload_btn = RemoteObject.declareNull("anywheresoftware.b4a.objects.ButtonWrapper");
 public static RemoteObject _speciescursor = RemoteObject.declareNull("anywheresoftware.b4a.sql.SQL.CursorWrapper");
-public static RemoteObject _phototab = RemoteObject.declareNull("anywheresoftware.b4a.objects.TabStripViewPager");
 public static LAW.BirdWatcher.com.starter _starter = null;
 public static LAW.BirdWatcher.com.species _species = null;
 public static LAW.BirdWatcher.com.sightings _sightings = null;
-public static LAW.BirdWatcher.com.codefunctions _codefunctions = null;
 public static LAW.BirdWatcher.com.sightingphotos _sightingphotos = null;
+public static LAW.BirdWatcher.com.codefunctions _codefunctions = null;
 public static LAW.BirdWatcher.com.map _map = null;
   public Object[] GetGlobals() {
-		return new Object[] {"Activity",main.mostCurrent._activity,"BirdPhotoPath",main._birdphotopath,"CodeFunctions",Debug.moduleToString(LAW.BirdWatcher.com.codefunctions.class),"Map",Debug.moduleToString(LAW.BirdWatcher.com.map.class),"Phototab",main.mostCurrent._phototab,"Reload_BTN",main.mostCurrent._reload_btn,"SightingPhotos",Debug.moduleToString(LAW.BirdWatcher.com.sightingphotos.class),"Sightings",Debug.moduleToString(LAW.BirdWatcher.com.sightings.class),"Species",Debug.moduleToString(LAW.BirdWatcher.com.species.class),"SpeciesCursor",main.mostCurrent._speciescursor,"Starter",Debug.moduleToString(LAW.BirdWatcher.com.starter.class)};
+		return new Object[] {"Activity",main.mostCurrent._activity,"BirdPhotoPath",main._birdphotopath,"CodeFunctions",Debug.moduleToString(LAW.BirdWatcher.com.codefunctions.class),"Map",Debug.moduleToString(LAW.BirdWatcher.com.map.class),"Reload_BTN",main.mostCurrent._reload_btn,"SightingPhotos",Debug.moduleToString(LAW.BirdWatcher.com.sightingphotos.class),"Sightings",Debug.moduleToString(LAW.BirdWatcher.com.sightings.class),"Species",Debug.moduleToString(LAW.BirdWatcher.com.species.class),"SpeciesCursor",main.mostCurrent._speciescursor,"Starter",Debug.moduleToString(LAW.BirdWatcher.com.starter.class)};
 }
 }

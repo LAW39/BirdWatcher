@@ -346,8 +346,8 @@ public static long _imagetime = 0L;
 public LAW.BirdWatcher.com.main _main = null;
 public LAW.BirdWatcher.com.starter _starter = null;
 public LAW.BirdWatcher.com.sightings _sightings = null;
-public LAW.BirdWatcher.com.codefunctions _codefunctions = null;
 public LAW.BirdWatcher.com.sightingphotos _sightingphotos = null;
+public LAW.BirdWatcher.com.codefunctions _codefunctions = null;
 public LAW.BirdWatcher.com.map _map = null;
 public static String  _activity_create(boolean _firsttime) throws Exception{
 RDebugUtils.currentModule="species";

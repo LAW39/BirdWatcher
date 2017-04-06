@@ -63,7 +63,8 @@ public static RemoteObject _flocksize = RemoteObject.declareNull("anywheresoftwa
 public static RemoteObject _birdappearance = RemoteObject.declareNull("anywheresoftware.b4a.objects.EditTextWrapper");
 public static RemoteObject _weatherconditions = RemoteObject.declareNull("anywheresoftware.b4a.objects.EditTextWrapper");
 public static RemoteObject _time = RemoteObject.declareNull("anywheresoftware.b4a.objects.LabelWrapper");
-public static RemoteObject _selectedid = RemoteObject.createImmutable(0);
+public static RemoteObject _selectedspeciesid = RemoteObject.createImmutable(0);
+public static RemoteObject _selectedsightingid = RemoteObject.createImmutable(0);
 public static RemoteObject _date = RemoteObject.declareNull("anywheresoftware.b4a.objects.LabelWrapper");
 public static RemoteObject _mapcheck = RemoteObject.declareNull("anywheresoftware.b4a.objects.CompoundButtonWrapper.CheckBoxWrapper");
 public static RemoteObject _location = RemoteObject.declareNull("anywheresoftware.b4a.gps.LocationWrapper");
@@ -71,13 +72,14 @@ public static RemoteObject _datetimeticks = RemoteObject.createImmutable(0L);
 public static RemoteObject _getlocation = RemoteObject.declareNull("anywheresoftware.b4a.objects.ButtonWrapper");
 public static RemoteObject _viewphotos = RemoteObject.declareNull("anywheresoftware.b4a.objects.ButtonWrapper");
 public static RemoteObject _sightinglist = RemoteObject.declareNull("anywheresoftware.b4a.objects.ListViewWrapper");
+public static RemoteObject _addphoto = RemoteObject.declareNull("anywheresoftware.b4a.objects.ButtonWrapper");
 public static LAW.BirdWatcher.com.main _main = null;
 public static LAW.BirdWatcher.com.starter _starter = null;
 public static LAW.BirdWatcher.com.species _species = null;
-public static LAW.BirdWatcher.com.codefunctions _codefunctions = null;
 public static LAW.BirdWatcher.com.sightingphotos _sightingphotos = null;
+public static LAW.BirdWatcher.com.codefunctions _codefunctions = null;
 public static LAW.BirdWatcher.com.map _map = null;
   public Object[] GetGlobals() {
-		return new Object[] {"Activity",sightings.mostCurrent._activity,"AddNow",sightings.mostCurrent._addnow,"BirdAppearance",sightings.mostCurrent._birdappearance,"CodeFunctions",Debug.moduleToString(LAW.BirdWatcher.com.codefunctions.class),"Date",sightings.mostCurrent._date,"DateTimeTicks",sightings._datetimeticks,"FlockSize",sightings.mostCurrent._flocksize,"GetLocation",sightings.mostCurrent._getlocation,"Location",sightings.mostCurrent._location,"Main",Debug.moduleToString(LAW.BirdWatcher.com.main.class),"Map",Debug.moduleToString(LAW.BirdWatcher.com.map.class),"MapCheck",sightings.mostCurrent._mapcheck,"MapLookupFlag",sightings._maplookupflag,"SelectedID",sightings._selectedid,"SightingList",sightings.mostCurrent._sightinglist,"SightingPhotoList",sightings._sightingphotolist,"SightingPhotos",Debug.moduleToString(LAW.BirdWatcher.com.sightingphotos.class),"Species",Debug.moduleToString(LAW.BirdWatcher.com.species.class),"SpeciesList",sightings.mostCurrent._specieslist,"Starter",Debug.moduleToString(LAW.BirdWatcher.com.starter.class),"Time",sightings.mostCurrent._time,"ViewPhotos",sightings.mostCurrent._viewphotos,"WeatherConditions",sightings.mostCurrent._weatherconditions};
+		return new Object[] {"Activity",sightings.mostCurrent._activity,"AddNow",sightings.mostCurrent._addnow,"AddPhoto",sightings.mostCurrent._addphoto,"BirdAppearance",sightings.mostCurrent._birdappearance,"CodeFunctions",Debug.moduleToString(LAW.BirdWatcher.com.codefunctions.class),"Date",sightings.mostCurrent._date,"DateTimeTicks",sightings._datetimeticks,"FlockSize",sightings.mostCurrent._flocksize,"GetLocation",sightings.mostCurrent._getlocation,"Location",sightings.mostCurrent._location,"Main",Debug.moduleToString(LAW.BirdWatcher.com.main.class),"Map",Debug.moduleToString(LAW.BirdWatcher.com.map.class),"MapCheck",sightings.mostCurrent._mapcheck,"MapLookupFlag",sightings._maplookupflag,"SelectedSightingID",sightings._selectedsightingid,"SelectedSpeciesID",sightings._selectedspeciesid,"SightingList",sightings.mostCurrent._sightinglist,"SightingPhotoList",sightings._sightingphotolist,"SightingPhotos",Debug.moduleToString(LAW.BirdWatcher.com.sightingphotos.class),"Species",Debug.moduleToString(LAW.BirdWatcher.com.species.class),"SpeciesList",sightings.mostCurrent._specieslist,"Starter",Debug.moduleToString(LAW.BirdWatcher.com.starter.class),"Time",sightings.mostCurrent._time,"ViewPhotos",sightings.mostCurrent._viewphotos,"WeatherConditions",sightings.mostCurrent._weatherconditions};
 }
 }

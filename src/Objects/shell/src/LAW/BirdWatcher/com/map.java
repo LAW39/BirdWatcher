@@ -72,8 +72,8 @@ public static LAW.BirdWatcher.com.main _main = null;
 public static LAW.BirdWatcher.com.starter _starter = null;
 public static LAW.BirdWatcher.com.species _species = null;
 public static LAW.BirdWatcher.com.sightings _sightings = null;
-public static LAW.BirdWatcher.com.codefunctions _codefunctions = null;
 public static LAW.BirdWatcher.com.sightingphotos _sightingphotos = null;
+public static LAW.BirdWatcher.com.codefunctions _codefunctions = null;
   public Object[] GetGlobals() {
 		return new Object[] {"Activity",map.mostCurrent._activity,"BirdImage",map.mostCurrent._birdimage,"CodeFunctions",Debug.moduleToString(LAW.BirdWatcher.com.codefunctions.class),"DateTime1",map.mostCurrent._datetime1,"GetLocationFlag",map._getlocationflag,"gmap",map.mostCurrent._gmap,"Location",map._location,"Main",Debug.moduleToString(LAW.BirdWatcher.com.main.class),"MainMap",map.mostCurrent._mainmap,"MapSetupCompleted",map._mapsetupcompleted,"MapTimer",map._maptimer,"MoreInfo",map.mostCurrent._moreinfo,"Name",map.mostCurrent._name,"SelectedBird",map._selectedbird,"SelectedID",map._selectedid,"SightingPhotos",Debug.moduleToString(LAW.BirdWatcher.com.sightingphotos.class),"Sightings",Debug.moduleToString(LAW.BirdWatcher.com.sightings.class),"Species",Debug.moduleToString(LAW.BirdWatcher.com.species.class),"SpeciesList",map.mostCurrent._specieslist,"Starter",Debug.moduleToString(LAW.BirdWatcher.com.starter.class)};
 }

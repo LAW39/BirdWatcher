@@ -128,8 +128,8 @@ public static anywheresoftware.b4a.objects.collections.List _list = null;
 public LAW.BirdWatcher.com.main _main = null;
 public LAW.BirdWatcher.com.species _species = null;
 public LAW.BirdWatcher.com.sightings _sightings = null;
-public LAW.BirdWatcher.com.codefunctions _codefunctions = null;
 public LAW.BirdWatcher.com.sightingphotos _sightingphotos = null;
+public LAW.BirdWatcher.com.codefunctions _codefunctions = null;
 public LAW.BirdWatcher.com.map _map = null;
 public static boolean  _application_error(anywheresoftware.b4a.objects.B4AException _error,String _stacktrace) throws Exception{
 RDebugUtils.currentModule="starter";

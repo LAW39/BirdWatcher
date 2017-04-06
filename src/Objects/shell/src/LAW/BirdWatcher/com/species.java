@@ -69,8 +69,8 @@ public static RemoteObject _imagetime = RemoteObject.createImmutable(0L);
 public static LAW.BirdWatcher.com.main _main = null;
 public static LAW.BirdWatcher.com.starter _starter = null;
 public static LAW.BirdWatcher.com.sightings _sightings = null;
-public static LAW.BirdWatcher.com.codefunctions _codefunctions = null;
 public static LAW.BirdWatcher.com.sightingphotos _sightingphotos = null;
+public static LAW.BirdWatcher.com.codefunctions _codefunctions = null;
 public static LAW.BirdWatcher.com.map _map = null;
   public Object[] GetGlobals() {
 		return new Object[] {"Activity",species.mostCurrent._activity,"AddBtn",species.mostCurrent._addbtn,"AddPhotoBtn",species.mostCurrent._addphotobtn,"BirdPhotoView",species.mostCurrent._birdphotoview,"CodeFunctions",Debug.moduleToString(LAW.BirdWatcher.com.codefunctions.class),"ID",species._id,"ImageTime",species._imagetime,"Main",Debug.moduleToString(LAW.BirdWatcher.com.main.class),"Map",Debug.moduleToString(LAW.BirdWatcher.com.map.class),"RemoveBtn",species.mostCurrent._removebtn,"SelectedIndex",species._selectedindex,"SightingPhotos",Debug.moduleToString(LAW.BirdWatcher.com.sightingphotos.class),"Sightings",Debug.moduleToString(LAW.BirdWatcher.com.sightings.class),"SpeciesColour",species.mostCurrent._speciescolour,"SpeciesHabitat",species.mostCurrent._specieshabitat,"SpeciesListView",species.mostCurrent._specieslistview,"SpeciesName",species.mostCurrent._speciesname,"Starter",Debug.moduleToString(LAW.BirdWatcher.com.starter.class)};

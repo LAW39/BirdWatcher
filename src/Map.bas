@@ -162,7 +162,6 @@ Sub MainMap_MarkerClick (SelectedMarker As Marker) As Boolean 'Return True to co
 End Sub
 
 Sub LoadBirdPic(BirdID As Int)
-	BirdID = BirdID +1
 	
 	Dim NewBird As Bitmap
 	NewBird.InitializeSample(File.DirAssets,BirdID  & ".jpg", 240, 240)
@@ -222,7 +221,7 @@ Sub LoadBird(ID As Int)
 End Sub
 
 Sub SpeciesList_ItemClick (Position As Int, Value As Object)
-	SelectedID = Value -1
+	SelectedID = Value
 	If Position = -1 Then
 		Return
 	End If

@@ -33,9 +33,9 @@ main.mostCurrent.__c.runVoidMethod ("Log",(Object)(RemoteObject.createImmutable(
  BA.debugLineNum = 40;BA.debugLine="Activity.LoadLayout(\"LaunchScreen\")";
 Debug.ShouldStop(128);
 main.mostCurrent._activity.runMethodAndSync(false,"LoadLayout",(Object)(RemoteObject.createImmutable("LaunchScreen")),main.mostCurrent.activityBA);
- BA.debugLineNum = 41;BA.debugLine="Activity.Title = \"Launch Screen\"";
+ BA.debugLineNum = 41;BA.debugLine="Activity.Title = \"Bird Watcher\"";
 Debug.ShouldStop(256);
-main.mostCurrent._activity.runMethod(false,"setTitle",RemoteObject.createImmutable(("Launch Screen")));
+main.mostCurrent._activity.runMethod(false,"setTitle",RemoteObject.createImmutable(("Bird Watcher")));
  BA.debugLineNum = 42;BA.debugLine="StartService(Starter)";
 Debug.ShouldStop(512);
 main.mostCurrent.__c.runVoidMethod ("StartService",main.mostCurrent.activityBA,(Object)((main.mostCurrent._starter.getObject())));
@@ -91,8 +91,6 @@ public static RemoteObject  _globals() throws Exception{
 main.mostCurrent._reload_btn = RemoteObject.createNew ("anywheresoftware.b4a.objects.ButtonWrapper");
  //BA.debugLineNum = 27;BA.debugLine="Private SpeciesCursor As Cursor";
 main.mostCurrent._speciescursor = RemoteObject.createNew ("anywheresoftware.b4a.sql.SQL.CursorWrapper");
- //BA.debugLineNum = 28;BA.debugLine="Private Phototab As TabStrip";
-main.mostCurrent._phototab = RemoteObject.createNew ("anywheresoftware.b4a.objects.TabStripViewPager");
  //BA.debugLineNum = 29;BA.debugLine="End Sub";
 return RemoteObject.createImmutable("");
 }
@@ -126,15 +124,15 @@ public static void initializeProcessGlobals() {
 starter_subs_0._process_globals();
 species_subs_0._process_globals();
 sightings_subs_0._process_globals();
-codefunctions_subs_0._process_globals();
 sightingphotos_subs_0._process_globals();
+codefunctions_subs_0._process_globals();
 map_subs_0._process_globals();
 main.myClass = BA.getDeviceClass ("LAW.BirdWatcher.com.main");
 starter.myClass = BA.getDeviceClass ("LAW.BirdWatcher.com.starter");
 species.myClass = BA.getDeviceClass ("LAW.BirdWatcher.com.species");
 sightings.myClass = BA.getDeviceClass ("LAW.BirdWatcher.com.sightings");
-codefunctions.myClass = BA.getDeviceClass ("LAW.BirdWatcher.com.codefunctions");
 sightingphotos.myClass = BA.getDeviceClass ("LAW.BirdWatcher.com.sightingphotos");
+codefunctions.myClass = BA.getDeviceClass ("LAW.BirdWatcher.com.codefunctions");
 map.myClass = BA.getDeviceClass ("LAW.BirdWatcher.com.map");
 		
         } catch (Exception e) {
@@ -158,36 +156,58 @@ Debug.ShouldStop(8);
  BA.debugLineNum = 69;BA.debugLine="File.Copy(File.DirAssets,\"database.db\",File.DirDe";
 Debug.ShouldStop(16);
 main.mostCurrent.__c.getField(false,"File").runVoidMethod ("Copy",(Object)(main.mostCurrent.__c.getField(false,"File").runMethod(true,"getDirAssets")),(Object)(BA.ObjectToString("database.db")),(Object)(main.mostCurrent.__c.getField(false,"File").runMethod(true,"getDirDefaultExternal")),(Object)(RemoteObject.createImmutable("database.db")));
- BA.debugLineNum = 70;BA.debugLine="SpeciesCursor = Starter.database.ExecQuery(\"SELEC";
+ BA.debugLineNum = 70;BA.debugLine="Starter.database.Initialize(File.DirDefaultExtern";
 Debug.ShouldStop(32);
-main.mostCurrent._speciescursor.setObject(main.mostCurrent._starter._database.runMethod(false,"ExecQuery",(Object)(RemoteObject.createImmutable("SELECT ID FROM Species"))));
- BA.debugLineNum = 71;BA.debugLine="Starter.database.Initialize(File.DirDefaultExtern";
-Debug.ShouldStop(64);
 main.mostCurrent._starter._database.runVoidMethod ("Initialize",(Object)(main.mostCurrent.__c.getField(false,"File").runMethod(true,"getDirDefaultExternal")),(Object)(BA.ObjectToString("database.db")),(Object)(main.mostCurrent.__c.getField(true,"False")));
- BA.debugLineNum = 72;BA.debugLine="For i = 0 To 6";
-Debug.ShouldStop(128);
+ BA.debugLineNum = 71;BA.debugLine="SpeciesCursor = Starter.database.ExecQuery(\"SELEC";
+Debug.ShouldStop(64);
+main.mostCurrent._speciescursor.setObject(main.mostCurrent._starter._database.runMethod(false,"ExecQuery",(Object)(RemoteObject.createImmutable("SELECT ID FROM Species"))));
+ BA.debugLineNum = 73;BA.debugLine="For i = 0 To SpeciesCursor.RowCount - 1";
+Debug.ShouldStop(256);
 {
 final int step4 = 1;
-final int limit4 = 6;
+final int limit4 = RemoteObject.solve(new RemoteObject[] {main.mostCurrent._speciescursor.runMethod(true,"getRowCount"),RemoteObject.createImmutable(1)}, "-",1, 1).<Integer>get().intValue();
 for (_i = 0 ; (step4 > 0 && _i <= limit4) || (step4 < 0 && _i >= limit4); _i = ((int)(0 + _i + step4)) ) {
 Debug.locals.put("i", _i);
- BA.debugLineNum = 73;BA.debugLine="File.Copy(File.DirAssets,i & \".jpg\",BirdPhotoPat";
-Debug.ShouldStop(256);
-main.mostCurrent.__c.getField(false,"File").runVoidMethod ("Copy",(Object)(main.mostCurrent.__c.getField(false,"File").runMethod(true,"getDirAssets")),(Object)(RemoteObject.concat(RemoteObject.createImmutable(_i),RemoteObject.createImmutable(".jpg"))),(Object)(main._birdphotopath),(Object)(RemoteObject.concat(RemoteObject.createImmutable(_i),RemoteObject.createImmutable(".jpg"))));
- BA.debugLineNum = 74;BA.debugLine="Log(\"Bird image \" & i & \" copied over\")";
+ BA.debugLineNum = 74;BA.debugLine="File.Copy(File.DirAssets,i & \".jpg\",BirdPhotoPat";
 Debug.ShouldStop(512);
-main.mostCurrent.__c.runVoidMethod ("Log",(Object)(RemoteObject.concat(RemoteObject.createImmutable("Bird image "),RemoteObject.createImmutable(_i),RemoteObject.createImmutable(" copied over"))));
- BA.debugLineNum = 75;BA.debugLine="File.Delete(File.DirAssets,i & \".jpg\")";
+main.mostCurrent.__c.getField(false,"File").runVoidMethod ("Copy",(Object)(main.mostCurrent.__c.getField(false,"File").runMethod(true,"getDirAssets")),(Object)(RemoteObject.concat(RemoteObject.createImmutable(_i),RemoteObject.createImmutable(".jpg"))),(Object)(main._birdphotopath),(Object)(RemoteObject.concat(RemoteObject.createImmutable(_i),RemoteObject.createImmutable(".jpg"))));
+ BA.debugLineNum = 75;BA.debugLine="Log(\"Bird image \" & i & \" copied over\")";
 Debug.ShouldStop(1024);
+main.mostCurrent.__c.runVoidMethod ("Log",(Object)(RemoteObject.concat(RemoteObject.createImmutable("Bird image "),RemoteObject.createImmutable(_i),RemoteObject.createImmutable(" copied over"))));
+ BA.debugLineNum = 76;BA.debugLine="File.Delete(File.DirAssets,i & \".jpg\")";
+Debug.ShouldStop(2048);
 main.mostCurrent.__c.getField(false,"File").runVoidMethod ("Delete",(Object)(main.mostCurrent.__c.getField(false,"File").runMethod(true,"getDirAssets")),(Object)(RemoteObject.concat(RemoteObject.createImmutable(_i),RemoteObject.createImmutable(".jpg"))));
  }
 }Debug.locals.put("i", _i);
 ;
- BA.debugLineNum = 78;BA.debugLine="Log(\"All assets copied over\")";
-Debug.ShouldStop(8192);
-main.mostCurrent.__c.runVoidMethod ("Log",(Object)(RemoteObject.createImmutable("All assets copied over")));
- BA.debugLineNum = 79;BA.debugLine="End Sub";
+ BA.debugLineNum = 79;BA.debugLine="SpeciesCursor = Starter.database.ExecQuery(\"SELEC";
 Debug.ShouldStop(16384);
+main.mostCurrent._speciescursor.setObject(main.mostCurrent._starter._database.runMethod(false,"ExecQuery",(Object)(RemoteObject.createImmutable("SELECT PhotoDir FROM SightingPhoto"))));
+ BA.debugLineNum = 80;BA.debugLine="For i = 0 To SpeciesCursor.RowCount - 1";
+Debug.ShouldStop(32768);
+{
+final int step10 = 1;
+final int limit10 = RemoteObject.solve(new RemoteObject[] {main.mostCurrent._speciescursor.runMethod(true,"getRowCount"),RemoteObject.createImmutable(1)}, "-",1, 1).<Integer>get().intValue();
+for (_i = 0 ; (step10 > 0 && _i <= limit10) || (step10 < 0 && _i >= limit10); _i = ((int)(0 + _i + step10)) ) {
+Debug.locals.put("i", _i);
+ BA.debugLineNum = 81;BA.debugLine="SpeciesCursor.Position = i";
+Debug.ShouldStop(65536);
+main.mostCurrent._speciescursor.runMethod(true,"setPosition",BA.numberCast(int.class, _i));
+ BA.debugLineNum = 82;BA.debugLine="File.Copy(File.DirAssets, SpeciesCursor.GetInt(\"";
+Debug.ShouldStop(131072);
+main.mostCurrent.__c.getField(false,"File").runVoidMethod ("Copy",(Object)(main.mostCurrent.__c.getField(false,"File").runMethod(true,"getDirAssets")),(Object)(RemoteObject.concat(main.mostCurrent._speciescursor.runMethod(true,"GetInt",(Object)(RemoteObject.createImmutable("PhotoDir"))),RemoteObject.createImmutable(".jpg"))),(Object)(main._birdphotopath),(Object)(RemoteObject.concat(main.mostCurrent._speciescursor.runMethod(true,"GetInt",(Object)(RemoteObject.createImmutable("PhotoDir"))),RemoteObject.createImmutable(".jpg"))));
+ BA.debugLineNum = 83;BA.debugLine="Log(\"Sighting image \" & SpeciesCursor.GetInt(\"Ph";
+Debug.ShouldStop(262144);
+main.mostCurrent.__c.runVoidMethod ("Log",(Object)(RemoteObject.concat(RemoteObject.createImmutable("Sighting image "),main.mostCurrent._speciescursor.runMethod(true,"GetInt",(Object)(RemoteObject.createImmutable("PhotoDir"))),RemoteObject.createImmutable(" copied over"))));
+ }
+}Debug.locals.put("i", _i);
+;
+ BA.debugLineNum = 87;BA.debugLine="Log(\"All assets copied over\")";
+Debug.ShouldStop(4194304);
+main.mostCurrent.__c.runVoidMethod ("Log",(Object)(RemoteObject.createImmutable("All assets copied over")));
+ BA.debugLineNum = 88;BA.debugLine="End Sub";
+Debug.ShouldStop(8388608);
 return RemoteObject.createImmutable("");
 }
 catch (Exception e) {

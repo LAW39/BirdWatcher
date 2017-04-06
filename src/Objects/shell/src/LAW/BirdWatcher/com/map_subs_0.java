@@ -164,7 +164,7 @@ return RemoteObject.createImmutable("");
 }
 public static RemoteObject  _loadbird(RemoteObject _id) throws Exception{
 try {
-		Debug.PushSubsStack("LoadBird (map) ","map",6,map.mostCurrent.activityBA,map.mostCurrent,168);
+		Debug.PushSubsStack("LoadBird (map) ","map",6,map.mostCurrent.activityBA,map.mostCurrent,167);
 if (RapidSub.canDelegate("loadbird")) return map.remoteMe.runUserSub(false, "map","loadbird", _id);
 RemoteObject _speciescursor = RemoteObject.declareNull("anywheresoftware.b4a.sql.SQL.CursorWrapper");
 RemoteObject _mapsql = RemoteObject.declareNull("anywheresoftware.b4a.keywords.StringBuilderWrapper");
@@ -172,98 +172,98 @@ RemoteObject _errorflag = RemoteObject.createImmutable(false);
 int _i = 0;
 RemoteObject _sightingmarker = RemoteObject.declareNull("anywheresoftware.b4a.objects.MapFragmentWrapper.MarkerWrapper");
 Debug.locals.put("ID", _id);
- BA.debugLineNum = 168;BA.debugLine="Sub LoadBird(ID As Int)";
+ BA.debugLineNum = 167;BA.debugLine="Sub LoadBird(ID As Int)";
+Debug.ShouldStop(64);
+ BA.debugLineNum = 168;BA.debugLine="ID = ID +1";
 Debug.ShouldStop(128);
- BA.debugLineNum = 169;BA.debugLine="ID = ID +1";
-Debug.ShouldStop(256);
 _id = RemoteObject.solve(new RemoteObject[] {_id,RemoteObject.createImmutable(1)}, "+",1, 1);Debug.locals.put("ID", _id);
- BA.debugLineNum = 171;BA.debugLine="gmap.Clear";
-Debug.ShouldStop(1024);
+ BA.debugLineNum = 170;BA.debugLine="gmap.Clear";
+Debug.ShouldStop(512);
 map.mostCurrent._gmap.runVoidMethod ("Clear");
- BA.debugLineNum = 173;BA.debugLine="Name.Text = \"\"";
-Debug.ShouldStop(4096);
+ BA.debugLineNum = 172;BA.debugLine="Name.Text = \"\"";
+Debug.ShouldStop(2048);
 map.mostCurrent._name.runMethodAndSync(true,"setText",RemoteObject.createImmutable(("")));
- BA.debugLineNum = 174;BA.debugLine="DateTime1.Text = \"\"";
-Debug.ShouldStop(8192);
+ BA.debugLineNum = 173;BA.debugLine="DateTime1.Text = \"\"";
+Debug.ShouldStop(4096);
 map.mostCurrent._datetime1.runMethodAndSync(true,"setText",RemoteObject.createImmutable(("")));
- BA.debugLineNum = 176;BA.debugLine="Dim SpeciesCursor As Cursor";
-Debug.ShouldStop(32768);
+ BA.debugLineNum = 175;BA.debugLine="Dim SpeciesCursor As Cursor";
+Debug.ShouldStop(16384);
 _speciescursor = RemoteObject.createNew ("anywheresoftware.b4a.sql.SQL.CursorWrapper");Debug.locals.put("SpeciesCursor", _speciescursor);
- BA.debugLineNum = 177;BA.debugLine="Dim MapSQL As StringBuilder";
-Debug.ShouldStop(65536);
+ BA.debugLineNum = 176;BA.debugLine="Dim MapSQL As StringBuilder";
+Debug.ShouldStop(32768);
 _mapsql = RemoteObject.createNew ("anywheresoftware.b4a.keywords.StringBuilderWrapper");Debug.locals.put("MapSQL", _mapsql);
- BA.debugLineNum = 178;BA.debugLine="Dim ErrorFlag As Boolean = False";
-Debug.ShouldStop(131072);
+ BA.debugLineNum = 177;BA.debugLine="Dim ErrorFlag As Boolean = False";
+Debug.ShouldStop(65536);
 _errorflag = map.mostCurrent.__c.getField(true,"False");Debug.locals.put("ErrorFlag", _errorflag);Debug.locals.put("ErrorFlag", _errorflag);
- BA.debugLineNum = 179;BA.debugLine="MapSQL.Initialize";
-Debug.ShouldStop(262144);
+ BA.debugLineNum = 178;BA.debugLine="MapSQL.Initialize";
+Debug.ShouldStop(131072);
 _mapsql.runVoidMethod ("Initialize");
- BA.debugLineNum = 181;BA.debugLine="MapSQL.Append(\"SELECT * FROM Sightings\").Append(C";
-Debug.ShouldStop(1048576);
+ BA.debugLineNum = 180;BA.debugLine="MapSQL.Append(\"SELECT * FROM Sightings\").Append(C";
+Debug.ShouldStop(524288);
 _mapsql.runMethod(false,"Append",(Object)(RemoteObject.createImmutable("SELECT * FROM Sightings"))).runVoidMethod ("Append",(Object)(map.mostCurrent.__c.getField(true,"CRLF")));
- BA.debugLineNum = 182;BA.debugLine="MapSQL.Append(\"WHERE ID = ?\").Append(CRLF)";
-Debug.ShouldStop(2097152);
+ BA.debugLineNum = 181;BA.debugLine="MapSQL.Append(\"WHERE ID = ?\").Append(CRLF)";
+Debug.ShouldStop(1048576);
 _mapsql.runMethod(false,"Append",(Object)(RemoteObject.createImmutable("WHERE ID = ?"))).runVoidMethod ("Append",(Object)(map.mostCurrent.__c.getField(true,"CRLF")));
- BA.debugLineNum = 183;BA.debugLine="MapSQL.Append(\"ORDER BY ID Asc\").Append(CRLF)";
-Debug.ShouldStop(4194304);
+ BA.debugLineNum = 182;BA.debugLine="MapSQL.Append(\"ORDER BY ID Asc\").Append(CRLF)";
+Debug.ShouldStop(2097152);
 _mapsql.runMethod(false,"Append",(Object)(RemoteObject.createImmutable("ORDER BY ID Asc"))).runVoidMethod ("Append",(Object)(map.mostCurrent.__c.getField(true,"CRLF")));
- BA.debugLineNum = 184;BA.debugLine="ErrorFlag= False";
-Debug.ShouldStop(8388608);
+ BA.debugLineNum = 183;BA.debugLine="ErrorFlag= False";
+Debug.ShouldStop(4194304);
 _errorflag = map.mostCurrent.__c.getField(true,"False");Debug.locals.put("ErrorFlag", _errorflag);
- BA.debugLineNum = 185;BA.debugLine="SpeciesCursor = Starter.Database.ExecQuery2(MapSQ";
-Debug.ShouldStop(16777216);
+ BA.debugLineNum = 184;BA.debugLine="SpeciesCursor = Starter.Database.ExecQuery2(MapSQ";
+Debug.ShouldStop(8388608);
 _speciescursor.setObject(map.mostCurrent._starter._database.runMethod(false,"ExecQuery2",(Object)(BA.ObjectToString(_mapsql)),(Object)(RemoteObject.createNewArray("String",new int[] {1},new Object[] {BA.NumberToString(_id)}))));
- BA.debugLineNum = 188;BA.debugLine="For i=0 To SpeciesCursor.RowCount-1";
-Debug.ShouldStop(134217728);
+ BA.debugLineNum = 187;BA.debugLine="For i=0 To SpeciesCursor.RowCount-1";
+Debug.ShouldStop(67108864);
 {
 final int step14 = 1;
 final int limit14 = RemoteObject.solve(new RemoteObject[] {_speciescursor.runMethod(true,"getRowCount"),RemoteObject.createImmutable(1)}, "-",1, 1).<Integer>get().intValue();
 for (_i = 0 ; (step14 > 0 && _i <= limit14) || (step14 < 0 && _i >= limit14); _i = ((int)(0 + _i + step14)) ) {
 Debug.locals.put("i", _i);
- BA.debugLineNum = 190;BA.debugLine="SpeciesCursor.Position = i";
-Debug.ShouldStop(536870912);
+ BA.debugLineNum = 189;BA.debugLine="SpeciesCursor.Position = i";
+Debug.ShouldStop(268435456);
 _speciescursor.runMethod(true,"setPosition",BA.numberCast(int.class, _i));
- BA.debugLineNum = 192;BA.debugLine="Dim SightingMarker As Marker";
-Debug.ShouldStop(-2147483648);
+ BA.debugLineNum = 191;BA.debugLine="Dim SightingMarker As Marker";
+Debug.ShouldStop(1073741824);
 _sightingmarker = RemoteObject.createNew ("anywheresoftware.b4a.objects.MapFragmentWrapper.MarkerWrapper");Debug.locals.put("SightingMarker", _sightingmarker);
- BA.debugLineNum = 196;BA.debugLine="Log(\"LAT: \" & SpeciesCursor.GetDouble(\"Lat\"))";
-Debug.ShouldStop(8);
+ BA.debugLineNum = 195;BA.debugLine="Log(\"LAT: \" & SpeciesCursor.GetDouble(\"Lat\"))";
+Debug.ShouldStop(4);
 map.mostCurrent.__c.runVoidMethod ("Log",(Object)(RemoteObject.concat(RemoteObject.createImmutable("LAT: "),_speciescursor.runMethod(true,"GetDouble",(Object)(RemoteObject.createImmutable("Lat"))))));
- BA.debugLineNum = 197;BA.debugLine="Log(\"LNG: \" & SpeciesCursor.GetDouble(\"Lng\"))";
-Debug.ShouldStop(16);
+ BA.debugLineNum = 196;BA.debugLine="Log(\"LNG: \" & SpeciesCursor.GetDouble(\"Lng\"))";
+Debug.ShouldStop(8);
 map.mostCurrent.__c.runVoidMethod ("Log",(Object)(RemoteObject.concat(RemoteObject.createImmutable("LNG: "),_speciescursor.runMethod(true,"GetDouble",(Object)(RemoteObject.createImmutable("Lng"))))));
- BA.debugLineNum = 201;BA.debugLine="If SpeciesCursor.GetDouble(\"Lat\") = \"0\" Then";
-Debug.ShouldStop(256);
+ BA.debugLineNum = 200;BA.debugLine="If SpeciesCursor.GetDouble(\"Lat\") = \"0\" Then";
+Debug.ShouldStop(128);
 if (RemoteObject.solveBoolean("=",_speciescursor.runMethod(true,"GetDouble",(Object)(RemoteObject.createImmutable("Lat"))),BA.numberCast(double.class, "0"))) { 
- BA.debugLineNum = 202;BA.debugLine="If SpeciesCursor.GetDouble(\"Lng\") = \"0\" Then";
-Debug.ShouldStop(512);
+ BA.debugLineNum = 201;BA.debugLine="If SpeciesCursor.GetDouble(\"Lng\") = \"0\" Then";
+Debug.ShouldStop(256);
 if (RemoteObject.solveBoolean("=",_speciescursor.runMethod(true,"GetDouble",(Object)(RemoteObject.createImmutable("Lng"))),BA.numberCast(double.class, "0"))) { 
- BA.debugLineNum = 203;BA.debugLine="ErrorFlag = True";
-Debug.ShouldStop(1024);
+ BA.debugLineNum = 202;BA.debugLine="ErrorFlag = True";
+Debug.ShouldStop(512);
 _errorflag = map.mostCurrent.__c.getField(true,"True");Debug.locals.put("ErrorFlag", _errorflag);
  };
  };
- BA.debugLineNum = 208;BA.debugLine="If ErrorFlag = False Then";
-Debug.ShouldStop(32768);
+ BA.debugLineNum = 207;BA.debugLine="If ErrorFlag = False Then";
+Debug.ShouldStop(16384);
 if (RemoteObject.solveBoolean("=",_errorflag,map.mostCurrent.__c.getField(true,"False"))) { 
- BA.debugLineNum = 209;BA.debugLine="SightingMarker = gmap.AddMarker2(SpeciesCursor.";
-Debug.ShouldStop(65536);
+ BA.debugLineNum = 208;BA.debugLine="SightingMarker = gmap.AddMarker2(SpeciesCursor.";
+Debug.ShouldStop(32768);
 _sightingmarker = map.mostCurrent._gmap.runMethod(false,"AddMarker2",(Object)(_speciescursor.runMethod(true,"GetDouble",(Object)(RemoteObject.createImmutable("Lat")))),(Object)(_speciescursor.runMethod(true,"GetDouble",(Object)(RemoteObject.createImmutable("Lng")))),(Object)(_speciescursor.runMethod(true,"GetString",(Object)(RemoteObject.createImmutable("SpeciesID")))),(Object)(map.mostCurrent._gmap.getField(true,"HUE_RED")));Debug.locals.put("SightingMarker", _sightingmarker);
- BA.debugLineNum = 211;BA.debugLine="SightingMarker.Draggable = False";
-Debug.ShouldStop(262144);
+ BA.debugLineNum = 210;BA.debugLine="SightingMarker.Draggable = False";
+Debug.ShouldStop(131072);
 _sightingmarker.runMethod(true,"setDraggable",map.mostCurrent.__c.getField(true,"False"));
- BA.debugLineNum = 212;BA.debugLine="SightingMarker.Snippet = SpeciesCursor.GetInt(\"";
-Debug.ShouldStop(524288);
+ BA.debugLineNum = 211;BA.debugLine="SightingMarker.Snippet = SpeciesCursor.GetInt(\"";
+Debug.ShouldStop(262144);
 _sightingmarker.runMethod(true,"setSnippet",BA.NumberToString(_speciescursor.runMethod(true,"GetInt",(Object)(RemoteObject.createImmutable("ID")))));
- BA.debugLineNum = 213;BA.debugLine="SightingMarker.Visible = True";
-Debug.ShouldStop(1048576);
+ BA.debugLineNum = 212;BA.debugLine="SightingMarker.Visible = True";
+Debug.ShouldStop(524288);
 _sightingmarker.runMethod(true,"setVisible",map.mostCurrent.__c.getField(true,"True"));
  };
  }
 }Debug.locals.put("i", _i);
 ;
- BA.debugLineNum = 217;BA.debugLine="End Sub";
-Debug.ShouldStop(16777216);
+ BA.debugLineNum = 216;BA.debugLine="End Sub";
+Debug.ShouldStop(8388608);
 return RemoteObject.createImmutable("");
 }
 catch (Exception e) {
@@ -281,20 +281,17 @@ RemoteObject _newbird = RemoteObject.declareNull("anywheresoftware.b4a.objects.d
 Debug.locals.put("BirdID", _birdid);
  BA.debugLineNum = 159;BA.debugLine="Sub LoadBirdPic(BirdID As Int)";
 Debug.ShouldStop(1073741824);
- BA.debugLineNum = 160;BA.debugLine="BirdID = BirdID +1";
-Debug.ShouldStop(-2147483648);
-_birdid = RemoteObject.solve(new RemoteObject[] {_birdid,RemoteObject.createImmutable(1)}, "+",1, 1);Debug.locals.put("BirdID", _birdid);
- BA.debugLineNum = 162;BA.debugLine="Dim NewBird As Bitmap";
-Debug.ShouldStop(2);
+ BA.debugLineNum = 161;BA.debugLine="Dim NewBird As Bitmap";
+Debug.ShouldStop(1);
 _newbird = RemoteObject.createNew ("anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper");Debug.locals.put("NewBird", _newbird);
- BA.debugLineNum = 163;BA.debugLine="NewBird.InitializeSample(File.DirAssets,BirdID  &";
-Debug.ShouldStop(4);
+ BA.debugLineNum = 162;BA.debugLine="NewBird.InitializeSample(File.DirAssets,BirdID  &";
+Debug.ShouldStop(2);
 _newbird.runVoidMethod ("InitializeSample",(Object)(map.mostCurrent.__c.getField(false,"File").runMethod(true,"getDirAssets")),(Object)(RemoteObject.concat(_birdid,RemoteObject.createImmutable(".jpg"))),(Object)(BA.numberCast(int.class, 240)),(Object)(BA.numberCast(int.class, 240)));
- BA.debugLineNum = 164;BA.debugLine="BirdImage.Bitmap = NewBird";
-Debug.ShouldStop(8);
+ BA.debugLineNum = 163;BA.debugLine="BirdImage.Bitmap = NewBird";
+Debug.ShouldStop(4);
 map.mostCurrent._birdimage.runMethod(false,"setBitmap",(_newbird.getObject()));
- BA.debugLineNum = 166;BA.debugLine="End Sub";
-Debug.ShouldStop(32);
+ BA.debugLineNum = 165;BA.debugLine="End Sub";
+Debug.ShouldStop(16);
 return RemoteObject.createImmutable("");
 }
 catch (Exception e) {
@@ -333,23 +330,23 @@ finally {
 		}}
 public static RemoteObject  _mainmap_longclick(RemoteObject _point) throws Exception{
 try {
-		Debug.PushSubsStack("MainMap_LongClick (map) ","map",6,map.mostCurrent.activityBA,map.mostCurrent,238);
+		Debug.PushSubsStack("MainMap_LongClick (map) ","map",6,map.mostCurrent.activityBA,map.mostCurrent,237);
 if (RapidSub.canDelegate("mainmap_longclick")) return map.remoteMe.runUserSub(false, "map","mainmap_longclick", _point);
 Debug.locals.put("Point", _point);
- BA.debugLineNum = 238;BA.debugLine="Sub MainMap_LongClick (Point As LatLng)";
+ BA.debugLineNum = 237;BA.debugLine="Sub MainMap_LongClick (Point As LatLng)";
+Debug.ShouldStop(4096);
+ BA.debugLineNum = 238;BA.debugLine="If GetLocationFlag = True Then";
 Debug.ShouldStop(8192);
- BA.debugLineNum = 239;BA.debugLine="If GetLocationFlag = True Then";
-Debug.ShouldStop(16384);
 if (RemoteObject.solveBoolean("=",map._getlocationflag,map.mostCurrent.__c.getField(true,"True"))) { 
- BA.debugLineNum = 240;BA.debugLine="Location = Point";
-Debug.ShouldStop(32768);
+ BA.debugLineNum = 239;BA.debugLine="Location = Point";
+Debug.ShouldStop(16384);
 map._location = _point;
- BA.debugLineNum = 241;BA.debugLine="Activity.Finish";
-Debug.ShouldStop(65536);
+ BA.debugLineNum = 240;BA.debugLine="Activity.Finish";
+Debug.ShouldStop(32768);
 map.mostCurrent._activity.runVoidMethod ("Finish");
  };
- BA.debugLineNum = 243;BA.debugLine="End Sub";
-Debug.ShouldStop(262144);
+ BA.debugLineNum = 242;BA.debugLine="End Sub";
+Debug.ShouldStop(131072);
 return RemoteObject.createImmutable("");
 }
 catch (Exception e) {
@@ -481,26 +478,26 @@ finally {
 		}}
 public static RemoteObject  _moreinfo_click() throws Exception{
 try {
-		Debug.PushSubsStack("MoreInfo_Click (map) ","map",6,map.mostCurrent.activityBA,map.mostCurrent,229);
+		Debug.PushSubsStack("MoreInfo_Click (map) ","map",6,map.mostCurrent.activityBA,map.mostCurrent,228);
 if (RapidSub.canDelegate("moreinfo_click")) return map.remoteMe.runUserSub(false, "map","moreinfo_click");
- BA.debugLineNum = 229;BA.debugLine="Sub MoreInfo_Click";
+ BA.debugLineNum = 228;BA.debugLine="Sub MoreInfo_Click";
+Debug.ShouldStop(8);
+ BA.debugLineNum = 229;BA.debugLine="If SelectedBird = True Then";
 Debug.ShouldStop(16);
- BA.debugLineNum = 230;BA.debugLine="If SelectedBird = True Then";
-Debug.ShouldStop(32);
 if (RemoteObject.solveBoolean("=",map._selectedbird,map.mostCurrent.__c.getField(true,"True"))) { 
- BA.debugLineNum = 231;BA.debugLine="Sightings.MapLookupFlag = True";
-Debug.ShouldStop(64);
+ BA.debugLineNum = 230;BA.debugLine="Sightings.MapLookupFlag = True";
+Debug.ShouldStop(32);
 map.mostCurrent._sightings._maplookupflag = map.mostCurrent.__c.getField(true,"True");
- BA.debugLineNum = 232;BA.debugLine="StartActivity(Sightings)";
-Debug.ShouldStop(128);
+ BA.debugLineNum = 231;BA.debugLine="StartActivity(Sightings)";
+Debug.ShouldStop(64);
 map.mostCurrent.__c.runVoidMethod ("StartActivity",map.mostCurrent.activityBA,(Object)((map.mostCurrent._sightings.getObject())));
  }else {
- BA.debugLineNum = 234;BA.debugLine="Msgbox(\"Please select a sighting using the map a";
-Debug.ShouldStop(512);
+ BA.debugLineNum = 233;BA.debugLine="Msgbox(\"Please select a sighting using the map a";
+Debug.ShouldStop(256);
 map.mostCurrent.__c.runVoidMethodAndSync ("Msgbox",(Object)(BA.ObjectToString("Please select a sighting using the map above first")),(Object)(RemoteObject.createImmutable("Error")),map.mostCurrent.activityBA);
  };
- BA.debugLineNum = 236;BA.debugLine="End Sub";
-Debug.ShouldStop(2048);
+ BA.debugLineNum = 235;BA.debugLine="End Sub";
+Debug.ShouldStop(1024);
 return RemoteObject.createImmutable("");
 }
 catch (Exception e) {
@@ -577,30 +574,30 @@ finally {
 		}}
 public static RemoteObject  _specieslist_itemclick(RemoteObject _position,RemoteObject _value) throws Exception{
 try {
-		Debug.PushSubsStack("SpeciesList_ItemClick (map) ","map",6,map.mostCurrent.activityBA,map.mostCurrent,219);
+		Debug.PushSubsStack("SpeciesList_ItemClick (map) ","map",6,map.mostCurrent.activityBA,map.mostCurrent,218);
 if (RapidSub.canDelegate("specieslist_itemclick")) return map.remoteMe.runUserSub(false, "map","specieslist_itemclick", _position, _value);
 Debug.locals.put("Position", _position);
 Debug.locals.put("Value", _value);
- BA.debugLineNum = 219;BA.debugLine="Sub SpeciesList_ItemClick (Position As Int, Value";
+ BA.debugLineNum = 218;BA.debugLine="Sub SpeciesList_ItemClick (Position As Int, Value";
+Debug.ShouldStop(33554432);
+ BA.debugLineNum = 219;BA.debugLine="SelectedID = Value";
 Debug.ShouldStop(67108864);
- BA.debugLineNum = 220;BA.debugLine="SelectedID = Value -1";
+map._selectedid = BA.numberCast(int.class, _value);
+ BA.debugLineNum = 220;BA.debugLine="If Position = -1 Then";
 Debug.ShouldStop(134217728);
-map._selectedid = BA.numberCast(int.class, RemoteObject.solve(new RemoteObject[] {BA.numberCast(double.class, _value),RemoteObject.createImmutable(1)}, "-",1, 0));
- BA.debugLineNum = 221;BA.debugLine="If Position = -1 Then";
-Debug.ShouldStop(268435456);
 if (RemoteObject.solveBoolean("=",_position,BA.numberCast(double.class, -(double) (0 + 1)))) { 
- BA.debugLineNum = 222;BA.debugLine="Return";
-Debug.ShouldStop(536870912);
+ BA.debugLineNum = 221;BA.debugLine="Return";
+Debug.ShouldStop(268435456);
 if (true) return RemoteObject.createImmutable("");
  };
- BA.debugLineNum = 224;BA.debugLine="LoadBirdPic(SelectedID)";
-Debug.ShouldStop(-2147483648);
+ BA.debugLineNum = 223;BA.debugLine="LoadBirdPic(SelectedID)";
+Debug.ShouldStop(1073741824);
 _loadbirdpic(map._selectedid);
- BA.debugLineNum = 225;BA.debugLine="LoadBird(SelectedID)";
-Debug.ShouldStop(1);
+ BA.debugLineNum = 224;BA.debugLine="LoadBird(SelectedID)";
+Debug.ShouldStop(-2147483648);
 _loadbird(map._selectedid);
- BA.debugLineNum = 226;BA.debugLine="End Sub";
-Debug.ShouldStop(2);
+ BA.debugLineNum = 225;BA.debugLine="End Sub";
+Debug.ShouldStop(1);
 return RemoteObject.createImmutable("");
 }
 catch (Exception e) {

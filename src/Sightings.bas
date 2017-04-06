@@ -24,7 +24,8 @@ Sub Globals
 	Private BirdAppearance As EditText
 	Private WeatherConditions As EditText
 	Private Time As Label
-	Private SelectedID As Int = 0
+	Private SelectedSpeciesID As Int = 0
+	Private SelectedSightingID As Int = 0
 	Private Date As Label
 	Private MapCheck As CheckBox
 	Private Location As Location
@@ -32,6 +33,7 @@ Sub Globals
 	Private GetLocation As Button
 	Private ViewPhotos As Button
 	Private SightingList As ListView
+	Private AddPhoto As Button
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
@@ -66,7 +68,7 @@ Sub Populate_List
 	SpeciesCursor = Starter.Database.ExecQuery("SELECT ID, Name FROM Species ORDER BY Name ASC")
 	MapCheck.Visible = True
 	GetLocation.Visible = True
-	AddNow.Visible = False
+	AddNow.Visible = True
 	SpeciesList.clear
 	If MapLookupFlag Then
 		OpenSightingInfo(Map.SelectedID)
@@ -75,7 +77,6 @@ Sub Populate_List
 		MapCheck.Visible = False
 		AddNow.Visible = False
 	Else
-		SpeciesList.AddSingleLine2("Add Sighting","-1")
 		For i=0 To SpeciesCursor.RowCount-1
 			SpeciesCursor.Position = i
 			SpeciesList.AddSingleLine2(SpeciesCursor.GetString("Name"),SpeciesCursor.GetString("ID"))	
@@ -122,6 +123,7 @@ Sub AddNow_Click
 	Log(DateTimeTicks)
 	
 	ExportData
+	Populate_SightingList
 
 End Sub
 
@@ -133,7 +135,7 @@ Sub ExportData
 	Dim InsertData(7) As String
 
 	SightingSQL.Initialize
-	InsertData(0) = SelectedID
+	InsertData(0) = SelectedSpeciesID
 	InsertData(1) = FlockSize.Text
 	InsertData(2) = WeatherConditions.Text
 	InsertData(3) =	 BirdAppearance.Text
@@ -141,10 +143,11 @@ Sub ExportData
 	InsertData(5) = Location.Latitude
 	InsertData(6) = Location.Longitude
 	
-	
+	Log("Selected ID:" & SelectedSpeciesID)
 	SightingSQL.Append("INSERT INTO Sightings (SpeciesID,FlockSize,Weather,Appearance,Epoch,Lat,Lng) VALUES (?, ?, ?, ?, ?, ?, ?)")
 	
-	Starter.database.ExecNonQuery2(SightingSQL, InsertData)
+	Starter.database.ExecNonQuery2(SightingSQL,InsertData)
+	Populate_List
 
 End Sub
 
@@ -174,7 +177,7 @@ Sub GetLocation_Click
 End Sub
 
 Sub SpeciesList_ItemClick (Position As Int, Value As Object)
-	SelectedID = Value -1
+	SelectedSpeciesID = Value
 	If Position = -1 Then
 		Return
 	End If
@@ -187,14 +190,18 @@ Sub SpeciesList_ItemClick (Position As Int, Value As Object)
 	End If
 	Load_Photos(Value)
 	'Display_Photos
+	Populate_SightingList
+End Sub
+
+Sub Populate_SightingList
 	Dim SightingCursor As Cursor
 	Dim SQLQuery As StringBuilder
 	SQLQuery.Initialize
 	
 	SQLQuery.Append("SELECT * FROM Sightings").append(CRLF)
-	Log(SelectedID)
+	Log(SelectedSpeciesID)
 	SQLQuery.Append("WHERE SpeciesID = ?").append(CRLF)
-	SightingCursor = Starter.Database.ExecQuery2(SQLQuery, Array As String(Value)) ' Selects fields from DB
+	SightingCursor = Starter.Database.ExecQuery2(SQLQuery, Array As String(SelectedSpeciesID)) ' Selects fields from DB
 	SightingList.clear 'Clears list
 	
 	SightingList.AddSingleLine2("<Add Sighting>", 0) 'Adds placeholder to add new Sighting
@@ -202,7 +209,7 @@ Sub SpeciesList_ItemClick (Position As Int, Value As Object)
 	For i=0 To SightingCursor.RowCount-1 ' Loop to populate list from DB
 	
 		SightingCursor.Position = i
-		SightingList.AddSingleLine2(i+1,SightingCursor.GetString("ID"))	
+		SightingList.AddSingleLine2(i + 1,SightingCursor.GetString("ID"))	
 	Next
 End Sub
 
@@ -224,34 +231,7 @@ Public Sub OpenSightingInfo(ID As Int)
 End Sub
 
 Sub Load_Photos(SightingID As Int)
-	SightingPhotoList.Initialize
-	Log(SightingID)
-	Dim SpeciesCursor As Cursor
-	Dim SQLQuery As StringBuilder
-	Dim SightingPicture As Bitmap
-	Dim BirdPhotoFile As Double
-	SQLQuery.Initialize
-	SQLQuery.Append("SELECT PhotoDir").Append(CRLF)
-	SQLQuery.append("FROM SightingPhoto").Append(CRLF)
-	SQLQuery.Append("LEFT JOIN Sightings ON Sightings.ID = SightingPhoto.SightingID").Append(CRLF)
-	SQLQuery.Append("WHERE Sightings.ID = ?").Append(CRLF)
-	
-	SpeciesCursor = Starter.Database.ExecQuery2(SQLQuery,Array As String(SightingID))
-	SpeciesCursor.Position = 0
-	Log(SpeciesCursor.RowCount & "Test")
-	Try 
-		
-		For counter = 0 To SpeciesCursor.RowCount
-			BirdPhotoFile = SpeciesCursor.GetDouble("PhotoDir")
-			SightingPicture.Initialize(Main.BirdPhotoPath,BirdPhotoFile & ".jpg")
-			SightingPhotoList.Add(SightingPicture)
-		Next
-	Catch
-		ToastMessageShow("No sighting images",True)
-	End Try
-	SightingPhotos.SightingPhotoList.Initialize
-	SightingPhotos.SightingPhotoList.Clear
-	SightingPhotos.SightingPhotoList = SightingPhotoList
+	SightingPhotos.SightID = SightingID
 End Sub
 
 Sub LoadAttributes(ID As Int)
@@ -294,27 +274,95 @@ End Sub
 
 
 Sub ViewPhotos_Click
-	StartActivity(SightingPhotos)
 	Starter.list.Initialize
 	Starter.list.Clear
 	Starter.list = SightingPhotoList
+	StartActivity(SightingPhotos)
 End Sub
 
 Sub SightingList_ItemClick (Position As Int, Value As Object)
-	PopulateSightings(Value)
+	If Position <> 0 Then
+		PopulateSightings(Value)
+		SightingPhotos.SightID = Value
+		SelectedSightingID = Value
+	End If
 End Sub
 
 Sub PopulateSightings(sightingID As Int) 
 	Dim Cursor As Cursor
-		Cursor = Starter.database.ExecQuery("SELECT * FROM Sightings WHERE ID = " & sightingID)
-		Cursor.Position = 0
-		FlockSize.Text = Cursor.GetString("Flock")
-		BirdAppearance.Text = Cursor.GetString("Appearance")
-		WeatherConditions.Text = Cursor.GetString("Weather")
-		Date.Text = DateTime.Date(Cursor.GetLong("Epoch"))
-		Time.Text = DateTime.Time(Cursor.GetLong("Epoch"))
+	Cursor = Starter.database.ExecQuery("SELECT * FROM Sightings WHERE ID = " & sightingID)
+	Log(LastException)
+	Cursor.Position = 0
+	FlockSize.Text = Cursor.GetString("FlockSize")
+	BirdAppearance.Text = Cursor.GetString("Appearance")
+	WeatherConditions.Text = Cursor.GetString("Weather")
+	Date.Text = DateTime.Date(Cursor.GetLong("Epoch"))
+	Time.Text = DateTime.Time(Cursor.GetLong("Epoch"))
 		
-		'SpeciesAppearance.Text = Cursor.GetString("Appearance")
+	'SpeciesAppearance.Text = Cursor.GetString("Appearance")
 	
 	
+End Sub
+
+Sub AddPhoto_Click
+	If SelectedSightingID = 0 Then 
+		Msgbox("Please select or enter a sighting first", "Error")
+	Else
+		Starter.CC.Show("image/*","Choose image")
+	End If
+End Sub
+
+Sub CC_Result (Success As Boolean, Dir As String, FileName As String)
+	Dim ImageTime As Long
+	If (Success) Then
+		
+		Msgbox("Dir: " & Dir & " File: " & FileName, "Selected File - DEFAULT")
+		
+		Dim ContentPathFile As String
+		Dim FileNameIndex As Int
+		Dim ImgFileName As String
+
+		Dim ImgFolderPath As String
+		Dim sf As StringFunctions
+		sf.Initialize
+				
+		ContentPathFile = CodeFunctions.GetPathFromContentResult(FileName)
+		ImageTime = DateTime.now
+		If ContentPathFile = Null Then
+			Msgbox( "Please select photo from the photos app by selecting from drawer on left","Error")
+			AddPhoto_Click
+			Return
+		End If
+		
+		FileNameIndex = ContentPathFile.LastIndexOf("/")
+		ImgFileName = ContentPathFile.SubString(FileNameIndex+1)
+		ImgFolderPath = ContentPathFile.SubString2(1,FileNameIndex)
+		
+		File.Copy(ImgFolderPath,ImgFileName,Main.BirdPhotoPath,ImageTime & ".jpg")
+		
+		Dim NewBird As Bitmap
+		NewBird.InitializeSample(Main.BirdPhotoPath,ImageTime & ".jpg", 240, 240)
+		If Add_Photo_DB(ImageTime) = 0 Then 
+			ToastMessageShow("Great success",True) 
+			Return 
+		Else
+			ToastMessageShow("An Error has occured, please try again later",True)
+			Return
+		End If
+	End If
+End Sub
+
+Sub Add_Photo_DB(ImageTime As Long) As Int
+	
+	Dim SpeciesSQL As StringBuilder
+
+	SpeciesSQL.Initialize
+	SpeciesSQL.Append("INSERT INTO SightingPhoto (SightingID,PhotoDir) VALUES (?, ?)")
+	
+	Try
+		Starter.database.ExecNonQuery2(SpeciesSQL,Array As String(SelectedSightingID,ImageTime))
+		Return(0)
+	Catch
+		Return(1)
+	End Try
 End Sub

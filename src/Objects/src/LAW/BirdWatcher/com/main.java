@@ -419,12 +419,11 @@ public anywheresoftware.b4a.keywords.Common __c = null;
 public static String _birdphotopath = "";
 public anywheresoftware.b4a.objects.ButtonWrapper _reload_btn = null;
 public anywheresoftware.b4a.sql.SQL.CursorWrapper _speciescursor = null;
-public anywheresoftware.b4a.objects.TabStripViewPager _phototab = null;
 public LAW.BirdWatcher.com.starter _starter = null;
 public LAW.BirdWatcher.com.species _species = null;
 public LAW.BirdWatcher.com.sightings _sightings = null;
-public LAW.BirdWatcher.com.codefunctions _codefunctions = null;
 public LAW.BirdWatcher.com.sightingphotos _sightingphotos = null;
+public LAW.BirdWatcher.com.codefunctions _codefunctions = null;
 public LAW.BirdWatcher.com.map _map = null;
 public static String  _activity_create(boolean _firsttime) throws Exception{
 RDebugUtils.currentModule="main";
@@ -453,8 +452,8 @@ RDebugUtils.currentLine=131081;
  //BA.debugLineNum = 131081;BA.debugLine="Activity.LoadLayout(\"LaunchScreen\")";
 mostCurrent._activity.LoadLayout("LaunchScreen",mostCurrent.activityBA);
 RDebugUtils.currentLine=131082;
- //BA.debugLineNum = 131082;BA.debugLine="Activity.Title = \"Launch Screen\"";
-mostCurrent._activity.setTitle((Object)("Launch Screen"));
+ //BA.debugLineNum = 131082;BA.debugLine="Activity.Title = \"Bird Watcher\"";
+mostCurrent._activity.setTitle((Object)("Bird Watcher"));
 RDebugUtils.currentLine=131083;
  //BA.debugLineNum = 131083;BA.debugLine="StartService(Starter)";
 anywheresoftware.b4a.keywords.Common.StartService(mostCurrent.activityBA,(Object)(mostCurrent._starter.getObject()));
@@ -504,33 +503,53 @@ RDebugUtils.currentLine=917505;
  //BA.debugLineNum = 917505;BA.debugLine="File.Copy(File.DirAssets,\"database.db\",File.DirDe";
 anywheresoftware.b4a.keywords.Common.File.Copy(anywheresoftware.b4a.keywords.Common.File.getDirAssets(),"database.db",anywheresoftware.b4a.keywords.Common.File.getDirDefaultExternal(),"database.db");
 RDebugUtils.currentLine=917506;
- //BA.debugLineNum = 917506;BA.debugLine="SpeciesCursor = Starter.database.ExecQuery(\"SELEC";
-mostCurrent._speciescursor.setObject((android.database.Cursor)(mostCurrent._starter._database.ExecQuery("SELECT ID FROM Species")));
-RDebugUtils.currentLine=917507;
- //BA.debugLineNum = 917507;BA.debugLine="Starter.database.Initialize(File.DirDefaultExtern";
+ //BA.debugLineNum = 917506;BA.debugLine="Starter.database.Initialize(File.DirDefaultExtern";
 mostCurrent._starter._database.Initialize(anywheresoftware.b4a.keywords.Common.File.getDirDefaultExternal(),"database.db",anywheresoftware.b4a.keywords.Common.False);
-RDebugUtils.currentLine=917508;
- //BA.debugLineNum = 917508;BA.debugLine="For i = 0 To 6";
+RDebugUtils.currentLine=917507;
+ //BA.debugLineNum = 917507;BA.debugLine="SpeciesCursor = Starter.database.ExecQuery(\"SELEC";
+mostCurrent._speciescursor.setObject((android.database.Cursor)(mostCurrent._starter._database.ExecQuery("SELECT ID FROM Species")));
+RDebugUtils.currentLine=917509;
+ //BA.debugLineNum = 917509;BA.debugLine="For i = 0 To SpeciesCursor.RowCount - 1";
 {
 final int step4 = 1;
-final int limit4 = (int) (6);
+final int limit4 = (int) (mostCurrent._speciescursor.getRowCount()-1);
 for (_i = (int) (0) ; (step4 > 0 && _i <= limit4) || (step4 < 0 && _i >= limit4); _i = ((int)(0 + _i + step4)) ) {
-RDebugUtils.currentLine=917509;
- //BA.debugLineNum = 917509;BA.debugLine="File.Copy(File.DirAssets,i & \".jpg\",BirdPhotoPat";
-anywheresoftware.b4a.keywords.Common.File.Copy(anywheresoftware.b4a.keywords.Common.File.getDirAssets(),BA.NumberToString(_i)+".jpg",_birdphotopath,BA.NumberToString(_i)+".jpg");
 RDebugUtils.currentLine=917510;
- //BA.debugLineNum = 917510;BA.debugLine="Log(\"Bird image \" & i & \" copied over\")";
-anywheresoftware.b4a.keywords.Common.Log("Bird image "+BA.NumberToString(_i)+" copied over");
+ //BA.debugLineNum = 917510;BA.debugLine="File.Copy(File.DirAssets,i & \".jpg\",BirdPhotoPat";
+anywheresoftware.b4a.keywords.Common.File.Copy(anywheresoftware.b4a.keywords.Common.File.getDirAssets(),BA.NumberToString(_i)+".jpg",_birdphotopath,BA.NumberToString(_i)+".jpg");
 RDebugUtils.currentLine=917511;
- //BA.debugLineNum = 917511;BA.debugLine="File.Delete(File.DirAssets,i & \".jpg\")";
+ //BA.debugLineNum = 917511;BA.debugLine="Log(\"Bird image \" & i & \" copied over\")";
+anywheresoftware.b4a.keywords.Common.Log("Bird image "+BA.NumberToString(_i)+" copied over");
+RDebugUtils.currentLine=917512;
+ //BA.debugLineNum = 917512;BA.debugLine="File.Delete(File.DirAssets,i & \".jpg\")";
 anywheresoftware.b4a.keywords.Common.File.Delete(anywheresoftware.b4a.keywords.Common.File.getDirAssets(),BA.NumberToString(_i)+".jpg");
  }
 };
-RDebugUtils.currentLine=917514;
- //BA.debugLineNum = 917514;BA.debugLine="Log(\"All assets copied over\")";
-anywheresoftware.b4a.keywords.Common.Log("All assets copied over");
 RDebugUtils.currentLine=917515;
- //BA.debugLineNum = 917515;BA.debugLine="End Sub";
+ //BA.debugLineNum = 917515;BA.debugLine="SpeciesCursor = Starter.database.ExecQuery(\"SELEC";
+mostCurrent._speciescursor.setObject((android.database.Cursor)(mostCurrent._starter._database.ExecQuery("SELECT PhotoDir FROM SightingPhoto")));
+RDebugUtils.currentLine=917516;
+ //BA.debugLineNum = 917516;BA.debugLine="For i = 0 To SpeciesCursor.RowCount - 1";
+{
+final int step10 = 1;
+final int limit10 = (int) (mostCurrent._speciescursor.getRowCount()-1);
+for (_i = (int) (0) ; (step10 > 0 && _i <= limit10) || (step10 < 0 && _i >= limit10); _i = ((int)(0 + _i + step10)) ) {
+RDebugUtils.currentLine=917517;
+ //BA.debugLineNum = 917517;BA.debugLine="SpeciesCursor.Position = i";
+mostCurrent._speciescursor.setPosition(_i);
+RDebugUtils.currentLine=917518;
+ //BA.debugLineNum = 917518;BA.debugLine="File.Copy(File.DirAssets, SpeciesCursor.GetInt(\"";
+anywheresoftware.b4a.keywords.Common.File.Copy(anywheresoftware.b4a.keywords.Common.File.getDirAssets(),BA.NumberToString(mostCurrent._speciescursor.GetInt("PhotoDir"))+".jpg",_birdphotopath,BA.NumberToString(mostCurrent._speciescursor.GetInt("PhotoDir"))+".jpg");
+RDebugUtils.currentLine=917519;
+ //BA.debugLineNum = 917519;BA.debugLine="Log(\"Sighting image \" & SpeciesCursor.GetInt(\"Ph";
+anywheresoftware.b4a.keywords.Common.Log("Sighting image "+BA.NumberToString(mostCurrent._speciescursor.GetInt("PhotoDir"))+" copied over");
+ }
+};
+RDebugUtils.currentLine=917523;
+ //BA.debugLineNum = 917523;BA.debugLine="Log(\"All assets copied over\")";
+anywheresoftware.b4a.keywords.Common.Log("All assets copied over");
+RDebugUtils.currentLine=917524;
+ //BA.debugLineNum = 917524;BA.debugLine="End Sub";
 return "";
 }
 public static String  _sightingsscreen_click() throws Exception{
