@@ -25,7 +25,7 @@ main,process_globals,0,1,16,21
 ,birdphotopath
 ,birdphotopath
 
-main,reload_btn_click,0,1,68,88
+main,reload_btn_click,0,0,68,88
 starter,database,,speciescursor,,birdphotopath
 ,speciescursor
 
@@ -117,55 +117,55 @@ codefunctions,process_globals,0,1,3,7
 
 
 
-sightings,activity_create,1,0,34,48
-starter,gps1,starter,l1,,addnow,,addphoto,,birdappearance,,date,,flocksize,,getlocation,,mapcheck,,sightinglist,,specieslist,,time,,viewphotos,,weatherconditions,,location,map,selectedbird,starter,database,,maplookupflag,map,selectedid,,selectedspeciesid,sightingphotos,sightid
-,addnow,,addphoto,,birdappearance,,date,,flocksize,,getlocation,,mapcheck,,sightinglist,,specieslist,,time,,viewphotos,,weatherconditions,map,selectedbird,,maplookupflag,,selectedspeciesid,sightingphotos,sightid
+sightings,activity_create,1,0,34,49
+sightingphotos,sightid,starter,gps1,starter,l1,,addnow,,addphoto,,birdappearance,,date,,flocksize,,getlocation,,mapcheck,,sightinglist,,specieslist,,time,,viewphotos,,weatherconditions,,location,map,selectedbird,starter,database,,maplookupflag,map,selectedid,,selectedspeciesid
+sightingphotos,sightid,,addnow,,addphoto,,birdappearance,,date,,flocksize,,getlocation,,mapcheck,,sightinglist,,specieslist,,time,,viewphotos,,weatherconditions,map,selectedbird,,maplookupflag,,selectedspeciesid
 ,populate_list,,opensightinginfo,,specieslist_itemclick,,loadattributes,,load_photos,,populate_sightinglist
-sightings,populate_list,1,0,60,85
+sightings,populate_list,1,0,61,86
 starter,database,,mapcheck,,getlocation,,addnow,,specieslist,,maplookupflag,map,selectedid,,selectedspeciesid,sightingphotos,sightid,,sightinglist,,flocksize,,birdappearance,,weatherconditions,,date,,time
 ,maplookupflag,,selectedspeciesid,sightingphotos,sightid
 ,opensightinginfo,,specieslist_itemclick,,loadattributes,,load_photos,,populate_sightinglist
-sightings,activity_pause,0,0,88,90
+sightings,activity_pause,0,0,89,91
 
 
 
-sightings,activity_resume,0,0,50,58
+sightings,activity_resume,0,0,51,59
 starter,gps1
 
 
-sightings,add_photo_db,0,0,350,363
+sightings,add_photo_db,0,0,355,368
 starter,database,,selectedsightingid
 
 
-sightings,addnow_click,1,0,93,123
+sightings,addnow_click,1,0,94,124
 ,mapcheck,,location,starter,l1,map,getlocationflag,map,location,,date,,time,,datetimeticks,,selectedspeciesid,,flocksize,,weatherconditions,,birdappearance,starter,database,,getlocation,,addnow,,specieslist,,maplookupflag,map,selectedid,sightingphotos,sightid,,sightinglist
 map,getlocationflag,,datetimeticks,,maplookupflag,,selectedspeciesid,sightingphotos,sightid
 ,exportdata,,populate_sightinglist,,populate_list,,opensightinginfo,,specieslist_itemclick,,loadattributes,,load_photos
-sightings,exportdata,1,0,125,147
+sightings,exportdata,1,0,126,148
 ,selectedspeciesid,,flocksize,,weatherconditions,,birdappearance,,datetimeticks,,location,starter,database,,mapcheck,,getlocation,,addnow,,specieslist,,maplookupflag,map,selectedid,sightingphotos,sightid,,sightinglist,,date,,time
 ,maplookupflag,,selectedspeciesid,sightingphotos,sightid
 ,populate_list,,opensightinginfo,,specieslist_itemclick,,loadattributes,,load_photos,,populate_sightinglist
-sightings,populate_sightinglist,0,0,191,209
+sightings,populate_sightinglist,0,0,192,210
 ,selectedspeciesid,starter,database,,sightinglist
 
 
-sightings,addphoto_click,1,0,302,308
+sightings,addphoto_click,1,0,307,313
 ,selectedsightingid,starter,cc
 
 
-sightings,cc_result,1,0,310,348
+sightings,cc_result,1,0,315,353
 main,birdphotopath,,selectedsightingid,starter,cc,starter,database
 
 codefunctions,getpathfromcontentresult,,addphoto_click,,add_photo_db
-sightings,date_click,1,0,244,255
+sightings,date_click,1,0,245,256
 ,date
 
 
-sightings,getlocation_click,1,0,165,172
+sightings,getlocation_click,1,0,166,173
 ,mapcheck,map,getlocationflag,starter,gps1
 map,getlocationflag
 ,gpsready
-sightings,gpsready,1,0,149,157
+sightings,gpsready,1,0,150,158
 starter,gps1
 
 
@@ -173,27 +173,27 @@ sightings,globals,0,1,13,32
 ,selectedspeciesid,,selectedsightingid
 ,selectedspeciesid,,selectedsightingid
 
-sightings,gps1_locationchanged,0,0,159,163
+sightings,gps1_locationchanged,0,0,160,164
 starter,l1,starter,gps1
 starter,l1
 
-sightings,load_photos,0,0,228,230
+sightings,load_photos,0,0,229,231
 sightingphotos,sightid
 sightingphotos,sightid
 
-sightings,loadattributes,1,0,232,241
+sightings,loadattributes,1,0,233,242
 starter,database,,flocksize,,birdappearance,,weatherconditions,,date,,time
 
 
-sightings,opensightinginfo,1,0,220,226
+sightings,opensightinginfo,1,0,221,227
 ,selectedspeciesid,,addnow,sightingphotos,sightid,starter,database,,sightinglist,,flocksize,,birdappearance,,weatherconditions,,date,,time
 ,selectedspeciesid,sightingphotos,sightid
 ,specieslist_itemclick,,loadattributes,,load_photos,,populate_sightinglist
-sightings,specieslist_itemclick,0,0,174,189
+sightings,specieslist_itemclick,0,0,175,190
 ,selectedspeciesid,,addnow,sightingphotos,sightid,starter,database,,sightinglist
 ,selectedspeciesid,sightingphotos,sightid
 ,load_photos,,populate_sightinglist
-sightings,populatesightings,1,0,286,300
+sightings,populatesightings,1,0,291,305
 starter,database,,flocksize,,birdappearance,,weatherconditions,,date,,time
 
 
@@ -201,27 +201,27 @@ sightings,process_globals,0,1,6,11
 ,maplookupflag
 ,maplookupflag
 
-sightings,sightinglist_itemclick,1,0,278,284
+sightings,sightinglist_itemclick,1,0,283,289
 sightingphotos,sightid,,selectedsightingid,starter,database,,flocksize,,birdappearance,,weatherconditions,,date,,time
 sightingphotos,sightid,,selectedsightingid
 ,populatesightings
-sightings,time_click,1,0,257,268
+sightings,time_click,1,0,258,269
 ,time
 
 
-sightings,viewphotos_click,0,0,271,276
-starter,list,,sightingphotolist
+sightings,viewphotos_click,1,0,272,281
+sightingphotos,sightid,starter,list,,sightingphotolist
 starter,list
 
 sightingphotos,activity_create,1,1,23,40
 ,sightid,,phototab,,removebtn,,sightingphoto,,sightingphotolist,starter,database,main,birdphotopath
 ,phototab,,removebtn,,sightingphoto
 ,load_photos,,phototab_pageselected,,loadbirdpic
-sightingphotos,load_photos,0,1,42,67
+sightingphotos,load_photos,0,0,42,67
 ,sightingphotolist,starter,database,main,birdphotopath
 
 
-sightingphotos,phototab_pageselected,0,1,102,123
+sightingphotos,phototab_pageselected,0,0,102,123
 ,sightingphoto,,sightid,,removebtn,,sightingphotolist,starter,database,main,birdphotopath
 
 ,loadbirdpic
@@ -237,7 +237,7 @@ sightingphotos,globals,0,1,13,21
 
 
 
-sightingphotos,loadbirdpic,0,1,77,100
+sightingphotos,loadbirdpic,0,0,77,100
 starter,database,main,birdphotopath
 
 

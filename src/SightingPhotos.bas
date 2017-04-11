@@ -116,7 +116,7 @@ Sub Phototab_PageSelected (Position As Int)
 	Position = Position - 1
 	RemoveBtn.Visible = True
 '	Try
-		SightingPhoto.bitmap =  SightingPhotoList.Get(Position)
+	SightingPhoto.bitmap =  SightingPhotoList.Get(Position)
 '	Catch
 '		Dim Photo As Bitmap
 '		Photo.InitializeSample(Main.BirdPhotoPath,"0.jpg", 2400, 2400)

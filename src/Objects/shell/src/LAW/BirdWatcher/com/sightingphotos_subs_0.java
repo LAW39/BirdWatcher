@@ -288,7 +288,7 @@ _position = RemoteObject.solve(new RemoteObject[] {_position,RemoteObject.create
  BA.debugLineNum = 112;BA.debugLine="RemoveBtn.Visible = True";
 Debug.ShouldStop(32768);
 sightingphotos.mostCurrent._removebtn.runMethod(true,"setVisible",sightingphotos.mostCurrent.__c.getField(true,"True"));
- BA.debugLineNum = 114;BA.debugLine="SightingPhoto.bitmap =  SightingPhotoList.Get(Po";
+ BA.debugLineNum = 114;BA.debugLine="SightingPhoto.bitmap =  SightingPhotoList.Get(Pos";
 Debug.ShouldStop(131072);
 sightingphotos.mostCurrent._sightingphoto.runMethod(false,"setBitmap",(sightingphotos._sightingphotolist.runMethod(false,"Get",(Object)(_position))));
  BA.debugLineNum = 123;BA.debugLine="End Sub";

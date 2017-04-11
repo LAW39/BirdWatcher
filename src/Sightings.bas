@@ -37,6 +37,7 @@ Sub Globals
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
+	SightingPhotos.SightID = -1
 	Log(Starter.GPS1)
 	Log(Starter.L1)
 	'Do not forget to load the layout file created with the visual designer. For example:
@@ -274,6 +275,10 @@ End Sub
 
 
 Sub ViewPhotos_Click
+	If SightingPhotos.SightID = -1  Then
+		Msgbox("Please select a species and sighting first.","Error")
+		Return
+	End If
 	Starter.list.Initialize
 	Starter.list.Clear
 	Starter.list = SightingPhotoList
